@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+\<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -516,7 +516,7 @@
   function makeCard(sNum, eNum, delay) {
     const card = document.createElement('a');
     card.className = 'ep-card';
-    card.href = `S${pad(sNum)}E${pad(eNum)}/index.html`;
+    card.href = `S${pad(sNum)}/S${pad(sNum)}E${pad(eNum)}/index.html`;
     card.style.animationDelay = `${delay}ms`;
     card.innerHTML = `
       <div class="ep-chip">S${pad(sNum)}</div>
