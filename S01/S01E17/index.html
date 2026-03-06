@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>English with Friends — The One with Two Parts</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Google+Sans+Display:wght@400;500;700&family=Roboto+Mono:wght@400;500&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --md-primary: #1A73E8;
+  --md-primary-container: #D3E4FD;
+  --md-on-primary: #FFFFFF;
+  --md-on-primary-container: #041E49;
+  --md-secondary: #EA4335;
+  --md-tertiary: #34A853;
+  --md-quaternary: #FBBC04;
+  --md-surface: #FFFFFF;
+  --md-surface-variant: #F1F3F4;
+  --md-surface-container: #F8F9FA;
+  --md-surface-high: #E8EAED;
+  --md-outline: #DADCE0;
+  --md-on-surface: #202124;
+  --md-on-surface-variant: #5F6368;
+  --md-bg: #F8F9FA;
+  --el1: 0 1px 2px rgba(60,64,67,.3), 0 1px 3px 1px rgba(60,64,67,.15);
+  --el2: 0 1px 2px rgba(60,64,67,.3), 0 2px 6px 2px rgba(60,64,67,.15);
+  --el3: 0 1px 3px rgba(60,64,67,.3), 0 4px 8px 3px rgba(60,64,67,.15);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Roboto',sans-serif;background:var(--md-bg);color:var(--md-on-surface);min-height:100vh;-webkit-font-smoothing:antialiased}
+.top-bar{background:var(--md-surface);border-bottom:1px solid var(--md-outline);position:sticky;top:0;z-index:200;box-shadow:var(--el1)}
+.top-bar-inner{max-width:1040px;margin:0 auto;padding:0 16px;display:flex;flex-direction:column;align-items:center}
+.top-bar-title-row{width:100%;display:flex;align-items:center;justify-content:center;padding:10px 0 6px;position:relative}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0}
+.logo-icon{font-size:1.35rem;line-height:1}
+.logo-text{font-family:'Google Sans Display',sans-serif;font-size:1.1rem;font-weight:500;letter-spacing:-.2px}
+.logo-text .b{color:#4285F4}.logo-text .r{color:#EA4335}.logo-text .y{color:#FBBC04}.logo-text .g{color:#34A853}.logo-text .k{color:var(--md-on-surface)}
+.bar-divider{width:1px;height:16px;background:var(--md-outline);margin:0 8px;flex-shrink:0}
+.bar-subtitle{font-family:'Google Sans',sans-serif;font-size:0.8rem;color:var(--md-on-surface-variant);white-space:nowrap}
+.top-nav{display:flex;gap:0;overflow-x:auto;scrollbar-width:none;border-top:1px solid var(--md-outline);width:100%}
+.top-nav::-webkit-scrollbar{display:none}
+.nav-btn{display:inline-flex;align-items:center;gap:6px;padding:0 14px;height:44px;border:none;background:none;cursor:pointer;font-family:'Google Sans',sans-serif;font-size:.8125rem;font-weight:500;color:var(--md-on-surface-variant);white-space:nowrap;text-decoration:none;border-bottom:3px solid transparent;margin-bottom:-1px;transition:color .15s;position:relative;flex:1;justify-content:center}
+.nav-btn::before{content:'';position:absolute;inset:4px 4px;border-radius:50px;background:transparent;transition:background .15s}
+.nav-btn:hover::before{background:rgba(26,115,232,.08)}
+.nav-btn:hover{color:var(--md-primary)}
+.nav-btn.active{color:var(--md-primary);border-bottom-color:var(--md-primary)}
+.rev-badge{display:inline-flex;align-items:center;justify-content:center;background:var(--md-secondary);color:#fff;border-radius:50px;font-size:.65rem;font-weight:700;min-width:18px;height:18px;padding:0 5px;font-family:'Google Sans',sans-serif;transition:transform .2s;display:none}
+.rev-badge.show{display:inline-flex}
+.rev-badge.pop{animation:badgePop .3s cubic-bezier(.36,.07,.19,.97)}
+@keyframes badgePop{0%{transform:scale(1)}40%{transform:scale(1.4)}70%{transform:scale(.9)}100%{transform:scale(1)}}
+.main{max-width:960px;margin:0 auto;padding:28px 16px 56px}
+.section{display:none;animation:fadeIn .2s ease}
+.section.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.page-hd{margin-bottom:24px}
+.page-title{font-family:'Google Sans Display',sans-serif;font-size:1.75rem;font-weight:400;color:var(--md-on-surface);margin-bottom:4px;letter-spacing:-.3px}
+.page-sub{font-size:.875rem;color:var(--md-on-surface-variant);line-height:1.6}
+.chip-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.chip{display:inline-flex;align-items:center;gap:4px;padding:6px 16px;border-radius:50px;border:1px solid var(--md-outline);background:var(--md-surface);font-family:'Google Sans',sans-serif;font-size:.8125rem;font-weight:500;color:var(--md-on-surface-variant);cursor:pointer;transition:all .15s;user-select:none}
+.chip:hover{background:var(--md-surface-variant);border-color:var(--md-on-surface-variant)}
+.chip.active{background:var(--md-primary-container);border-color:var(--md-primary);color:var(--md-on-primary-container)}
+.search-wrap{margin-bottom:16px}
+.search-bar{display:flex;align-items:center;background:var(--md-surface);border-radius:50px;box-shadow:var(--el1);padding:0 20px;gap:12px;height:48px;transition:box-shadow .2s}
+.search-bar:focus-within{box-shadow:var(--el2);outline:2px solid var(--md-primary);outline-offset:1px}
+.search-icon{color:var(--md-on-surface-variant);font-size:1.1rem;flex-shrink:0}
+.search-bar input{flex:1;border:none;outline:none;background:transparent;font-family:'Roboto',sans-serif;font-size:.9375rem;color:var(--md-on-surface)}
+.search-bar input::placeholder{color:var(--md-on-surface-variant)}
+.search-x{background:none;border:none;cursor:pointer;color:var(--md-on-surface-variant);font-size:.9rem;display:none;padding:4px;border-radius:50%;line-height:1;transition:background .15s}
+.search-x:hover{background:var(--md-surface-variant)}
+.search-x.on{display:flex;align-items:center}
+.search-count{font-size:.8125rem;color:var(--md-on-surface-variant);margin-bottom:16px;min-height:20px;padding-left:4px}
+.search-count b{color:var(--md-primary);font-weight:500}
+.search-hl{background:rgba(251,188,4,.35);border-radius:2px;padding:0 1px}
+.no-results{display:none;text-align:center;padding:56px 20px;color:var(--md-on-surface-variant)}
+.no-results.on{display:block}
+.no-results-icon{font-size:3rem;margin-bottom:12px}
+.no-results p{font-size:.9375rem;line-height:1.6}
+.vocab-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}
+.vcard{background:var(--md-surface);border-radius:16px;border:1px solid var(--md-outline);padding:16px;cursor:pointer;transition:box-shadow .2s,border-color .2s;position:relative;overflow:hidden}
+.vcard::after{content:'';position:absolute;inset:0;background:var(--md-primary);opacity:0;transition:opacity .15s;pointer-events:none}
+.vcard:hover{box-shadow:var(--el2);border-color:var(--md-primary)}
+.vcard:hover::after{opacity:.04}
+.vcard.open{border-color:var(--md-primary);border-width:2px}
+.vtag{display:inline-flex;align-items:center;gap:3px;background:var(--md-surface-variant);color:var(--md-on-surface-variant);border-radius:50px;padding:2px 10px;font-size:.72rem;font-family:'Google Sans',sans-serif;font-weight:500;margin-bottom:10px;transition:background .2s,color .2s}
+.vcard.open .vtag{background:var(--md-primary-container);color:var(--md-on-primary-container)}
+.vword{font-family:'Google Sans Display',sans-serif;font-size:1.15rem;font-weight:500;color:var(--md-on-surface);margin-bottom:2px;line-height:1.3}
+.vphon{font-family:'Roboto Mono',monospace;font-size:.7rem;color:var(--md-on-surface-variant);margin-bottom:10px}
+.vctx{font-size:.8125rem;color:var(--md-on-surface-variant);font-style:italic;padding:8px 12px;background:var(--md-surface-container);border-radius:8px;border-left:3px solid var(--md-primary);line-height:1.5;margin-bottom:8px}
+.vhint{font-size:.75rem;color:var(--md-primary);font-family:'Google Sans',sans-serif;font-weight:500;opacity:.7}
+.vcard.open .vhint{display:none}
+.vmean{display:none;font-size:.875rem;color:var(--md-on-surface);line-height:1.65;margin-top:10px;background:var(--md-surface-container);padding:12px;border-radius:8px}
+.vmean .ex{font-size:.8rem;color:var(--md-tertiary);font-style:italic;margin-top:8px;padding-top:8px;border-top:1px solid var(--md-outline)}
+.vcard.open .vmean{display:block}
+.save-btn{position:absolute;top:10px;right:10px;width:30px;height:30px;border-radius:50%;border:none;background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.25rem;line-height:1;z-index:10;transition:background .15s,transform .2s,color .2s;color:#DADCE0;font-family:sans-serif}
+.save-btn:hover{background:rgba(251,188,4,.12);transform:scale(1.15);color:#FBBC04}
+.save-btn.saved{color:#FBBC04;animation:starPop .3s cubic-bezier(.36,.07,.19,.97)}
+@keyframes starPop{0%{transform:scale(1)}40%{transform:scale(1.45)}70%{transform:scale(.88)}100%{transform:scale(1)}}
+.review-empty{text-align:center;padding:64px 20px;color:var(--md-on-surface-variant)}
+.review-empty-icon{font-size:3.5rem;margin-bottom:16px;color:#FBBC04;line-height:1}
+.review-empty h2{font-family:'Google Sans Display',sans-serif;font-size:1.3rem;font-weight:400;margin-bottom:8px;color:var(--md-on-surface)}
+.review-empty p{font-size:.9rem;line-height:1.7;max-width:380px;margin:0 auto}
+.review-empty p b{color:var(--md-primary)}
+.review-topbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;gap:10px}
+.review-count-pill{background:var(--md-primary-container);color:var(--md-on-primary-container);border-radius:50px;padding:4px 14px;font-size:.8rem;font-family:'Google Sans',sans-serif;font-weight:500}
+.clear-all-btn{display:inline-flex;align-items:center;gap:5px;padding:7px 16px;border-radius:50px;border:1px solid var(--md-outline);background:transparent;color:var(--md-on-surface-variant);font-family:'Google Sans',sans-serif;font-size:.8125rem;font-weight:500;cursor:pointer;transition:all .15s}
+.clear-all-btn:hover{border-color:#EA4335;color:#EA4335;background:#FCE8E6}
+.rcard{background:var(--md-surface);border-radius:16px;border:1px solid var(--md-outline);padding:16px;position:relative;overflow:hidden;transition:box-shadow .2s,border-color .2s,opacity .3s,transform .3s}
+.rcard:hover{box-shadow:var(--el1)}
+.rcard.removing{opacity:0;transform:scale(.93)}
+.remove-btn{position:absolute;top:10px;right:10px;width:28px;height:28px;border-radius:50%;border:none;background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.85rem;color:var(--md-on-surface-variant);transition:background .15s,color .15s}
+.remove-btn:hover{background:#FCE8E6;color:#EA4335}
+.toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(80px);background:#202124;color:#fff;border-radius:12px;padding:10px 20px;font-family:'Google Sans',sans-serif;font-size:.875rem;box-shadow:var(--el3);z-index:9999;transition:transform .3s cubic-bezier(.4,0,.2,1),opacity .3s;opacity:0;pointer-events:none;white-space:nowrap}
+.toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+.dlist{display:flex;flex-direction:column;gap:12px}
+.drow{display:grid;grid-template-columns:76px 1fr;gap:12px;align-items:start}
+.spill{display:inline-block;padding:5px 8px;border-radius:50px;font-size:.65rem;font-family:'Google Sans',sans-serif;font-weight:700;letter-spacing:.3px;text-align:center;color:#fff;margin-top:3px;text-transform:uppercase}
+.s-Monica{background:#1A73E8}.s-Chandler{background:#202124}.s-Rachel{background:#E37400}
+.s-Joey{background:#137333}.s-Ross{background:#7B1FA2}.s-Phoebe{background:#C2185B}
+.s-Ursula{background:#AD1457}.s-Teacher{background:#455A64}.s-Carol{background:#00838F}
+.s-Susan{background:#558B2F}.s-Nina{background:#6D4C41}.s-Mr{background:#37474F}
+.dbubble{background:var(--md-surface);border:1px solid var(--md-outline);border-radius:0 16px 16px 16px;padding:12px 16px;font-size:.9rem;line-height:1.75;box-shadow:var(--el1)}
+.hl{background:#FEF3C7;border-bottom:2px solid #FBBC04;cursor:pointer;padding:0 2px;border-radius:2px;position:relative}
+.hl:hover{background:#FDE68A}
+.hltip{display:none;position:absolute;bottom:calc(100% + 10px);left:50%;transform:translateX(-50%);background:#202124;color:#fff;padding:10px 14px;border-radius:12px;font-size:.77rem;width:220px;line-height:1.55;z-index:300;pointer-events:none;box-shadow:var(--el3)}
+.hltip::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:6px solid transparent;border-top-color:#202124}
+.hl:hover .hltip{display:block}
+.qwrap{max-width:600px}
+.qprog-lbl{display:flex;justify-content:space-between;font-size:.8125rem;color:var(--md-on-surface-variant);margin-bottom:6px;font-family:'Google Sans',sans-serif}
+.qprog-lbl b{color:var(--md-primary);font-weight:500}
+.liner{height:4px;background:var(--md-surface-high);border-radius:2px;margin-bottom:20px;overflow:hidden}
+.liner-fill{height:100%;background:var(--md-primary);border-radius:2px;transition:width .4s cubic-bezier(.4,0,.2,1)}
+.qcard{background:var(--md-surface);border-radius:24px;box-shadow:var(--el1);padding:24px}
+.qbadge{display:inline-flex;align-items:center;gap:5px;font-size:.75rem;font-family:'Google Sans',sans-serif;font-weight:500;color:var(--md-on-surface-variant);margin-bottom:14px;background:var(--md-surface-variant);padding:4px 12px;border-radius:50px}
+.qtext{font-family:'Google Sans Display',sans-serif;font-size:1.15rem;font-weight:500;line-height:1.5;color:var(--md-on-surface);margin-bottom:10px}
+.qexcerpt{font-style:italic;font-size:.85rem;color:var(--md-on-surface-variant);padding:10px 14px;background:var(--md-surface-container);border-radius:8px;border-left:3px solid var(--md-primary);margin-bottom:20px;line-height:1.6}
+.qopts{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px}
+.qopt{padding:12px 16px;border:1px solid var(--md-outline);border-radius:12px;background:var(--md-surface);cursor:pointer;font-size:.875rem;color:var(--md-on-surface);text-align:left;font-family:'Roboto',sans-serif;line-height:1.4;transition:all .15s;position:relative;overflow:hidden}
+.qopt::before{content:'';position:absolute;inset:0;background:var(--md-primary);opacity:0;transition:opacity .15s}
+.qopt:hover:not(:disabled)::before{opacity:.06}
+.qopt:hover:not(:disabled){border-color:var(--md-primary)}
+.qopt.correct{border-color:#137333;background:#E6F4EA;color:#137333;font-weight:500}
+.qopt.wrong{border-color:#C5221F;background:#FCE8E6;color:#C5221F}
+.qopt:disabled{cursor:default}
+.tinput{width:100%;padding:12px 16px;border:1px solid var(--md-outline);border-radius:12px;font-family:'Roboto',sans-serif;font-size:.9375rem;color:var(--md-on-surface);background:var(--md-surface);outline:none;margin-bottom:12px;transition:border .15s}
+.tinput:focus{border-color:var(--md-primary);border-width:2px}
+.tinput.correct{border-color:#137333;border-width:2px;background:#E6F4EA}
+.tinput.wrong{border-color:#C5221F;border-width:2px;background:#FCE8E6}
+.qfb{display:none;padding:12px 16px;border-radius:12px;font-size:.875rem;line-height:1.55;margin-bottom:14px}
+.qfb.on{display:block}
+.qfb.ok{background:#E6F4EA;color:#137333;border:1px solid #CEEAD6}
+.qfb.no{background:#FCE8E6;color:#C5221F;border:1px solid #FAD2CF}
+.btn-f{display:inline-flex;align-items:center;gap:6px;padding:10px 24px;border-radius:50px;border:none;background:var(--md-primary);color:#fff;font-family:'Google Sans',sans-serif;font-size:.875rem;font-weight:500;cursor:pointer;transition:box-shadow .2s,background .15s;letter-spacing:.1px}
+.btn-f:hover{box-shadow:var(--el2);background:#1557B0}
+.btn-o{display:inline-flex;align-items:center;gap:6px;padding:10px 24px;border-radius:50px;border:1px solid var(--md-outline);background:transparent;color:var(--md-primary);font-family:'Google Sans',sans-serif;font-size:.875rem;font-weight:500;cursor:pointer;transition:background .15s}
+.btn-o:hover{background:var(--md-primary-container)}
+.brow{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+.score-card{background:var(--md-surface);border-radius:24px;box-shadow:var(--el1);padding:48px 32px;text-align:center}
+.score-ring{width:120px;height:120px;border-radius:50%;background:var(--md-primary-container);display:flex;flex-direction:column;align-items:center;justify-content:center;margin:0 auto 20px}
+.score-big{font-family:'Google Sans Display',sans-serif;font-size:2.8rem;font-weight:500;color:var(--md-primary);line-height:1}
+.score-denom{font-size:1.1rem;color:var(--md-on-surface-variant)}
+.score-pct{font-family:'Google Sans',sans-serif;font-size:.78rem;color:var(--md-on-primary-container);font-weight:500;margin-top:2px}
+.score-msg{font-family:'Google Sans Display',sans-serif;font-size:1.2rem;color:var(--md-on-surface);margin-bottom:24px;line-height:1.5}
+.clist{display:flex;flex-direction:column;gap:12px}
+.citem{background:var(--md-surface);border-radius:16px;border:1px solid var(--md-outline);padding:20px;display:grid;grid-template-columns:48px 1fr;gap:16px;align-items:start;transition:box-shadow .2s,border-color .2s}
+.citem:hover{box-shadow:var(--el1);border-color:var(--md-primary)}
+.cicon{width:48px;height:48px;background:var(--md-surface-container);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0}
+.citem h3{font-family:'Google Sans',sans-serif;font-size:.9375rem;font-weight:500;color:var(--md-on-surface);margin-bottom:6px}
+.citem p{font-size:.875rem;color:var(--md-on-surface-variant);line-height:1.7}
+@media(max-width:768px){
+  .bar-subtitle,.bar-divider{display:none}
+  .main{padding:16px 12px 40px}
+  .vocab-grid{grid-template-columns:1fr}
+  .qopts{grid-template-columns:1fr}
+  .drow{grid-template-columns:64px 1fr;gap:8px}
+  .hltip{width:180px;font-size:.74rem}
+}
+@media(max-width:480px){
+  .nav-btn{padding:0 10px;font-size:.8rem}
+  .nav-btn span.ni{display:none}
+  .drow{grid-template-columns:54px 1fr}
+  .spill{font-size:.6rem;padding:4px 5px}
+  .score-big{font-size:2.2rem}
+}
+.hidden{display:none!important}
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <div class="top-bar-inner">
+    <div class="top-bar-title-row">
+      <div class="logo">
+        <div class="logo-icon">📺</div>
+        <div class="logo-text"><span class="b">E</span><span class="r">n</span><span class="y">g</span><span class="g">l</span><span class="k">ish with Friends</span></div>
+      </div>
+      <div class="bar-divider"></div>
+      <div class="bar-subtitle">The One with Two Parts · S01E16</div>
+    </div>
+    <nav class="top-nav">
+      <a class="nav-btn" href="https://tinyimprove-rgb.github.io/learnenglishwith-friends/"><span class="ni">🏠</span> Home</a>
+      <button class="nav-btn active" onclick="showSec('vocab')"><span class="ni">📖</span> Vocab</button>
+      <button class="nav-btn" onclick="showSec('dialogue')"><span class="ni">💬</span> Script</button>
+      <button class="nav-btn" onclick="showSec('quiz')"><span class="ni">🎯</span> Quiz</button>
+      <button class="nav-btn" onclick="showSec('culture')"><span class="ni">🌎</span> Culture</button>
+      <button class="nav-btn" id="reviewNavBtn" onclick="showSec('review')"><span class="ni">★</span> Review <span class="rev-badge" id="revBadge">0</span></button>
+    </nav>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<main class="main">
+
+  <!-- VOCAB -->
+  <div id="vocab" class="section active">
+    <div class="page-hd">
+      <h1 class="page-title">Vocabulary & Slang</h1>
+      <p class="page-sub">Every key word, phrase, and expression from this episode. Tap any card to reveal the meaning + an example sentence. Tap ★ to save words for later review.</p>
+    </div>
+    <div class="search-wrap">
+      <div class="search-bar">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="searchInput" placeholder="Search words, meanings, examples…" oninput="doSearch(this.value)">
+        <button class="search-x" id="searchX" onclick="clearSearch()">✕</button>
+      </div>
+    </div>
+    <div class="search-count" id="searchCount"></div>
+    <div class="chip-row" id="chips">
+      <div class="chip active" data-tag="all" onclick="filterV('all',this)">All</div>
+      <div class="chip" data-tag="slang" onclick="filterV('slang',this)">🔥 Slang</div>
+      <div class="chip" data-tag="idiom" onclick="filterV('idiom',this)">🎭 Idioms</div>
+      <div class="chip" data-tag="vocab" onclick="filterV('vocab',this)">📚 Vocabulary</div>
+      <div class="chip" data-tag="humor" onclick="filterV('humor',this)">😂 Comedy</div>
+      <div class="chip" data-tag="phrasal" onclick="filterV('phrasal',this)">🔗 Phrasal Verbs</div>
+      <div class="chip" data-tag="expression" onclick="filterV('expression',this)">💡 Expressions</div>
+      <div class="chip" data-tag="romantic" onclick="filterV('romantic',this)">❤️ Romantic</div>
+      <div class="chip" data-tag="business" onclick="filterV('business',this)">💼 Business</div>
+    </div>
+    <div class="vocab-grid" id="vocabGrid"></div>
+    <div class="no-results" id="noRes">
+      <div class="no-results-icon">🔎</div>
+      <p>No results for <b id="noResQ"></b>.<br>Try a different word or clear the search.</p>
+    </div>
+  </div>
+
+  <!-- DIALOGUE -->
+  <div id="dialogue" class="section">
+    <div class="page-hd">
+      <h1 class="page-title">Annotated Script</h1>
+      <p class="page-sub">Key lines with <span style="background:#FEF3C7;border-bottom:2px solid #FBBC04;padding:0 3px;border-radius:2px">highlighted words</span>. Hover or tap to see instant definitions.</p>
+    </div>
+    <div class="dlist" id="dlines"></div>
+  </div>
+
+  <!-- QUIZ -->
+  <div id="quiz" class="section">
+    <div class="page-hd">
+      <h1 class="page-title">Quiz Yourself</h1>
+      <p class="page-sub">Multiple choice and fill-in-the-blank. Questions shuffle on every attempt.</p>
+    </div>
+    <div class="qwrap" id="quizContainer"></div>
+  </div>
+
+  <!-- CULTURE -->
+  <div id="culture" class="section">
+    <div class="page-hd">
+      <h1 class="page-title">Culture Notes</h1>
+      <p class="page-sub">Understanding the American culture, comedy, and references inside this episode.</p>
+    </div>
+    <div class="clist" id="cNotes"></div>
+  </div>
+
+  <!-- REVIEW -->
+  <div id="review" class="section">
+    <div class="page-hd">
+      <h1 class="page-title">🔖 Review List</h1>
+      <p class="page-sub">Words you saved for review. Go back to Vocab and tap the ★ button on any card to add more.</p>
+    </div>
+    <div id="reviewContent"></div>
+  </div>
+
+</main>
+
+<script>
+// ── SAVED WORDS STATE ──
+let savedWords = new Set();
+
+function toggleSave(wordIndex, btn, event) {
+  event.stopPropagation();
+  if (savedWords.has(wordIndex)) {
+    savedWords.delete(wordIndex);
+    btn.textContent = '☆';
+    btn.classList.remove('saved');
+    btn.title = 'Save for review';
+    showToast('Removed from review list');
+  } else {
+    savedWords.add(wordIndex);
+    btn.textContent = '★';
+    btn.classList.add('saved');
+    btn.title = 'Remove from review';
+    showToast('Saved! Tap Review tab to study ✨');
+  }
+  updateBadge();
+  if (document.getElementById('review').classList.contains('active')) renderReview();
+}
+
+function updateBadge() {
+  const badge = document.getElementById('revBadge');
+  const count = savedWords.size;
+  badge.textContent = count;
+  if (count > 0) {
+    badge.classList.add('show');
+    badge.classList.remove('pop');
+    void badge.offsetWidth;
+    badge.classList.add('pop');
+  } else {
+    badge.classList.remove('show');
+  }
+}
+
+let toastTimer;
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 2200);
+}
+
+function renderReview() {
+  const el = document.getElementById('reviewContent');
+  if (savedWords.size === 0) {
+    el.innerHTML = `<div class="review-empty"><div class="review-empty-icon">★</div><h2>Your review list is empty</h2><p>Go to <b>Vocab</b> and tap the <b>★</b> button on any card to save words here.</p></div>`;
+    return;
+  }
+  const saved = [...savedWords].map(i => ({i, ...VD[i]}));
+  el.innerHTML = `
+    <div class="review-topbar">
+      <span class="review-count-pill">${saved.length} word${saved.length !== 1 ? 's' : ''} saved</span>
+      <button class="clear-all-btn" onclick="clearAllReview()">🗑️ Clear all</button>
+    </div>
+    <div class="vocab-grid">
+      ${saved.map(v => `
+        <div class="rcard vcard open" id="rcard-${v.i}">
+          <button class="remove-btn" onclick="removeFromReview(${v.i})" title="Remove">✕</button>
+          <div class="vtag" style="background:var(--md-primary-container);color:var(--md-on-primary-container)">${TL[v.tag]||v.tag}</div>
+          <div class="vword">${v.word}</div>
+          ${v.ph ? `<div class="vphon">${v.ph}</div>` : ''}
+          <div class="vctx">"${v.ctx}"</div>
+          <div class="vmean" style="display:block">${v.mean}<div class="ex">💡 ${v.ex}</div></div>
+        </div>`).join('')}
+    </div>`;
+}
+
+function removeFromReview(idx) {
+  const card = document.getElementById(`rcard-${idx}`);
+  if (card) {
+    card.classList.add('removing');
+    setTimeout(() => {
+      savedWords.delete(idx);
+      const saveBtn = document.querySelector(`.save-btn[data-idx="${idx}"]`);
+      if (saveBtn) { saveBtn.classList.remove('saved'); saveBtn.textContent = '☆'; }
+      updateBadge();
+      renderReview();
+    }, 280);
+  }
+}
+
+function clearAllReview() {
+  savedWords.forEach(idx => {
+    const saveBtn = document.querySelector(`.save-btn[data-idx="${idx}"]`);
+    if (saveBtn) { saveBtn.classList.remove('saved'); saveBtn.textContent = '☆'; }
+  });
+  savedWords.clear();
+  updateBadge();
+  renderReview();
+  showToast('Review list cleared');
+}
+
+// ── DATA ──
+const VD=[
+  // ── PHRASAL VERBS ──
+  {word:"blow off",ph:"/bləʊ ɒf/",tag:"phrasal",ctx:`"I say we blow off the dates."`,mean:"To cancel plans casually or avoid something without a good reason. Monica wants to skip the dates with the doctors entirely.",ex:"He blew off the meeting without even sending a message — his boss was furious."},
+  {word:"blow (someone) off",ph:"/bləʊ ɒf/",tag:"phrasal",ctx:`"I can't believe she's blowin' me off."`,mean:"To ignore or dismiss someone, especially after showing romantic interest. Joey is hurt that Ursula stopped responding to him.",ex:"She texted him three times and he blew her off — not even a reply."},
+  {word:"screw up",ph:"/skruː ʌp/",tag:"phrasal",ctx:`"I don't want to do anything to screw it up with Ursula."`,mean:"To ruin something or make a serious mistake. Joey is worried about damaging his chances with Ursula.",ex:"I really like this job — I can't afford to screw it up."},
+  {word:"freak out",ph:"/friːk aʊt/",tag:"phrasal",ctx:`"Before I was born, did you freak out at all?"`,mean:"To feel or act in an intensely anxious or panicked way. Ross asks his father whether he panicked about becoming a dad.",ex:"She completely freaked out when she heard her flight had been cancelled."},
+  {word:"come on in",ph:"/kʌm ɒn ɪn/",tag:"phrasal",ctx:`"Hi, come on in."`,mean:"An informal, warm invitation to enter a place. Monica uses it to welcome the doctors into the apartment.",ex:"Oh, you're here already! Come on in — make yourself at home."},
+  {word:"make up for",ph:"/meɪk ʌp fɔː/",tag:"phrasal",ctx:`"'Cause there's time to make up for that."`,mean:"To compensate for something lost, missed, or done wrong. Mr. Geller offers to reconnect with Ross for time he wasn't around.",ex:"I missed her recital — I'll have to make up for it with a special dinner."},
+  {word:"get over (someone)",ph:"/ɡɛt ˈəʊvər/",tag:"phrasal",ctx:`"You're gonna be really, really hard to get over."`,mean:"To recover emotionally from the end of a relationship. Phoebe (pretending to be Ursula) tells Joey this as she breaks up with him.",ex:"It took her almost a year to get over the breakup — she'd really loved him."},
+  {word:"come through",ph:"/kʌm θruː/",tag:"phrasal",ctx:`"Hey, come on, you came through, you did what you had to do."`,mean:"To succeed in a difficult situation; to deliver when it matters. Chandler tells Ross he proved himself as a father figure.",ex:"He came through for the whole team when it mattered most — stayed up all night to fix it."},
+  {word:"fan out",ph:"/fæn aʊt/",tag:"phrasal",ctx:`"When they open those doors, fan out."`,mean:"To spread out in different directions to cover more ground. Monica's military-style command at the bridal sale (referenced in the word list).",ex:"The search party fanned out across the hillside to find the missing hiker."},
+  // ── SLANG ──
+  {word:"nutsy about (someone)",ph:"/ˈnʌtsi/",tag:"slang",ctx:`"He's really nutsy about you."`,mean:"Deeply infatuated or crazy about someone. Phoebe tells Ursula that Joey has strong feelings for her.",ex:"He's totally nutsy about her — he talks about her every single day."},
+  {word:"drunk on (someone)",ph:"",tag:"slang",ctx:`"I was drunk on you."`,mean:"Completely overwhelmed by feelings for someone — not literal alcohol. Used after Joey points out that Ursula doesn't drink.",ex:"She was so drunk on the idea of the new job she couldn't sleep the night before."},
+  {word:"wuss",ph:"/wʊs/",tag:"slang",ctx:`"Would you stop being such a wuss?"`,mean:"A weak, timid, or overly cautious person. Rachel calls Monica this for being too afraid to confess about the insurance mix-up.",ex:"Come on, don't be such a wuss — just ask him for a raise already."},
+  {word:"idiot",ph:"/ˈɪdiət/",tag:"slang",ctx:`"I am really an idiot."`,mean:"A stupid or foolish person. Monica uses it to play dumb with the nurse, pretending she kept filling out the wrong names by accident.",ex:"I locked myself out again — I am such an idiot."},
+  {word:"scared the crap out of me",ph:"",tag:"slang",ctx:`"You scared the crap outta me."`,mean:"To frighten someone very intensely. 'Crap' is informal for excrement — used here as a strong intensifier.",ex:"That horror movie scared the crap out of me — I couldn't sleep after."},
+  {word:"furball",ph:"/ˈfɜːbɔːl/",tag:"slang",ctx:`"It's just a furball."`,mean:"An affectionate informal term for a small, furry animal. Chandler uses it to describe Marcel the monkey.",ex:"She called the new kitten her little furball and wouldn't put it down."},
+  {word:"tiny",ph:"/ˈtaɪni/",tag:"slang",ctx:`"He looks so tiny."`,mean:"Very small. Ross says this watching the sedated Marcel — it mirrors his anxiety about his unborn baby and the episode's emotional arc.",ex:"The newborn puppy was so tiny it fit in the palm of one hand."},
+  // ── IDIOMS ──
+  {word:"might as well",ph:"/maɪt əz wɛl/",tag:"idiom",ctx:`"Might as well just go home."`,mean:"Used when there's no better option, so you may as well do the available thing. Rachel uses it sarcastically — she knows Monica will give in.",ex:"We've missed the first 20 minutes — might as well wait for the next showing."},
+  {word:"take your time",ph:"/teɪk jɔː taɪm/",tag:"idiom",ctx:`"You take your time."`,mean:"Sarcastic: take as long as you need while being painfully slow or obvious. Ross says it to Joey who is slowly realizing he double-booked Phoebe's birthday.",ex:"I'm already late, so I'll just sit here — you take your time."},
+  {word:"stood (someone) up",ph:"/stʊd ʌp/",tag:"idiom",ctx:`"Your sister stood me up the other night."`,mean:"To fail to show up for a planned date or meeting, leaving the other person waiting alone. Joey is hurt that Ursula never came.",ex:"She waited at the restaurant for an hour — he had completely stood her up."},
+  {word:"left (someone) at the altar",ph:"/lɛft ət ði ˈɔːltər/",tag:"idiom",ctx:`"I left the guy at the altar."`,mean:"To cancel a wedding at the last possible moment after the partner has arrived. Monica blurts this out while pretending to be Rachel.",ex:"She left him at the altar after five years — the whole town was shocked."},
+  {word:"boss people around",ph:"/bɒs əˈraʊnd/",tag:"idiom",ctx:`"I get to boss people around, which I just love to do."`,mean:"To tell people what to do in an authoritative or controlling way. Rachel (pretending to be Monica the chef) accidentally describes Monica's real personality.",ex:"She loves to boss people around — everyone in the office notices it."},
+  {word:"have a heart",ph:"/hæv ə hɑːt/",tag:"idiom",ctx:`"Please, please, have a heart!"`,mean:"To show compassion or mercy; don't be heartless. Ross begs the nurse to help Marcel despite hospital rules.",ex:"Have a heart — she's been waiting three hours in the cold."},
+  {word:"look around",ph:"/lʊk əˈraʊnd/",tag:"idiom",ctx:`"Look around. No pagan altars, no piles of bones in the corners, they're fine."`,mean:"Examine your surroundings to assess a situation. Dr. Mitchell uses it to calm Dr. Rosin — see for yourself they're normal.",ex:"Look around — this place is perfectly fine. You're overthinking it."},
+  {word:"staring at the business end of a hissy fit",ph:"",tag:"idiom",ctx:`"You'd be starin' at the business end of a hissy fit."`,mean:"A 'hissy fit' = an angry, dramatic outburst. 'Business end' = the dangerous side. Chandler means: if you stood me up on my birthday, I'd have an epic meltdown.",ex:"Touch my birthday cake without asking and you'll be staring at the business end of a hissy fit."},
+  // ── EXPRESSIONS ──
+  {word:"in case of emergency",ph:"",tag:"expression",ctx:`"In case of emergency call?"`,mean:"Standard hospital form phrase: the person to contact if something goes medically wrong with you. Rachel immediately names Monica.",ex:"The form asked for two contacts in case of emergency — she listed her sister first."},
+  {word:"insurance fraud",ph:"/ɪnˈʃʊərəns frɔːd/",tag:"expression",ctx:`"That's insurance fraud."`,mean:"The illegal act of making false claims to an insurance company. Using someone else's insurance = fraud. Monica says it immediately when Rachel suggests it.",ex:"Filing a claim for damage that didn't happen is insurance fraud — it can lead to criminal charges."},
+  {word:"check it",ph:"/tʃɛk ɪt/",tag:"expression",ctx:`"Oh, yeah, check it. Definitely, I want some of that."`,mean:"Casual American expression meaning 'of course / absolutely' or 'look at this.' Rachel uses it casually — not realizing she's just admitted she has no insurance.",ex:"Check it — I've already booked the flights. We're good to go."},
+  {word:"what're the odds?",ph:"",tag:"expression",ctx:`"Oh, man. What're the odds of that happening?"`,mean:"An expression of disbelief at an unlikely coincidence. Joey just realized Phoebe and Ursula share a birthday.",ex:"We both wore the same dress to the party — what are the odds of that?"},
+  {word:"returning to the scene of the crime",ph:"",tag:"expression",ctx:`"It's like returning to the scene of the crime."`,mean:"Going back to the place where you did something wrong or embarrassing. Monica means: dating doctors who know about their insurance fraud.",ex:"Going back to that restaurant after the disastrous date felt like returning to the scene of the crime."},
+  {word:"that's great",ph:"",tag:"expression",ctx:`"Oh, that's great. Look at that."`,mean:"An expression of polite or genuine enthusiasm. Rachel uses it when the doctors bring wine.",ex:"That's great — you brought enough for everyone. Perfect."},
+  {word:"STAT",ph:"/stæt/",tag:"expression",ctx:`"We'll get you some glasses... STAT."`,mean:"Medical slang for 'immediately / right now.' From Latin 'statim.' Rachel uses it humorously to sound like a doctor while playing Monica.",ex:"The nurse called for the medication STAT — there was no time to lose."},
+  {word:"every day you are becoming more and more like your mother",ph:"",tag:"expression",ctx:`"Every day, you are becoming more and more like your mother."`,mean:"One of the most effective insults between close friends — implying someone is turning into the person they fear becoming most.",ex:"Probably the most cutting thing you can say to someone with a complicated relationship with their mother."},
+  {word:"you've got to get me out of here",ph:"",tag:"expression",ctx:`"You gotta get me out of here!"`,mean:"A panicked plea for rescue from a chaotic or overwhelming situation.",ex:"You've got to get me out of here — this party is a nightmare."},
+  {word:"this one's taken",ph:"",tag:"expression",ctx:`"I'm sorry, this one's taken!"`,mean:"A firm claim of ownership over something — this item belongs to me. Monica says it to another shopper grabbing her dress.",ex:"That seat's taken — my friend is coming back in a minute."},
+  {word:"you're screwed",ph:"/skruːd/",tag:"expression",ctx:`"That's the limit. You're screwed!"`,mean:"Informal: you are in serious trouble with no easy way out. Joey triumphantly tells Ross he has no money left for the date.",ex:"If you miss the last train, you're screwed — there's no other way home."},
+  {word:"I don't get it",ph:"",tag:"expression",ctx:`"I don't get it. What happened?"`,mean:"I don't understand. Joey is confused and hurt by what seems like Ursula's sudden change of heart.",ex:"I don't get it — she was completely fine yesterday and now she won't talk to me."},
+  {word:"no food with a face",ph:"",tag:"expression",ctx:`"No. No food with a face."`,mean:"Phoebe's vegetarian principle: she won't eat any animal that has a face. A classic Phoebe-ism that perfectly captures her character.",ex:"Classic Phoebe logic — consistent, compassionate, and slightly absurd all at once."},
+  {word:"you have not changed",ph:"",tag:"expression",ctx:`"You have not changed."`,mean:"A remark — sometimes affectionate, sometimes resigned — that someone is exactly the same as they always were.",ex:"She walked in and immediately rearranged the furniture — you have not changed at all."},
+  {word:"come on",ph:"/kʌm ɒn/",tag:"expression",ctx:`"Hey, come on, you came through."`,mean:"An encouraging expression: stop doubting yourself / give yourself credit. Chandler pushes Ross to recognize he acted like a father.",ex:"Come on — you've been preparing for this for weeks. You're ready."},
+  // ── VOCABULARY ──
+  {word:"sprain",ph:"/spreɪn/",tag:"vocab",ctx:`"He said it was just a sprain."`,mean:"An injury where a joint is twisted and ligaments are stretched or torn, but no bone is broken. Rachel's foot injury turns out to be a sprain, not a fracture.",ex:"She twisted her ankle on the stairs — the doctor confirmed it was a sprain, not a break."},
+  {word:"admitting desk",ph:"/ədˈmɪtɪŋ dɛsk/",tag:"vocab",ctx:`"Rachel and Monica walk up to the admitting desk."`,mean:"The front desk in a hospital where patients register and paperwork is processed before treatment begins.",ex:"Go to the admitting desk first — they'll get your details and direct you to the right department."},
+  {word:"insurance",ph:"/ɪnˈʃʊərəns/",tag:"vocab",ctx:`"Insurance? Oh, yeah, check it."`,mean:"A contract where you pay regular premiums and the company covers costs if you get sick or injured. Rachel has none — a major problem in the American healthcare system.",ex:"In the US, medical insurance is essential — without it, even a simple emergency can cost thousands."},
+  {word:"admissions form",ph:"/ədˈmɪʃənz fɔːm/",tag:"vocab",ctx:`"We forgot to sign one of the admissions forms."`,mean:"The official paperwork completed when a patient enters a hospital. The entire insurance fraud plot hinges on Monica filling these out with the wrong names.",ex:"The admissions form requires your full name, insurance details, and emergency contacts."},
+  {word:"hike (the baby)",ph:"/haɪk/",tag:"humor",ctx:`"They hike me the baby."`,mean:"In American football, to snap the ball to the quarterback to start a play. Ross's dream replaces the football with his unborn baby — a vivid image of his fatherhood anxiety.",ex:"The center hiked the ball, the quarterback caught it, and the play began."},
+  {word:"take the sack",ph:"/teɪk ðə sæk/",tag:"humor",ctx:`"He should take the sack?"`,mean:"In American football, to be tackled behind the line rather than throw the ball. Joey suggests Ross should get tackled rather than throw the baby downfield. The joke: treating the baby as a football.",ex:"The quarterback decided to take the sack rather than risk an interception."},
+  {word:"blocking",ph:"/ˈblɒkɪŋ/",tag:"humor",ctx:`"You and the baby just need better blocking."`,mean:"In football, players protecting the ball carrier from being tackled. Joey applies this as his solution to Ross's fatherhood anxiety.",ex:"The running back scored easily because the offensive line's blocking was excellent."},
+  {word:"Rainbow Room",ph:"",tag:"vocab",ctx:`"Have either of you guys ever been to the Rainbow Room?"`,mean:"A famous, expensive restaurant and events venue at the top of 30 Rockefeller Plaza in New York City. Joey plans to take Ursula there for her birthday.",ex:"The Rainbow Room was one of New York's most glamorous dining venues — reservations required weeks in advance."},
+  {word:"chef",ph:"/ʃɛf/",tag:"vocab",ctx:`"I'm a chef at a restaurant uptown."`,mean:"A professional cook who leads a kitchen. Rachel is pretending to be Monica — and accidentally describes Monica's real job and personality perfectly.",ex:"After years working her way up, she was finally named head chef."},
+  {word:"fine",ph:"/faɪn/",tag:"vocab",ctx:`"You're gonna be fine."`,mean:"In good shape; okay. Chandler reassures Ross he will be a good father. Also used throughout: 'he's gonna be fine' about Marcel.",ex:"Don't worry — the presentation went well, you're going to be fine."},
+  {word:"hissy fit",ph:"/ˈhɪsi fɪt/",tag:"vocab",ctx:`"You'd be starin' at the business end of a hissy fit."`,mean:"An angry, dramatic, childish outburst or tantrum. Chandler threatens one if Joey ever stood him up on his birthday.",ex:"She threw a complete hissy fit when the coffee shop got her order wrong."},
+  {word:"simian",ph:"/ˈsɪmiən/",tag:"vocab",ctx:`"What's up with the simian?"`,mean:"Formal/scientific word for a monkey or ape. Chandler uses it slightly pretentiously to refer to Marcel.",ex:"The documentary explored the social behavior of simians in their natural habitat."},
+  {word:"Scrabble tile",ph:"/ˈskræbəl taɪl/",tag:"vocab",ctx:`"Marcel swallowed a Scrabble tile."`,mean:"One of the small lettered squares used in the board game Scrabble. Marcel swallows the letter 'K,' which triggers the hospital emergency.",ex:"She accidentally dropped a Scrabble tile behind the sofa and never found it."},
+  {word:"Jeopardy",ph:"/ˈdʒɛpərdi/",tag:"vocab",ctx:`"He watches Jeopardy."`,mean:"A famous American TV quiz show. Ross lists it as evidence that Marcel is essentially a person, to get the nurse to help him.",ex:"Jeopardy has been on American television since 1964 — it's a cultural institution."},
+  {word:"fist",ph:"/fɪst/",tag:"vocab",ctx:`"You grabbed my finger with your whole fist."`,mean:"A hand with fingers curled tightly. The baby gripping a parent's finger is one of the most famous milestone moments for new parents.",ex:"The baby wrapped her tiny fist around his finger the first time he held her, and he cried."},
+  {word:"pagan altar",ph:"/ˈpeɪɡən ˈɔːltər/",tag:"humor",ctx:`"No pagan altars, no piles of bones in the corners."`,mean:"An altar used in non-Christian rituals. Dr. Mitchell uses it as shorthand for 'anything seriously weird' when assessing whether the women are normal.",ex:"A funny window into how the doctors talk behind closed doors — revealing their own neuroses."},
+  {word:"chickpea",ph:"/ˈtʃɪkpiː/",tag:"vocab",ctx:`"God bless the chickpea."`,mean:"A small round legume used in hummus, falafel, and many other dishes. Dr. Mitchell says this as a sincere compliment to the hummus Rachel (as Monica) made.",ex:"Chickpeas are the base ingredient of hummus — mashed with tahini, lemon, and garlic."},
+  {word:"Judy Jetson thermos",ph:"",tag:"humor",ctx:`"Oh, it's a Judy Jetson thermos!"`,mean:"A thermos decorated with Judy Jetson, a character from the classic 1960s cartoon The Jetsons. Phoebe brings it as Ursula's birthday gift — a sweet callback to their childhood.",ex:"The Jetsons is a famous American cartoon set in the future — Judy is the teenage daughter of the family."},
+  {word:"twin thing",ph:"",tag:"humor",ctx:`"How'd you know I was coming?" "Twin thing."`,mean:"Ursula's vague explanation for knowing Phoebe was coming — supposedly telepathic twin intuition. A throwaway line that perfectly captures Ursula's unbothered personality.",ex:"A perfect example of the show's absurdist logic: 'twin thing' explains everything and nothing at once."},
+  {word:"sun-dried tomato",ph:"",tag:"humor",ctx:`"I wouldn't mind having a piece of this sun-dried tomato business."`,mean:"Mr. Geller muses about a trendy 1990s food business opportunity. Sun-dried tomatoes were a major food craze in early 90s America.",ex:"A perfect piece of period-specific writing — sun-dried tomatoes were genuinely a 1990s food trend."},
+  {word:"Colonial Williamsburg",ph:"",tag:"vocab",ctx:`"You always wanted to go to Colonial Williamsburg."`,mean:"A famous living history museum in Virginia, USA, where colonial American life is recreated by actors in period costume.",ex:"Colonial Williamsburg is one of America's most visited historical sites — step back into 18th-century life."},
+  // ── ROMANTIC ──
+  {word:"asked us out",ph:"",tag:"romantic",ctx:`"The very cute doctors asked us out for tomorrow night."`,mean:"To invite someone on a romantic date. The doctors asked Monica and Rachel to go out with them.",ex:"He finally asked her out after talking to her every day for two months."},
+  {word:"breaking up",ph:"/ˈbreɪkɪŋ ʌp/",tag:"romantic",ctx:`"I don't know whether it's just 'cause we're breakin' up or what."`,mean:"Ending a romantic relationship. Joey says this to who he thinks is Ursula — it's actually Phoebe breaking things off on Ursula's behalf.",ex:"Breaking up after a long relationship is always difficult, even when it's the right thing to do."},
+  {word:"you have never looked so beautiful",ph:"",tag:"romantic",ctx:`"You have never looked so beautiful."`,mean:"A deeply sincere compliment. Joey says this to Phoebe without knowing it's her — one of the episode's most genuinely tender moments.",ex:"The line lands differently because it reaches the right person by accident — the most honest thing he could have said."},
+  // ── BUSINESS / MEDICAL ──
+  {word:"cover (insurance covers)",ph:"/ˈkʌvər/",tag:"business",ctx:`"You know your insurance will cover that."`,mean:"When insurance pays for the cost of medical treatment. The nurse tells Rachel her (Monica's) insurance covers the bill.",ex:"His insurance covered the surgery in full — he didn't pay a cent out of pocket."},
+  {word:"exam room",ph:"/ɪɡˈzæm ruːm/",tag:"business",ctx:`"Rachel and Monica are in an exam room."`,mean:"A private room in a hospital or clinic where a doctor examines a patient.",ex:"They were shown to an exam room and told the doctor would be with them shortly."},
+];
+
+const DD=[
+  // ── SCENE 1: Hospital — Admitting Desk ──
+  {sp:"Rachel",txt:"Ow ow ow. Ow ow ow. Ow ow ow."},
+  {sp:"Monica",txt:"Hi. Uh, my friend here was taking down our Christmas lights, and she fell off the balcony and may have broken her foot or ankle or something."},
+  {sp:"Nurse",txt:"My god. You still have your Christmas lights up? Fill this out and bring it back to me."},
+  {sp:"Rachel",txt:"Ow ow ow. Ow ow ow. Ow ow ow."},
+  {sp:"Monica",txt:`All right. Name, address... Ok, <span class="hl">in case of emergency<span class="hltip">💡 EXPRESSION — Standard hospital form phrase: the person to contact if something goes medically wrong. Rachel immediately names Monica.</span></span> call?`},
+  {sp:"Rachel",txt:"You."},
+  {sp:"Monica",txt:"Really?"},
+  {sp:"Rachel",txt:"Yeah."},
+  {sp:"Monica",txt:"Oh, that is so sweet. Oh gosh. I love you. Insurance?"},
+  {sp:"Rachel",txt:`Oh, yeah, <span class="hl">check it.<span class="hltip">💡 EXPRESSION — Casual American for "of course / absolutely." Rachel says this confidently — then reveals she has no insurance at all.</span></span> Definitely, I want some of that.`},
+  {sp:"Monica",txt:"You don't have insurance?"},
+  {sp:"Rachel",txt:"Why, how much is this gonna cost?"},
+  {sp:"Monica",txt:`I have no idea, but <span class="hl">x-rays alone could be a couple hundred dollars.<span class="hltip">📚 VOCAB — A reality of American healthcare: no insurance means full price. Even basic diagnostics cost hundreds of dollars.</span></span>`},
+  {sp:"Rachel",txt:"Well what are we gonna do?"},
+  {sp:"Monica",txt:"There's not much we can do."},
+  {sp:"Rachel",txt:"Um, unless I use yours."},
+  {sp:"Monica",txt:"No no no no no no no no no."},
+  {sp:"Rachel",txt:`Well, now, wait a second. Who did I just put as my "In case of emergency" call person?`},
+  {sp:"Monica",txt:`That's <span class="hl">insurance fraud.<span class="hltip">💡 EXPRESSION — The illegal act of making false insurance claims. Using someone else's insurance = fraud. Monica recognizes it immediately.</span></span>`},
+  {sp:"Rachel",txt:`Well, all right, then, forget it. <span class="hl">Might as well<span class="hltip">🎭 IDIOM — There's no better option, so let's do this instead. Rachel says it sarcastically — she knows Monica will cave.</span></span> just go home. Ow!`},
+  {sp:"Monica",txt:"Ok. Ok. I hate this."},
+  {sp:"Rachel",txt:"Thank you. Thank you. I love you."},
+  {sp:"Monica",txt:"Hi. Um, I'm gonna need a new set of these forms."},
+  {sp:"Nurse",txt:"Why?"},
+  {sp:"Monica",txt:`I am really an <span class="hl">idiot.<span class="hltip">🔥 SLANG — A stupid or foolish person. Monica plays dumb to cover the fraud — pretending she kept writing the wrong names by mistake.</span></span> You see, I was filling out my friend's forms, and instead of putting her information, I put mine.`},
+  {sp:"Nurse",txt:"You are an idiot."},
+  {sp:"Monica",txt:"Yep, that's me. I am that stupid."},
+  // ── SCENE 2: Central Perk ──
+  {sp:"Ross",txt:`I had a dream last night where I was playing football with my kid. No, no, with him. I'm on this field, and they, they <span class="hl">hike<span class="hltip">😂 COMEDY — In American football: snap the ball to the quarterback to start a play. Ross's dream replaces the football with his unborn baby.</span></span> me the baby. I know I've gotta do something 'cause the Tampa Bay defense is comin' right at me.`},
+  {sp:"Joey",txt:"Tampa Bay's got a terrible team."},
+  {sp:"Ross",txt:"Right, but, it is just me and the baby, so I'm thinkin' they can take us. And so I uh, I just heave it downfield."},
+  {sp:"Chandler",txt:"What are you crazy? That's a baby!"},
+  {sp:"Joey",txt:`He should <span class="hl">take the sack<span class="hltip">😂 COMEDY — In football: be tackled rather than throw the ball. Joey suggests Ross should get tackled instead of throwing the baby downfield.</span></span>?`},
+  {sp:"Ross",txt:"Anyway, suddenly I'm downfield, and I realize that I'm the one who's supposed to catch him. Only I know there is no way I'm gonna get there in time, so I am running, and running, and that is when I woke up. See, I am so not ready to be a father."},
+  {sp:"Chandler",txt:"Hey, you're gonna be fine. You're one of the most caring, most responsible men in North America. You're gonna make a great dad."},
+  {sp:"Joey",txt:`Yeah, Ross. You and the baby just need better <span class="hl">blocking.<span class="hltip">😂 COMEDY — In football: players protecting the ball carrier. Joey's solution to Ross's fatherhood anxiety is simply: more offensive linemen.</span></span> Oh, have either one of you guys ever been to the <span class="hl">Rainbow Room<span class="hltip">📚 VOCAB — A famous expensive restaurant at the top of 30 Rockefeller Plaza in NYC. Joey plans to take Ursula there for her birthday.</span></span>? Is it real expensive?`},
+  {sp:"Chandler",txt:"Well, only if you order stuff."},
+  {sp:"Joey",txt:"I'm takin' Ursula tonight. It's her birthday."},
+  {sp:"Ross",txt:"Whoa. What about Phoebe's birthday?"},
+  {sp:"Joey",txt:"When's that?"},
+  {sp:"Ross",txt:"Tonight."},
+  {sp:"Joey",txt:`Oh, man. <span class="hl">What're the odds of that happening?<span class="hltip">💡 EXPRESSION — Disbelief at an unlikely coincidence. Joey just realized two people he knows share a birthday — and he double-booked.</span></span>`},
+  {sp:"Ross",txt:`<span class="hl">You take your time.<span class="hltip">🎭 IDIOM — Sarcastic: take as long as you need to state the obvious. Ross uses it as Joey slowly processes an obvious situation.</span></span>`},
+  {sp:"Chandler",txt:"There it is! So what're you gonna do?"},
+  {sp:"Joey",txt:`What can I do? Look, I don't want to do anything to <span class="hl">screw it up<span class="hltip">🔗 PHRASAL — To ruin or make a serious mistake with something important. Joey is worried about his chances with Ursula.</span></span> with Ursula.`},
+  {sp:"Chandler",txt:"And your friend Phoebe?"},
+  {sp:"Joey",txt:"Well, if she's my friend, hopefully she'll understand. I mean, wouldn't you guys?"},
+  {sp:"Chandler",txt:`Man if you tried something like that on my birthday, you'd be starin' at the business end of a <span class="hl">hissy fit.<span class="hltip">📚 VOCAB — An angry, dramatic, childish outburst. Chandler threatens one if Joey ever stood him up on his birthday.</span></span>`},
+  // ── SCENE 3: Hospital Exam Room ──
+  {sp:"Dr. Mitchell",txt:"Ok, uh, Monica?"},
+  {sp:"Monica",txt:"Yes, yes she is."},
+  {sp:"Rachel",txt:"Hi, this is my friend Rachel."},
+  {sp:"Dr. Mitchell",txt:"Hi, Rachel. I'm Dr. Mitchell."},
+  {sp:"Dr. Rosin",txt:"And I'm his friend, Dr. Rosin."},
+  {sp:"Rachel",txt:"Aren't you a little cute to be a doctor?"},
+  {sp:"Dr. Rosin",txt:"Excuse me?"},
+  {sp:"Rachel",txt:"I meant young, young, I meant young, young to be a doctor. Oh, Good Rach."},
+  {sp:"Monica",txt:"Thank you."},
+  // ── SCENE 4: Monica & Rachel's — Surprise Party ──
+  {sp:"Rachel",txt:`So, he said it was just a <span class="hl">sprain,<span class="hltip">📚 VOCAB — A joint injury where ligaments are stretched or torn but no bone is broken. Good news for Rachel — no fracture.</span></span> and that was it.`},
+  {sp:"Monica",txt:"Uh, you left out the stupid part."},
+  {sp:"Rachel",txt:`Not stupid. The very cute, cute, cute doctors <span class="hl">asked us out<span class="hltip">❤️ ROMANTIC — To invite someone on a date. The doctors asked both Monica and Rachel to go out with them.</span></span> for tomorrow night, and I said yes.`},
+  {sp:"Monica",txt:`I think it's totally insane, they work for the hospital. It's like <span class="hl">returning to the scene of the crime.<span class="hltip">💡 EXPRESSION — Going back to the place where you did something embarrassing or wrong. Monica means: dating the doctors who know about their insurance fraud.</span></span> I say we <span class="hl">blow off the dates.<span class="hltip">🔗 PHRASAL — Cancel plans casually without a strong reason. Monica wants to avoid the situation entirely.</span></span>`},
+  {sp:"Rachel",txt:"What? Monica, they are cute, they are doctors, cute doctors, doctors who are cute!"},
+  {sp:"Chandler",txt:"All right, what have we learned so far?"},
+  {sp:"All",txt:"Surprise!"},
+  {sp:"Ross",txt:`What the hell are you doing? You <span class="hl">scared the crap outta me.<span class="hltip">🔥 SLANG — Frightened someone very intensely. Ross says this when the gang yells Surprise! at him by accident.</span></span>`},
+  {sp:"Rachel",txt:"Was that the cake?"},
+  {sp:"Ross",txt:"Yeah, yeah. I got a lemon shmush."},
+  {sp:"Monica",txt:"Come on, she'll be here any minute."},
+  {sp:"Rachel",txt:"I hope it's ok."},
+  {sp:"Chandler",txt:"Happy birthday Peehee."},
+  {sp:"Monica",txt:`Well maybe we can make a "b" out of one of those roses.`},
+  {sp:"Ross",txt:"Yeah, we'll just use our special cake tools."},
+  {sp:"Phoebe",txt:"Hey, what's going on?"},
+  {sp:"All",txt:"Surprise!"},
+  {sp:"Phoebe",txt:"Oh, oh, oh! This is so great! Oh my god! This was not at all scary. Hi everybody. Hi Betty! Betty, hi! You found Betty! Oh my god! This is great. Everybody I love is in the same room. Where's Joey?"},
+  {sp:"Chandler",txt:"Did you see Betty?"},
+  // ── SCENE 5: Restaurant — Ross & Mr. Geller ──
+  {sp:"Mr. Geller",txt:`I tell you one thing, I wouldn't mind having a piece of this <span class="hl">sun-dried tomato<span class="hltip">😂 COMEDY — Sun-dried tomatoes were a massive 1990s food trend. Mr. Geller muses about missed business opportunities in the most period-specific way possible.</span></span> business. Five years ago, if somebody had said to me, here's a tomato that looks like a prune, I'd 'a' said "get out of my office!"`},
+  {sp:"Ross",txt:`Dad, before I was born, did you <span class="hl">freak out<span class="hltip">🔗 PHRASAL — To feel or act with extreme anxiety or panic. Ross asks his father whether he panicked about becoming a dad.</span></span> at all?`},
+  {sp:"Mr. Geller",txt:"I'm not freaking out, I'm just saying, if somebody had come to me with the idea--"},
+  {sp:"Ross",txt:`Dad, dad, dad, I'm talkin' about the whole uh, baby thing. Did you uh, ever get this sort of panicky, "Oh my god I'm gonna be a father" kind of a thing?`},
+  {sp:"Mr. Geller",txt:"No. Your mother really did the work. I was busy with the business. I wasn't around that much. Is that what this is about?"},
+  {sp:"Ross",txt:"No, no, Dad, I was just wondering."},
+  {sp:"Mr. Geller",txt:`'Cause there's time to <span class="hl">make up for<span class="hltip">🔗 PHRASAL — To compensate for something missed or done wrong. Mr. Geller offers to reconnect with Ross for lost time.</span></span> that. We can still do stuff together. You always wanted to go to that <span class="hl">Colonial Williamsburg.<span class="hltip">📚 VOCAB — A famous living history museum in Virginia where colonial American life is recreated by actors in period costume.</span></span> How 'bout we do that?`},
+  {sp:"Ross",txt:"Thanks, Dad. Really, you know, I just, I just needed to know, when did you start to feel like a father?"},
+  {sp:"Mr. Geller",txt:`Oh, well, I guess it musta been the day after you were born. We were in the hospital room, your mother was asleep, and they brought you in and gave you to me. You were this <span class="hl">ugly little red thing,<span class="hltip">😂 COMEDY — Mr. Geller's brutally honest description of newborn Ross. The tenderness arrives right after: the baby grabbed his finger. The honesty makes the moment more real, not less moving.</span></span> and all of a sudden you grabbed my finger with your whole <span class="hl">fist.<span class="hltip">📚 VOCAB — A hand with fingers curled tightly. A baby gripping a parent's finger is a famous milestone moment for new parents.</span></span> And you squeezed it, so tight. And that's when I knew. So you don't wanna go to Williamsburg?`},
+  {sp:"Ross",txt:"No, we can go to Williamsburg."},
+  {sp:"Mr. Geller",txt:"Eat your fish."},
+  // ── SCENE 6: Monica & Rachel's — The Date ──
+  {sp:"Monica",txt:"Rachel, the cute doctors are here."},
+  {sp:"Rachel",txt:"Ok, coming!"},
+  {sp:"Monica",txt:`Hi, <span class="hl">come on in.<span class="hltip">🔗 PHRASAL — A warm, informal invitation to enter. Monica welcomes the doctors into the apartment.</span></span>`},
+  {sp:"Dr. Mitchell",txt:"Here, we brought wine."},
+  {sp:"Dr. Rosin",txt:`And this is from the cellars of Ernest and Tova Borgnine, so how could we resist?`},
+  {sp:"Rachel",txt:`Oh, <span class="hl">that's great.<span class="hltip">💡 EXPRESSION — Polite or genuine enthusiasm. Rachel keeps the conversation warm while names are already swapped.</span></span> Look at that.`},
+  {sp:"Dr. Rosin",txt:"Monica, how's the ankle?"},
+  {sp:"Monica",txt:"It's uh, well, uh, why don't you tell them? After all, it is your ankle."},
+  {sp:"Rachel",txt:`You know what, it's feeling a lot better, thank you. Well, listen, why don't you two sit down, and we'll get you some glasses... <span class="hl">STAT.<span class="hltip">💡 EXPRESSION — Medical slang for "immediately." From Latin 'statim.' Rachel uses it to sound like a doctor while playing Monica.</span></span>`},
+  {sp:"Rachel",txt:"Ok, listen, I'm thinking, why don't we just tell them who we really are. I mean, it'll be fine, I really think it'll be fine, I really do."},
+  {sp:"Monica",txt:"It will not be fine. We'll get in trouble."},
+  {sp:"Rachel",txt:`Would you stop being such a <span class="hl">wuss?<span class="hltip">🔥 SLANG — A weak, timid, or overly cautious person. Rachel calls Monica this for being too afraid to come clean about the insurance mix-up.</span></span>`},
+  {sp:"Monica",txt:"A wuss? Excuse me for living in the real world, ok?"},
+  {sp:"Dr. Mitchell",txt:"So?"},
+  {sp:"Dr. Rosin",txt:"So, they still seem normal."},
+  {sp:"Dr. Mitchell",txt:"That's because they are normal."},
+  {sp:"Dr. Rosin",txt:"Ok, but you have to admit that every time we go out with women we meet at the hospital, it turns into--"},
+  {sp:"Dr. Mitchell",txt:`Would you relax? <span class="hl">Look around.<span class="hltip">🎭 IDIOM — Examine your surroundings to assess the situation. Mitchell uses it to calm Rosin: see for yourself they're perfectly normal.</span></span> No <span class="hl">pagan altars,<span class="hltip">😂 COMEDY — An altar used in non-Christian rituals. Mitchell uses it as shorthand for "anything seriously weird." Funny window into how these two think.</span></span> no piles of bones in the corners, they're fine.`},
+  {sp:"Monica",txt:"I said we are not going to do it. Sometimes you can be such a, a big baby."},
+  {sp:"Rachel",txt:`I am not a baby. <span class="hl">Every day you are becoming more and more like your mother.<span class="hltip">💡 EXPRESSION — One of the most cutting things you can say to a close friend — implying they're turning into the person they fear most.</span></span>`},
+  {sp:"Dr. Rosin",txt:"This is a great place. How long have you lived here?"},
+  {sp:"Rachel",txt:"I've been here about six years, and Rachel moved in a few months ago."},
+  {sp:"Monica",txt:`Yeah, I was supposed to get married, but, um, I <span class="hl">left the guy at the altar.<span class="hltip">🎭 IDIOM — Cancelled the wedding at the very last moment after the partner arrived. Monica blurts this while pretending to be Rachel.</span></span> Yeah, I know it's pretty selfish, but hey, that's me. Why don't you try the hummus?`},
+  {sp:"Dr. Rosin",txt:"So, Monica, what do you do?"},
+  {sp:"Rachel",txt:`Uh, I'm a <span class="hl">chef<span class="hltip">📚 VOCAB — A professional cook who leads a kitchen. Rachel is pretending to be Monica — and perfectly describes Monica's real job.</span></span> at a restaurant uptown.`},
+  {sp:"Rachel",txt:`Yeah it is. Mostly because I get to <span class="hl">boss people around,<span class="hltip">🎭 IDIOM — Tell people what to do in a controlling way. Rachel accidentally describes Monica's real personality while impersonating her.</span></span> which I just love to do.`},
+  {sp:"Dr. Rosin",txt:"This hummus is great."},
+  {sp:"Dr. Mitchell",txt:`God bless the <span class="hl">chickpea.<span class="hltip">📚 VOCAB — A small round legume used in hummus. Said as a sincere compliment to the dip Rachel (as Monica) made.</span></span>`},
+  {sp:"Monica",txt:"Oh, God, I am so spoiled. That's it."},
+  {sp:"Rachel",txt:"And by the way, have I mentioned that back in high school, I was a cow."},
+  {sp:"Monica",txt:"I used to wet my bed."},
+  {sp:"Rachel",txt:"I use my breasts to get other people's attention."},
+  {sp:"Monica",txt:"We both do that."},
+  {sp:"Dr. Mitchell",txt:`(answering the phone) Monica and Rachel's apartment. Just a minute. Rachel, it's your dad.`},
+  {sp:"Monica",txt:`Hi, Dad. No, no, it's me. Listen, Dad, I can't talk right now, um, but there's something I've been meaning to tell you. Remember back in freshman year? Well, Billy Drestin and I had sex on your bed.`},
+  {sp:"Rachel",txt:"Daddy, daddy, why? Why would I sleep with Billy Drestin? His father tried to put you out of business! You are dead!"},
+  // ── SCENE 7: Joey walks in ──
+  {sp:"Monica",txt:"Ross, he's got the remote again."},
+  {sp:"Ross",txt:"Good. Maybe he can switch it back. Maybe not."},
+  {sp:"Rachel",txt:"Hello? Uh, yeah, uh, hold on a second. Let me see if she's here. It's the woman from the hospital admissions office. Oh, god, what do we do, what do we do?"},
+  {sp:"Monica",txt:"Find out what they want."},
+  {sp:"Rachel",txt:"No, you do it."},
+  {sp:"Monica",txt:"Hello, this is Monica. Yeah? Oh, ok, yes, we'll be right down. Thank you."},
+  {sp:"Rachel",txt:"What?"},
+  {sp:"Monica",txt:"We forgot to sign one of the admissions forms."},
+  {sp:"Rachel",txt:"You were right, this was just not worth it."},
+  {sp:"Monica",txt:"Thank you."},
+  {sp:"Rachel",txt:"Ok, let me just change."},
+  {sp:"Joey",txt:"Hey."},
+  {sp:"Ross",txt:"Hey."},
+  {sp:"Phoebe",txt:"Hi. Trouble?"},
+  {sp:"Joey",txt:`Your sister <span class="hl">stood me up<span class="hltip">🎭 IDIOM — Failed to show up for a planned meeting, leaving the other person waiting alone. Joey is hurt and confused.</span></span> the other night.`},
+  {sp:"Phoebe",txt:"Oh, no. Don't you just hate it when people aren't there for you?"},
+  {sp:"Ross",txt:"Well did you try calling her?"},
+  {sp:"Joey",txt:`I've been trying for two days. When I call the restaurant, they say she's too busy to talk. I can't believe she's <span class="hl">blowin' me off.<span class="hltip">🔗 PHRASAL — Ignoring or dismissing someone after showing interest. Joey is hurt Ursula has stopped responding to him entirely.</span></span>`},
+  // ── SCENE 8: Phoebe visits Ursula ──
+  {sp:"Phoebe",txt:"Hey."},
+  {sp:"Ursula",txt:"Oh."},
+  {sp:"Phoebe",txt:"Um, you got a minute?"},
+  {sp:"Ursula",txt:"Um, yeah, I'm just working."},
+  {sp:"Phoebe",txt:"Um, oh, I got you a birthday present."},
+  {sp:"Ursula",txt:`Oh, wow! You remembered! Oh, it's a <span class="hl">Judy Jetson thermos!<span class="hltip">😂 COMEDY — A thermos decorated with Judy Jetson from the 1960s cartoon The Jetsons. A childhood callback between the twins.</span></span>`},
+  {sp:"Phoebe",txt:"Right, like the kind you--"},
+  {sp:"Ursula",txt:"Right. Oh, I got something for you too."},
+  {sp:"Phoebe",txt:"How'd you know I was coming?"},
+  {sp:"Ursula",txt:`Um, yeah, um, <span class="hl">twin thing.<span class="hltip">😂 COMEDY — Vague explanation for telepathic twin intuition. A throwaway line that perfectly captures Ursula's unbothered, unfocused personality.</span></span>`},
+  {sp:"Phoebe",txt:"I can't believe you did this. I can't believe you did this. So, what's the deal with uh you and Joey?"},
+  {sp:"Ursula",txt:"Oh, right. He is so great. But that's over."},
+  {sp:"Phoebe",txt:"Does he know?"},
+  {sp:"Ursula",txt:"Who?"},
+  {sp:"Phoebe",txt:`Joey. You know, um, he's really <span class="hl">nutsy about you.<span class="hltip">🔥 SLANG — Deeply infatuated or crazy about someone. Phoebe tells Ursula that Joey has strong feelings for her.</span></span>`},
+  {sp:"Ursula",txt:"He is? Why?"},
+  {sp:"Phoebe",txt:"You got me."},
+  {sp:"Ursula",txt:"Right. Excuse me. Doesn't this come with a side salad?"},
+  {sp:"Phoebe",txt:"So, um, are you gonna call him?"},
+  {sp:"Ursula",txt:"Why, do you think he likes me?"},
+  {sp:"Phoebe",txt:"No. Joey."},
+  {sp:"Ursula",txt:"Oh. No, no, he is so smart. He'll figure it out. Do you want some chicken?"},
+  {sp:"Phoebe",txt:`No. <span class="hl">No food with a face.<span class="hltip">💡 EXPRESSION — Phoebe's vegetarian principle: she won't eat any animal that has a face. A classic Phoebe-ism.</span></span>`},
+  {sp:"Ursula",txt:`<span class="hl">You have not changed.<span class="hltip">💡 EXPRESSION — A remark — affectionate or resigned — that someone is exactly the same as they always were.</span></span>`},
+  {sp:"Phoebe",txt:"Yeah, you too."},
+  // ── SCENE 9: Hospital — Back at the desk ──
+  {sp:"Rachel",txt:"Hi, remember us?"},
+  {sp:"Nurse",txt:"Mmm hmmm."},
+  {sp:"Monica",txt:`You just called a little while ago about needing a signature on an admissions form. Well, it turns out we need a whole new one because uh, you see, I, I put the wrong name again. 'Cause um...`},
+  {sp:"Nurse",txt:"You're that stupid."},
+  {sp:"Monica",txt:"I am. I'm that stupid."},
+  {sp:"Rachel",txt:"And I'm just gonna pay for this with a check."},
+  {sp:"Nurse",txt:`You know your <span class="hl">insurance will cover<span class="hltip">💼 BUSINESS — When insurance pays for medical costs. The nurse tells Rachel her (Monica's) insurance covers the bill — unaware of the fraud.</span></span> that.`},
+  {sp:"Rachel",txt:"I know. I'm just not that bright either."},
+  // ── SCENE 10: Scrabble & Marcel ──
+  {sp:"Chandler",txt:"Ok, worst case scenario. Say you never feel like a father. Say your son never feels connected to you as one. Say all of his relationships are affected by this."},
+  {sp:"Ross",txt:"Do you have a point?"},
+  {sp:"Chandler",txt:`You know, you'd think I would. What's up with the <span class="hl">simian?<span class="hltip">📚 VOCAB — Formal/scientific word for a monkey or ape. Chandler uses it slightly pretentiously to refer to Marcel.</span></span>`},
+  {sp:"Ross",txt:`It's just a <span class="hl">furball.<span class="hltip">🔥 SLANG — An affectionate informal term for a small, furry animal.</span></span>`},
+  {sp:"Chandler",txt:"Ok, who's turn is it?"},
+  {sp:"Ross",txt:`Yours. I just got 43 points for "<span class="hl">kidney.<span class="hltip">😂 COMEDY — Setup: Ross brags about a big Scrabble score. Punchline: Marcel ate the K, leaving only "idney" — worth zero points.</span></span>"`},
+  {sp:"Chandler",txt:`No, no, you got zero points for "idney".`},
+  {sp:"Ross",txt:`I had a "k". Where's my "k"?`},
+  // ── SCENE 11: Hospital — Ross & the monkey ──
+  {sp:"Ross",txt:`You've got to help me! My monkey swallowed a "k"!`},
+  {sp:"Nurse",txt:"You get that animal out of here."},
+  {sp:"Ross",txt:"No, you don't understand. The animal hospital is way across town. He's choking. I don't know what else to do."},
+  {sp:"Monica",txt:"What's goin' on?"},
+  {sp:"Chandler",txt:`Marcel swallowed a <span class="hl">Scrabble tile.<span class="hltip">📚 VOCAB — One of the small lettered squares in the board game Scrabble. Marcel swallowing the letter K triggers the whole hospital emergency.</span></span>`},
+  {sp:"Nurse",txt:"Excuse me. This hospital is for people."},
+  {sp:"Ross",txt:`Lady, he is people. He has a name, ok? He watches <span class="hl">Jeopardy.<span class="hltip">📚 VOCAB — A famous American TV quiz show. Ross lists Marcel's human-like qualities to convince the nurse to help.</span></span> He touches himself when nobody's watching. Please, please, <span class="hl">have a heart!<span class="hltip">🎭 IDIOM — Show compassion; don't be heartless. Ross begs the nurse to help Marcel despite the hospital's no-animals policy.</span></span>`},
+  {sp:"Dr. Mitchell",txt:"I'll take a look at him."},
+  {sp:"Dr. Mitchell",txt:"Rachel."},
+  {sp:"Rachel",txt:"What?"},
+  {sp:"Monica",txt:"Monica."},
+  {sp:"Rachel",txt:"Oh."},
+  {sp:"Monica",txt:"Hi."},
+  {sp:"Rachel",txt:"Hi."},
+  // ── SCENE 12: Phoebe as Ursula ──
+  {sp:"Phoebe",txt:"Hey."},
+  {sp:"Joey",txt:"Urs, what're you doing here? I've been trying to call you."},
+  {sp:"Phoebe",txt:"Listen, um."},
+  {sp:"Joey",txt:`No, no, no, don't say "listen". I know that "listen". I've said that "listen".`},
+  {sp:"Phoebe",txt:"I'm sorry."},
+  {sp:"Joey",txt:`<span class="hl">I don't get it.<span class="hltip">💡 EXPRESSION — I don't understand. Joey is confused and hurt by what seems like Ursula's sudden change of heart.</span></span> What happened? What about everything you said under the bridge?`},
+  {sp:"Phoebe",txt:"Yeah, um, you know, you should just forget about what I said under the bridge, I was talkin' crazy that night, I was so drunk."},
+  {sp:"Joey",txt:"You don't drink."},
+  {sp:"Phoebe",txt:`That's right, I don't, but I was, I was <span class="hl">drunk on you.<span class="hltip">🔥 SLANG — Overwhelmed by feelings for someone — not literal alcohol. Used right after Joey points out Ursula doesn't drink.</span></span>`},
+  {sp:"Joey",txt:"Urs--"},
+  {sp:"Phoebe",txt:"Ok, yeah, so it's not gonna work."},
+  {sp:"Joey",txt:"Why? Is it because I'm friends with Phoebe?"},
+  {sp:"Phoebe",txt:"If it was, would you stop hanging out with her?"},
+  {sp:"Joey",txt:"No. No, I, I couldn't do that."},
+  {sp:"Phoebe",txt:"Um, then yes, 'cause of Phoebe. So, you know, it's either her or me."},
+  {sp:"Joey",txt:"Then, uh, then I'm sorry."},
+  {sp:"Phoebe",txt:`You know, you're gonna be really, really hard to <span class="hl">get over.<span class="hltip">🔗 PHRASAL — To recover emotionally from the end of a relationship. Phoebe (as Ursula) says this — but she feels it herself.</span></span>`},
+  {sp:"Joey",txt:`I know. I don't know whether it's just 'cause we're <span class="hl">breakin' up<span class="hltip">❤️ ROMANTIC — Ending a romantic relationship. Joey says it to who he thinks is Ursula — it's actually Phoebe.</span></span> or what, but <span class="hl">you have never looked so beautiful.<span class="hltip">❤️ ROMANTIC — A deeply sincere compliment. Joey says it to Phoebe without knowing it's her — the most tender moment of the episode.</span></span>`},
+  {sp:"Phoebe",txt:"Really?"},
+  {sp:"Joey",txt:"(gives Phoebe a tender kiss, then walks away, then looks back) Pheebs?"},
+  {sp:"Phoebe",txt:"Yeah."},
+  // ── SCENE 13: Everyone watches Marcel sleep ──
+  {sp:"Ross",txt:`He looks so <span class="hl">tiny.<span class="hltip">📚 VOCAB — Very small. Ross watching the sedated Marcel mirrors his anxiety about his unborn baby — the episode ends with him quietly feeling something fatherly.</span></span>`},
+  {sp:"Joey",txt:"We just got the message."},
+  {sp:"Phoebe",txt:"Is he all right?"},
+  {sp:"Ross",txt:`Yeah. The doctor got the "k" out. He also found an "m" and an "o".`},
+  {sp:"Chandler",txt:`We think he was trying to spell out "monkey".`},
+  {sp:"Ross",txt:"Well, the doctor says he's gonna be fine. He's just sleeping now."},
+  {sp:"Chandler",txt:"So, you feel like a dad yet?"},
+  {sp:"Ross",txt:"No, why?"},
+  {sp:"Chandler",txt:`<span class="hl">Hey, come on,<span class="hltip">💡 EXPRESSION — Stop doubting yourself / give yourself credit. Chandler pushes Ross to recognize he acted like a father tonight.</span></span> you <span class="hl">came through,<span class="hltip">🔗 PHRASAL — Succeeded when it mattered. Ross panicked, ran to the hospital, and got Marcel help. That is very dad.</span></span> you did what you had to do. That is very dad.`},
+];
+
+const QD=[
+  {t:"mc",q:"What does 'might as well' mean?",ex:`"Might as well just go home."`,opts:["We definitely should","There's no better option, so let's do this","We probably shouldn't","We have to"],ans:1,exp:"'Might as well' = since there's no better alternative, let's do it. Rachel uses it sarcastically — she knows Monica will give in."},
+  {t:"mc",q:"What is 'insurance fraud'?",ex:`"That's insurance fraud."`,opts:["Losing your insurance card","Making false claims to an insurance company","Paying too much for insurance","Forgetting to insure something"],ans:1,exp:"Insurance fraud = illegally using someone else's insurance or making false claims. Monica recognizes it immediately when Rachel suggests using her insurance."},
+  {t:"mc",q:"What does 'blow off the dates' mean?",ex:`"I say we blow off the dates."`,opts:["Cancel plans casually","Get angry during the dates","Make the dates shorter","Call the doctors and yell at them"],ans:0,exp:"'Blow off' = cancel or skip something without a strong reason. Monica wants to avoid the situation with the doctors entirely."},
+  {t:"mc",q:"What does 'scared the crap out of me' mean?",ex:`"You scared the crap outta me."`,opts:["Made me slightly nervous","Frightened me very intensely","Made me laugh","Surprised me pleasantly"],ans:1,exp:"'Scared the crap out of someone' = frightened them extremely. Ross says this when the gang accidentally yells Surprise! at him instead of Phoebe."},
+  {t:"mc",q:"What does 'freak out' mean?",ex:`"Before I was born, did you freak out at all?"`,opts:["Go out dancing","Feel or act with extreme anxiety or panic","Fall asleep suddenly","Act very silly"],ans:1,exp:"'Freak out' = react with extreme anxiety or panic. Ross asks his father if he panicked about becoming a dad."},
+  {t:"mc",q:"What does 'stood me up' mean?",ex:`"Your sister stood me up the other night."`,opts:["Gave me a standing ovation","Failed to show up for a planned date, leaving me waiting","Lifted me off the ground","Made me wait in line"],ans:1,exp:"'Stand someone up' = fail to appear for a planned meeting, leaving the other person waiting alone. Joey is hurt and confused by Ursula's absence."},
+  {t:"mc",q:"What does 'blowing me off' mean?",ex:`"I can't believe she's blowin' me off."`,opts:["Sending too many messages","Ignoring me after showing interest","Arguing constantly","Breaking up officially"],ans:1,exp:"'Blow someone off' = ignore or dismiss them after showing interest. Joey is hurt Ursula has completely stopped responding."},
+  {t:"mc",q:"What does 'nutsy about someone' mean?",ex:`"He's really nutsy about you."`,opts:["Angry at someone","Deeply infatuated or crazy about someone","Scared of someone","Bored by someone"],ans:1,exp:"'Nutsy about someone' = deeply infatuated or crazy about them. Phoebe tells Ursula that Joey has very strong feelings for her."},
+  {t:"mc",q:"What does 'drunk on you' mean?",ex:`"I was drunk on you."`,opts:["I drank because of you","I was literally drunk","I was overwhelmed by my feelings for you","I was confused by you"],ans:2,exp:"'Drunk on someone' = overwhelmed by feelings for them — not literal alcohol. Used right after Joey points out Ursula doesn't drink."},
+  {t:"mc",q:"What does 'get over someone' mean?",ex:`"You're gonna be really, really hard to get over."`,opts:["Get past someone physically","Recover emotionally from a relationship ending","Forget someone's name","Move to a new city"],ans:1,exp:"'Get over someone' = recover emotionally from a lost love or breakup. Phoebe says it as Ursula — but feels it herself."},
+  {t:"mc",q:"What does 'have a heart' mean?",ex:`"Please, please, have a heart!"`,opts:["Check your heartbeat","Show compassion or mercy","Love someone deeply","Donate to charity"],ans:1,exp:"'Have a heart' = be compassionate; don't be heartless. Ross begs the nurse to help Marcel despite hospital rules."},
+  {t:"mc",q:"What does 'left the guy at the altar' mean?",ex:`"I left the guy at the altar."`,opts:["Left the church before the ceremony","Cancelled the wedding at the very last moment after the partner arrived","Divorced someone right after the wedding","Changed the wedding venue"],ans:1,exp:"'Leave someone at the altar' = cancel at the last possible moment, after the partner has arrived. Monica blurts this out while pretending to be Rachel."},
+  {t:"mc",q:"What does 'boss people around' mean?",ex:`"I get to boss people around, which I just love to do."`,opts:["Hire and fire people","Tell people what to do in a controlling way","Be the boss's assistant","Organize people into teams"],ans:1,exp:"'Boss people around' = tell others what to do in an authoritative or controlling way. Rachel accidentally describes Monica's real personality perfectly."},
+  {t:"mc",q:"What does 'wuss' mean?",ex:`"Would you stop being such a wuss?"`,opts:["A very bold person","A weak, timid, or overly cautious person","A very clever person","A noisy person"],ans:1,exp:"'Wuss' = someone weak, timid, or overly cautious. Rachel calls Monica this for being too afraid to confess about the insurance mix-up."},
+  {t:"mc",q:"What does 'come on in' mean?",ex:`"Hi, come on in."`,opts:["Leave immediately","Sit down","A warm informal invitation to enter","Start eating"],ans:2,exp:"'Come on in' = please enter and make yourself welcome. Monica uses it warmly when the doctors arrive at the apartment."},
+  {t:"mc",q:"What does 'STAT' mean?",ex:`"We'll get you some glasses... STAT."`,opts:["Slowly and carefully","After a short wait","Immediately / right now","With a doctor's prescription"],ans:2,exp:"STAT = immediately, from Latin 'statim.' Used in medical settings. Rachel uses it humorously to sound like a doctor while pretending to be Monica."},
+  {t:"mc",q:"What is a 'sprain'?",ex:`"He said it was just a sprain."`,opts:["A broken bone","A joint injury where ligaments are stretched but no bone is broken","A bruise on the skin","An infection in the joint"],ans:1,exp:"A sprain = ligaments stretched or torn from twisting, without fracture. Good news for Rachel — no surgery needed."},
+  {t:"mc",q:"What does 'look around' mean in Dr. Mitchell's context?",ex:`"Look around. No pagan altars, no piles of bones — they're fine."`,opts:["Search for clues","Examine your surroundings to assess the situation","Turn around and look at someone","Search for something specific"],ans:1,exp:"'Look around' = check your environment and assess it calmly. Mitchell uses it to reassure Rosin that Monica and Rachel are perfectly normal."},
+  {t:"mc",q:"What does 'come through' mean?",ex:`"You came through, you did what you had to do."`,opts:["Arrive at the hospital","Pass through a door","Succeed in a difficult situation when it mattered","Call someone on the phone"],ans:2,exp:"'Come through' = deliver when it really matters. Chandler tells Ross he proved himself as a father figure by helping Marcel."},
+  {t:"fill",q:"Complete the phrasal verb: 'She completely _____ _____ when she heard the news.'",ex:`"Before I was born, did you freak out at all?"`,ans:"freaked out",exp:"'Freak out' = react with extreme anxiety or panic. Ross asks if his father panicked about becoming a father before Ross was born."},
+  {t:"mc",q:"What does 'take your time' mean sarcastically?",ex:`"You take your time."`,opts:["Please hurry up","Go slowly and carefully","I'm sarcastically telling you to state the obvious faster","Wait until you're ready"],ans:2,exp:"Sarcastically, 'take your time' = I can't believe how slowly you're understanding this. Ross uses it as Joey slowly realizes he double-booked Phoebe's birthday."},
+  {t:"mc",q:"What does 'make up for' mean?",ex:`"'Cause there's time to make up for that."`,opts:["Invent something new","Compensate for something missed or done wrong","Agree on a plan","Apply makeup"],ans:1,exp:"'Make up for something' = compensate for a past mistake or missed opportunity. Mr. Geller offers to reconnect with Ross for time he wasn't around."},
+  {t:"fill",q:"Fill in: 'I don't want to do anything to _____ it _____.'",ex:`"I don't want to do anything to screw it up with Ursula."`,ans:"screw / up",exp:"'Screw up' = ruin or make a serious mistake. Joey is worried about damaging his chances with Ursula by being distracted by Phoebe's birthday."},
+  {t:"mc",q:"What does 'returning to the scene of the crime' mean?",ex:`"It's like returning to the scene of the crime."`,opts:["Going back to commit another crime","Revisiting the place where you did something wrong or embarrassing","Visiting a crime museum","Reporting a crime to police"],ans:1,exp:"'Returning to the scene of the crime' = going back to a place associated with something embarrassing or wrong. Monica means: dating the doctors who know about their fraud."},
+  {t:"mc",q:"What does 'no food with a face' mean?",ex:`"No. No food with a face."`,opts:["Don't make funny faces while eating","Don't eat any animal that was once alive","Don't eat food shaped like a face","Only eat food you can see clearly"],ans:1,exp:"Phoebe's vegetarian principle: she won't eat any animal with a face. A classic Phoebe-ism — consistent, compassionate, and slightly absurd."},
+  {t:"mc",q:"What is a 'hissy fit'?",ex:`"You'd be starin' at the business end of a hissy fit."`,opts:["A competitive match","An angry, dramatic, childish outburst","A whispered argument","A very loud sneeze"],ans:1,exp:"A hissy fit = an angry, dramatic tantrum. Chandler threatens one if Joey ever stood him up on his birthday."},
+  {t:"fill",q:"Fill in: 'I can't believe she's _____ me _____.'",ex:`"I can't believe she's blowin' me off."`,ans:"blowing / off",exp:"'Blow someone off' = ignore or dismiss them after showing interest. Joey is hurt Ursula stopped responding to all his calls."},
+  {t:"mc",q:"What does 'in case of emergency' mean on a hospital form?",ex:`"In case of emergency call?"`,opts:["If something is urgent at work","The person to contact if you are medically incapacitated","Your doctor's phone number","Your nearest hospital"],ans:1,exp:"'In case of emergency' = the person to call if you can't speak for yourself medically. Rachel names Monica — which sets the entire fraud plot in motion."},
+  {t:"mc",q:"What does 'you have not changed' mean?",ex:`"You have not changed."`,opts:["You look the same physically","You are exactly the same person as you always were","You haven't updated your phone","You haven't grown"],ans:1,exp:"'You haven't changed' = you are still exactly the same — same habits, same quirks. Ursula says it to Phoebe after the 'no food with a face' comment."},
+  {t:"mc",q:"What does 'every day you are becoming more and more like your mother' mean?",ex:`"Every day, you are becoming more and more like your mother."`,opts:["A sincere compliment about growing up","One of the most cutting insults between close friends — implying someone is turning into who they fear most","A neutral observation","A warning about genetics"],ans:1,exp:"This is one of the most effective insults between close friends — implying the person is slowly turning into someone they either fear or dislike. Rachel deploys it perfectly against Monica."},
+];
+
+const CD=[
+  {e:"🏥",t:"American Healthcare — The Insurance Reality",p:"This episode captures a real and serious aspect of American life: the cost of healthcare without insurance. Rachel's casual 'Oh yeah, check it' — revealing she has no insurance — quickly becomes a crisis. Monica's warning that 'x-rays alone could be a couple hundred dollars' is accurate: in the American system, uninsured patients pay full price for every service. The insurance fraud plot that follows is comedic, but rooted in genuine anxiety millions of Americans share."},
+  {e:"💒",t:"'Left at the Altar' — A Cultural Phrase",p:"'Leaving someone at the altar' is one of the most dramatic things in American wedding culture — cancelling at the very last moment, after guests have assembled and the partner is waiting. It signals not just a broken engagement but a public humiliation. Monica blurting this while pretending to be Rachel — and the chaos when Rachel's actual father calls — is a masterclass in comic escalation. Each revelation raises the stakes higher."},
+  {e:"🐒",t:"Marcel — Ross's Emotional Proxy",p:"Marcel the monkey serves as a recurring symbol of Ross's anxiety about fatherhood throughout the early seasons. In this episode, Ross's football dream, his dinner with his father, and his panic when Marcel swallows the Scrabble tile all connect: each situation tests whether Ross can 'come through.' Chandler's final line — 'that is very dad' — quietly resolves the episode's emotional arc. Ross came through for Marcel. He'll come through for his baby too."},
+  {e:"👯",t:"Phoebe and Ursula — The Twin Dynamic",p:"The relationship between Phoebe and Ursula is one of the show's most interesting dynamics. Ursula is everything Phoebe is not: self-absorbed, vague, and disconnected. Her dismissal of Joey — 'Oh, he'll figure it out' — is both funny and heartbreaking. Phoebe's decision to break up with Joey on Ursula's behalf, and the accidental kiss that follows, is one of the series' most genuinely touching moments. Joey's compliment reaches the right person — accidentally honest."},
+  {e:"🎂",t:"The Surprise Party — Comedy of Chaos",p:"The surprise party scene works on multiple layers: Ross gets scared instead of Phoebe, the cake says 'Peehee' instead of 'Phoebe,' and Chandler's deadpan 'Did you see Betty?' becomes a running deflection. The comedy works because everyone is trying to do something nice but nothing goes right — a classic Friends ensemble scene where good intentions produce perfect chaos."},
+  {e:"🍷",t:"The Name Swap — Escalating Comedy",p:"The swapped identity plot at Monica and Rachel's apartment is a textbook example of comic escalation. Each revelation raises the stakes: Monica confesses Rachel left a man at the altar, Rachel claims to be a chef who loves bossing people around, then Rachel's father calls and both confess secrets to the wrong parent. The audience knows the truth the whole time — watching the characters dig themselves deeper is the pleasure. The hummus compliment lands in the middle of the chaos perfectly."},
+  {e:"🏈",t:"American Football in Ross's Dream",p:"The opening dream sequence uses American football as a direct metaphor for fatherhood anxiety. Key terms: 'hike' (snap the ball to start), 'take the sack' (be tackled rather than throw), 'blocking' (protecting the ball carrier). Joey's suggestion that Ross and the baby just need better 'blocking' is both a football note and a reminder of how differently Joey sees the world — practically, physically, without irony."},
+  {e:"👨‍👦",t:"Mr. Geller's Story — The Most Moving Moment",p:"Mr. Geller's description of holding baby Ross is the emotional heart of the episode. His honesty ('you were this ugly little red thing') makes the tenderness that follows more powerful, not less. The baby grabbing a parent's finger is one of the most universally recognized moments of new parenthood. The scene resolves Ross's anxiety not with advice but with a memory — which is exactly the right answer."},
+];
+
+// ── RENDER VOCAB ──
+const TL={slang:'🔥 Slang',phrase:'💬 Phrase',vocab:'📚 Vocab',idiom:'🎭 Idiom',humor:'😂 Comedy',phrasal:'🔗 Phrasal Verb',expression:'💡 Expression',romantic:'❤️ Romantic',business:'💼 Business'};
+function renderVocab(){
+  document.getElementById('vocabGrid').innerHTML=VD.map((v,i)=>`
+    <div class="vcard" data-tag="${v.tag}" data-idx="${i}" onclick="this.classList.toggle('open')">
+      <button class="save-btn${savedWords.has(i)?' saved':''}" data-idx="${i}" onclick="toggleSave(${i},this,event)" title="${savedWords.has(i)?'Remove from review':'Save for review'}">${savedWords.has(i)?'★':'☆'}</button>
+      <div class="vtag">${TL[v.tag]||v.tag}</div>
+      <div class="vword">${v.word}</div>
+      ${v.ph?`<div class="vphon">${v.ph}</div>`:''}
+      <div class="vctx">"${v.ctx}"</div>
+      <div class="vhint">Tap to reveal ↓</div>
+      <div class="vmean">${v.mean}<div class="ex">💡 ${v.ex}</div></div>
+    </div>`).join('');
+}
+
+// ── FILTER + SEARCH ──
+function filterV(tag,el){
+  document.querySelectorAll('#chips .chip').forEach(c=>c.classList.remove('active'));
+  el.classList.add('active');
+  applyF(tag, document.getElementById('searchInput').value.trim().toLowerCase());
+}
+function doSearch(val){
+  const q=val.trim().toLowerCase();
+  document.getElementById('searchX').classList.toggle('on',q.length>0);
+  const tag=document.querySelector('#chips .chip.active')?.dataset?.tag||'all';
+  applyF(tag,q);
+}
+function applyF(tag,q){
+  let vis=0;
+  document.querySelectorAll('.vcard').forEach(c=>{
+    const mt=tag==='all'||c.dataset.tag===tag;
+    let ms=true;
+    if(q){
+      const txt=(c.querySelector('.vword')?.textContent||'')+(c.querySelector('.vctx')?.textContent||'')+(c.querySelector('.vmean')?.textContent||'');
+      ms=txt.toLowerCase().includes(q);
+      const we=c.querySelector('.vword');
+      if(we){
+        const orig=we.dataset.orig||we.textContent;
+        we.dataset.orig=orig;
+        if(ms){const re=new RegExp(`(${q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')})`,'gi');we.innerHTML=orig.replace(re,'<mark class="search-hl">$1</mark>');}
+        else{we.textContent=orig;}
+      }
+    } else {
+      const we=c.querySelector('.vword');
+      if(we?.dataset.orig)we.textContent=we.dataset.orig;
+    }
+    const show=mt&&ms;
+    c.classList.toggle('hidden',!show);
+    if(show)vis++;
+  });
+  const sc=document.getElementById('searchCount');
+  sc.innerHTML=q?`<b>${vis}</b> result${vis!==1?'s':''} for "<b>${q}</b>"`:'';
+  const nr=document.getElementById('noRes');
+  nr.classList.toggle('on',vis===0);
+  if(vis===0)document.getElementById('noResQ').textContent=`"${q}"`;
+}
+function clearSearch(){
+  const i=document.getElementById('searchInput');
+  i.value='';
+  document.getElementById('searchX').classList.remove('on');
+  document.getElementById('searchCount').innerHTML='';
+  document.getElementById('noRes').classList.remove('on');
+  const tag=document.querySelector('#chips .chip.active')?.dataset?.tag||'all';
+  applyF(tag,'');
+  i.focus();
+}
+
+// ── RENDER DIALOGUE ──
+function renderD(){
+  document.getElementById('dlines').innerHTML=DD.map(l=>`
+    <div class="drow">
+      <div><span class="spill s-${l.sp}">${l.sp}</span></div>
+      <div class="dbubble">${l.txt}</div>
+    </div>`).join('');
+}
+
+// ── RENDER CULTURE ──
+function renderC(){
+  document.getElementById('cNotes').innerHTML=CD.map(c=>`
+    <div class="citem">
+      <div class="cicon">${c.e}</div>
+      <div><h3>${c.t}</h3><p>${c.p}</p></div>
+    </div>`).join('');
+}
+
+// ── QUIZ ──
+let QS={cur:0,score:0,ans:false,qs:[]};
+const shuffle=a=>[...a].sort(()=>Math.random()-.5);
+function startQ(){QS={cur:0,score:0,ans:false,qs:shuffle(QD)};renderQ();}
+function renderQ(){
+  const{qs,cur,score}=QS;
+  if(cur>=qs.length){renderScore();return;}
+  const q=qs[cur],pct=(cur/qs.length)*100;
+  const qHTML=q.t==='mc'
+    ?`<div class="qopts">${q.opts.map((o,i)=>`<button class="qopt" onclick="chkMC(${i})">${o}</button>`).join('')}</div>`
+    :`<input class="tinput" id="fi" type="text" placeholder="Type your answer…" onkeydown="if(event.key==='Enter')chkFill()"><div class="brow"><button class="btn-f" onclick="chkFill()">Check Answer</button></div>`;
+  document.getElementById('quizContainer').innerHTML=`
+    <div class="qprog-lbl"><span>Question <b>${cur+1}</b> of ${qs.length}</span><span>Score: <b>${score}</b></span></div>
+    <div class="liner"><div class="liner-fill" style="width:${pct}%"></div></div>
+    <div class="qcard">
+      <div class="qbadge">${q.t==='fill'?'✏️ Fill in the blank':'🔘 Multiple choice'}</div>
+      <div class="qtext">${q.q}</div>
+      <div class="qexcerpt">${q.ex}</div>
+      ${qHTML}
+      <div class="qfb" id="qfb"></div>
+      <div id="nxt"></div>
+    </div>`;
+}
+function chkMC(sel){
+  if(QS.ans)return;QS.ans=true;
+  const q=QS.qs[QS.cur];
+  document.querySelectorAll('.qopt').forEach(b=>b.disabled=true);
+  document.querySelectorAll('.qopt')[q.ans].classList.add('correct');
+  if(sel===q.ans){QS.score++;document.querySelectorAll('.qopt')[sel].classList.add('correct');}
+  else{document.querySelectorAll('.qopt')[sel].classList.add('wrong');}
+  showFB(sel===q.ans,q.exp);
+}
+function chkFill(){
+  if(QS.ans)return;QS.ans=true;
+  const q=QS.qs[QS.cur],inp=document.getElementById('fi');
+  const ua=inp.value.trim().toLowerCase(),ca=q.ans.toLowerCase();
+  const ok=ua===ca||(ca.includes(ua)&&ua.length>4);
+  if(ok)QS.score++;
+  inp.className=`tinput ${ok?'correct':'wrong'}`;inp.disabled=true;
+  showFB(ok,ok?q.exp:`The answer is "${q.ans}". ${q.exp}`);
+}
+function showFB(ok,msg){
+  const fb=document.getElementById('qfb');
+  fb.className=`qfb on ${ok?'ok':'no'}`;
+  fb.textContent=(ok?'✅ Correct! ':'❌ Not quite. ')+msg;
+  const isLast=QS.cur>=QS.qs.length-1;
+  document.getElementById('nxt').innerHTML=`<div class="brow"><button class="btn-f" onclick="nextQ()">${isLast?'🏆 See Results':'Next →'}</button></div>`;
+}
+function nextQ(){QS.cur++;QS.ans=false;renderQ();}
+function renderScore(){
+  const{score:s,qs}=QS,total=qs.length,pct=Math.round(s/total*100);
+  const msgs=["Keep going! Every attempt builds your skills. 💪","Good start! Try reviewing the vocab cards.","Getting there! A few more reviews will help.","Nice work! Your English is improving.","Really solid! You're picking up the language fast.","Great job! The Friends method is working.","Impressive! You've mastered this episode.","Excellent work! Near-perfect.","Outstanding!","Almost perfect — just one slip!","PERFECT! 🎉 You know this episode inside out.","PERFECT! Phoebe would be proud.","FLAWLESS! Even the ANUS can't shake you!"];
+  document.getElementById('quizContainer').innerHTML=`
+    <div class="score-card">
+      <div class="score-ring">
+        <div class="score-big">${s}<span class="score-denom">/${total}</span></div>
+        <div class="score-pct">${pct}%</div>
+      </div>
+      <div class="score-msg">${msgs[Math.min(s,msgs.length-1)]}</div>
+      <div class="brow" style="justify-content:center">
+        <button class="btn-f" onclick="startQ()">Try Again</button>
+        <button class="btn-o" onclick="showSec('vocab')">Review Vocab</button>
+      </div>
+    </div>`;
+}
+
+// ── TABS ──
+function showSec(id){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.nav-btn[onclick]').forEach(b=>b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  const map={vocab:0,dialogue:1,quiz:2,culture:3,review:4};
+  const btns=document.querySelectorAll('.nav-btn[onclick]');
+  if(map[id]!==undefined&&btns[map[id]])btns[map[id]].classList.add('active');
+  if(id==='quiz'&&QS.cur===0&&QS.score===0)startQ();
+  if(id==='review')renderReview();
+}
+
+// ── INIT ──
+renderVocab();renderD();renderC();
+</script>
+</body>
+</html>

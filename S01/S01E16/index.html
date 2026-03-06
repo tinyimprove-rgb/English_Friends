@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>English with Friends — S01E16</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Google+Sans+Display:wght@400;500;700&family=Roboto+Mono:wght@400;500&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --md-primary: #1A73E8;
+  --md-primary-container: #D3E4FD;
+  --md-on-primary: #FFFFFF;
+  --md-on-primary-container: #041E49;
+  --md-secondary: #EA4335;
+  --md-tertiary: #34A853;
+  --md-quaternary: #FBBC04;
+  --md-surface: #FFFFFF;
+  --md-surface-variant: #F1F3F4;
+  --md-surface-container: #F8F9FA;
+  --md-surface-high: #E8EAED;
+  --md-outline: #DADCE0;
+  --md-on-surface: #202124;
+  --md-on-surface-variant: #5F6368;
+  --md-bg: #F8F9FA;
+  --el1: 0 1px 2px rgba(60,64,67,.3), 0 1px 3px 1px rgba(60,64,67,.15);
+  --el2: 0 1px 2px rgba(60,64,67,.3), 0 2px 6px 2px rgba(60,64,67,.15);
+  --el3: 0 1px 3px rgba(60,64,67,.3), 0 4px 8px 3px rgba(60,64,67,.15);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Roboto',sans-serif;background:var(--md-bg);color:var(--md-on-surface);min-height:100vh;-webkit-font-smoothing:antialiased}
+.top-bar{background:var(--md-surface);border-bottom:1px solid var(--md-outline);position:sticky;top:0;z-index:200;box-shadow:var(--el1)}
+.top-bar-inner{max-width:1040px;margin:0 auto;padding:0 16px;display:flex;flex-direction:column;align-items:center}
+.top-bar-title-row{width:100%;display:flex;align-items:center;justify-content:center;padding:10px 0 6px;position:relative}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0}
+.logo-icon{font-size:1.35rem;line-height:1}
+.logo-text{font-family:'Google Sans Display',sans-serif;font-size:1.1rem;font-weight:500;letter-spacing:-.2px}
+.logo-text .b{color:#4285F4}.logo-text .r{color:#EA4335}.logo-text .y{color:#FBBC04}.logo-text .g{color:#34A853}.logo-text .k{color:var(--md-on-surface)}
+.bar-divider{width:1px;height:16px;background:var(--md-outline);margin:0 8px;flex-shrink:0}
+.bar-subtitle{font-family:'Google Sans',sans-serif;font-size:0.8rem;color:var(--md-on-surface-variant);white-space:nowrap}
+.top-nav{display:flex;gap:0;overflow-x:auto;scrollbar-width:none;border-top:1px solid var(--md-outline);width:100%}
+.top-nav::-webkit-scrollbar{display:none}
+.nav-btn{display:inline-flex;align-items:center;gap:6px;padding:0 14px;height:44px;border:none;background:none;cursor:pointer;font-family:'Google Sans',sans-serif;font-size:.8125rem;font-weight:500;color:var(--md-on-surface-variant);white-space:nowrap;text-decoration:none;border-bottom:3px solid transparent;margin-bottom:-1px;transition:color .15s;position:relative;flex:1;justify-content:center}
+.nav-btn::before{content:'';position:absolute;inset:4px 4px;border-radius:50px;background:transparent;transition:background .15s}
+.nav-btn:hover::before{background:rgba(26,115,232,.08)}
+.nav-btn:hover{color:var(--md-primary)}
+.nav-btn.active{color:var(--md-primary);border-bottom-color:var(--md-primary)}
+.rev-badge{display:inline-flex;align-items:center;justify-content:center;background:var(--md-secondary);color:#fff;border-radius:50px;font-size:.65rem;font-weight:700;min-width:18px;height:18px;padding:0 5px;font-family:'Google Sans',sans-serif;transition:transform .2s;display:none}
+.rev-badge.show{display:inline-flex}
+.rev-badge.pop{animation:badgePop .3s cubic-bezier(.36,.07,.19,.97)}
+@keyframes badgePop{0%{transform:scale(1)}40%{transform:scale(1.4)}70%{transform:scale(.9)}100%{transform:scale(1)}}
+.main{max-width:960px;margin:0 auto;padding:28px 16px 56px}
+.section{display:none;animation:fadeIn .2s ease}
+.section.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.page-hd{margin-bottom:24px}
+.page-title{font-family:'Google Sans Display',sans-serif;font-size:1.75rem;font-weight:400;color:var(--md-on-surface);margin-bottom:4px;letter-spacing:-.3px}
+.page-sub{font-size:.875rem;color:var(--md-on-surface-variant);line-height:1.6}
+.chip-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.chip{display:inline-flex;align-items:center;gap:4px;padding:6px 16px;border-radius:50px;border:1px solid var(--md-outline);background:var(--md-surface);font-family:'Google Sans',sans-serif;font-size:.8125rem;font-weight:500;color:var(--md-on-surface-variant);cursor:pointer;transition:all .15s;user-select:none}
+.chip:hover{background:var(--md-surface-variant);border-color:var(--md-on-surface-variant)}
+.chip.active{background:var(--md-primary-container);border-color:var(--md-primary);color:var(--md-on-primary-container)}
+.search-wrap{margin-bottom:16px}
+.search-bar{display:flex;align-items:center;background:var(--md-surface);border-radius:50px;box-shadow:var(--el1);padding:0 20px;gap:12px;height:48px;transition:box-shadow .2s}
+.search-bar:focus-within{box-shadow:var(--el2);outline:2px solid var(--md-primary);outline-offset:1px}
+.search-icon{color:var(--md-on-surface-variant);font-size:1.1rem;flex-shrink:0}
+.search-bar input{flex:1;border:none;outline:none;background:transparent;font-family:'Roboto',sans-serif;font-size:.9375rem;color:var(--md-on-surface)}
+.search-bar input::placeholder{color:var(--md-on-surface-variant)}
+.search-x{background:none;border:none;cursor:pointer;color:var(--md-on-surface-variant);font-size:.9rem;display:none;padding:4px;border-radius:50%;line-height:1;transition:background .15s}
+.search-x:hover{background:var(--md-surface-variant)}
+.search-x.on{display:flex;align-items:center}
+.search-count{font-size:.8125rem;color:var(--md-on-surface-variant);margin-bottom:16px;min-height:20px;padding-left:4px}
+.search-count b{color:var(--md-primary);font-weight:500}
+.search-hl{background:rgba(251,188,4,.35);border-radius:2px;padding:0 1px}
+.no-results{display:none;text-align:center;padding:56px 20px;color:var(--md-on-surface-variant)}
+.no-results.on{display:block}
+.no-results-icon{font-size:3rem;margin-bottom:12px}
+.no-results p{font-size:.9375rem;line-height:1.6}
+.vocab-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}
+.vcard{background:var(--md-surface);border-radius:16px;border:1px solid var(--md-outline);padding:16px;cursor:pointer;transition:box-shadow .2s,border-color .2s;position:relative;overflow:hidden}
+.vcard::after{content:'';position:absolute;inset:0;background:var(--md-primary);opacity:0;transition:opacity .15s;pointer-events:none}
+.vcard:hover{box-shadow:var(--el2);border-color:var(--md-primary)}
+.vcard:hover::after{opacity:.04}
+.vcard.open{border-color:var(--md-primary);border-width:2px}
+.vtag{display:inline-flex;align-items:center;gap:3px;background:var(--md-surface-variant);color:var(--md-on-surface-variant);border-radius:50px;padding:2px 10px;font-size:.72rem;font-family:'Google Sans',sans-serif;font-weight:500;margin-bottom:10px;transition:background .2s,color .2s}
+.vcard.open .vtag{background:var(--md-primary-container);color:var(--md-on-primary-container)}
+.vword{font-family:'Google Sans Display',sans-serif;font-size:1.15rem;font-weight:500;color:var(--md-on-surface);margin-bottom:2px;line-height:1.3}
+.vphon{font-family:'Roboto Mono',monospace;font-size:.7rem;color:var(--md-on-surface-variant);margin-bottom:10px}
+.vctx{font-size:.8125rem;color:var(--md-on-surface-variant);font-style:italic;padding:8px 12px;background:var(--md-surface-container);border-radius:8px;border-left:3px solid var(--md-primary);line-height:1.5;margin-bottom:8px}
+.vhint{font-size:.75rem;color:var(--md-primary);font-family:'Google Sans',sans-serif;font-weight:500;opacity:.7}
+.vcard.open .vhint{display:none}
+.vmean{display:none;font-size:.875rem;color:var(--md-on-surface);line-height:1.65;margin-top:10px;background:var(--md-surface-container);padding:12px;border-radius:8px}
+.vmean .ex{font-size:.8rem;color:var(--md-tertiary);font-style:italic;margin-top:8px;padding-top:8px;border-top:1px solid var(--md-outline)}
+.vcard.open .vmean{display:block}
+.save-btn{position:absolute;top:10px;right:10px;width:30px;height:30px;border-radius:50%;border:none;background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.25rem;line-height:1;z-index:10;transition:background .15s,transform .2s,color .2s;color:#DADCE0;font-family:sans-serif}
+.save-btn:hover{background:rgba(251,188,4,.12);transform:scale(1.15);color:#FBBC04}
+.save-btn.saved{color:#FBBC04;animation:starPop .3s cubic-bezier(.36,.07,.19,.97)}
+@keyframes starPop{0%{transform:scale(1)}40%{transform:scale(1.45)}70%{transform:scale(.88)}100%{transform:scale(1)}}
+.review-empty{text-align:center;padding:64px 20px;color:var(--md-on-surface-variant)}
+.review-empty-icon{font-size:3.5rem;margin-bottom:16px;color:#FBBC04;line-height:1}
+.review-empty h2{font-family:'Google Sans Display',sans-serif;font-size:1.3rem;font-weight:400;margin-bottom:8px;color:var(--md-on-surface)}
+.review-empty p{font-size:.9rem;line-height:1.7;max-width:380px;margin:0 auto}
+.review-empty p b{color:var(--md-primary)}
+.review-topbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;gap:10px}
+.review-count-pill{background:var(--md-primary-container);color:var(--md-on-primary-container);border-radius:50px;padding:4px 14px;font-size:.8rem;font-family:'Google Sans',sans-serif;font-weight:500}
+.clear-all-btn{display:inline-flex;align-items:center;gap:5px;padding:7px 16px;border-radius:50px;border:1px solid var(--md-outline);background:transparent;color:var(--md-on-surface-variant);font-family:'Google Sans',sans-serif;font-size:.8125rem;font-weight:500;cursor:pointer;transition:all .15s}
+.clear-all-btn:hover{border-color:#EA4335;color:#EA4335;background:#FCE8E6}
+.rcard{background:var(--md-surface);border-radius:16px;border:1px solid var(--md-outline);padding:16px;position:relative;overflow:hidden;transition:box-shadow .2s,border-color .2s,opacity .3s,transform .3s}
+.rcard:hover{box-shadow:var(--el1)}
+.rcard.removing{opacity:0;transform:scale(.93)}
+.remove-btn{position:absolute;top:10px;right:10px;width:28px;height:28px;border-radius:50%;border:none;background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.85rem;color:var(--md-on-surface-variant);transition:background .15s,color .15s}
+.remove-btn:hover{background:#FCE8E6;color:#EA4335}
+.toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(80px);background:#202124;color:#fff;border-radius:12px;padding:10px 20px;font-family:'Google Sans',sans-serif;font-size:.875rem;box-shadow:var(--el3);z-index:9999;transition:transform .3s cubic-bezier(.4,0,.2,1),opacity .3s;opacity:0;pointer-events:none;white-space:nowrap}
+.toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+.dlist{display:flex;flex-direction:column;gap:12px}
+.drow{display:grid;grid-template-columns:76px 1fr;gap:12px;align-items:start}
+.spill{display:inline-block;padding:5px 8px;border-radius:50px;font-size:.65rem;font-family:'Google Sans',sans-serif;font-weight:700;letter-spacing:.3px;text-align:center;color:#fff;margin-top:3px;text-transform:uppercase}
+.s-Monica{background:#1A73E8}.s-Chandler{background:#202124}.s-Rachel{background:#E37400}
+.s-Joey{background:#137333}.s-Ross{background:#7B1FA2}.s-Phoebe{background:#C2185B}
+.s-Ursula{background:#AD1457}.s-Teacher{background:#455A64}.s-Carol{background:#00838F}
+.s-Susan{background:#558B2F}.s-Nina{background:#6D4C41}.s-Mr{background:#37474F}
+.dbubble{background:var(--md-surface);border:1px solid var(--md-outline);border-radius:0 16px 16px 16px;padding:12px 16px;font-size:.9rem;line-height:1.75;box-shadow:var(--el1)}
+.hl{background:#FEF3C7;border-bottom:2px solid #FBBC04;cursor:pointer;padding:0 2px;border-radius:2px;position:relative}
+.hl:hover{background:#FDE68A}
+.hltip{display:none;position:absolute;bottom:calc(100% + 10px);left:50%;transform:translateX(-50%);background:#202124;color:#fff;padding:10px 14px;border-radius:12px;font-size:.77rem;width:220px;line-height:1.55;z-index:300;pointer-events:none;box-shadow:var(--el3)}
+.hltip::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:6px solid transparent;border-top-color:#202124}
+.hl:hover .hltip{display:block}
+.qwrap{max-width:600px}
+.qprog-lbl{display:flex;justify-content:space-between;font-size:.8125rem;color:var(--md-on-surface-variant);margin-bottom:6px;font-family:'Google Sans',sans-serif}
+.qprog-lbl b{color:var(--md-primary);font-weight:500}
+.liner{height:4px;background:var(--md-surface-high);border-radius:2px;margin-bottom:20px;overflow:hidden}
+.liner-fill{height:100%;background:var(--md-primary);border-radius:2px;transition:width .4s cubic-bezier(.4,0,.2,1)}
+.qcard{background:var(--md-surface);border-radius:24px;box-shadow:var(--el1);padding:24px}
+.qbadge{display:inline-flex;align-items:center;gap:5px;font-size:.75rem;font-family:'Google Sans',sans-serif;font-weight:500;color:var(--md-on-surface-variant);margin-bottom:14px;background:var(--md-surface-variant);padding:4px 12px;border-radius:50px}
+.qtext{font-family:'Google Sans Display',sans-serif;font-size:1.15rem;font-weight:500;line-height:1.5;color:var(--md-on-surface);margin-bottom:10px}
+.qexcerpt{font-style:italic;font-size:.85rem;color:var(--md-on-surface-variant);padding:10px 14px;background:var(--md-surface-container);border-radius:8px;border-left:3px solid var(--md-primary);margin-bottom:20px;line-height:1.6}
+.qopts{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px}
+.qopt{padding:12px 16px;border:1px solid var(--md-outline);border-radius:12px;background:var(--md-surface);cursor:pointer;font-size:.875rem;color:var(--md-on-surface);text-align:left;font-family:'Roboto',sans-serif;line-height:1.4;transition:all .15s;position:relative;overflow:hidden}
+.qopt::before{content:'';position:absolute;inset:0;background:var(--md-primary);opacity:0;transition:opacity .15s}
+.qopt:hover:not(:disabled)::before{opacity:.06}
+.qopt:hover:not(:disabled){border-color:var(--md-primary)}
+.qopt.correct{border-color:#137333;background:#E6F4EA;color:#137333;font-weight:500}
+.qopt.wrong{border-color:#C5221F;background:#FCE8E6;color:#C5221F}
+.qopt:disabled{cursor:default}
+.tinput{width:100%;padding:12px 16px;border:1px solid var(--md-outline);border-radius:12px;font-family:'Roboto',sans-serif;font-size:.9375rem;color:var(--md-on-surface);background:var(--md-surface);outline:none;margin-bottom:12px;transition:border .15s}
+.tinput:focus{border-color:var(--md-primary);border-width:2px}
+.tinput.correct{border-color:#137333;border-width:2px;background:#E6F4EA}
+.tinput.wrong{border-color:#C5221F;border-width:2px;background:#FCE8E6}
+.qfb{display:none;padding:12px 16px;border-radius:12px;font-size:.875rem;line-height:1.55;margin-bottom:14px}
+.qfb.on{display:block}
+.qfb.ok{background:#E6F4EA;color:#137333;border:1px solid #CEEAD6}
+.qfb.no{background:#FCE8E6;color:#C5221F;border:1px solid #FAD2CF}
+.btn-f{display:inline-flex;align-items:center;gap:6px;padding:10px 24px;border-radius:50px;border:none;background:var(--md-primary);color:#fff;font-family:'Google Sans',sans-serif;font-size:.875rem;font-weight:500;cursor:pointer;transition:box-shadow .2s,background .15s;letter-spacing:.1px}
+.btn-f:hover{box-shadow:var(--el2);background:#1557B0}
+.btn-o{display:inline-flex;align-items:center;gap:6px;padding:10px 24px;border-radius:50px;border:1px solid var(--md-outline);background:transparent;color:var(--md-primary);font-family:'Google Sans',sans-serif;font-size:.875rem;font-weight:500;cursor:pointer;transition:background .15s}
+.btn-o:hover{background:var(--md-primary-container)}
+.brow{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+.score-card{background:var(--md-surface);border-radius:24px;box-shadow:var(--el1);padding:48px 32px;text-align:center}
+.score-ring{width:120px;height:120px;border-radius:50%;background:var(--md-primary-container);display:flex;flex-direction:column;align-items:center;justify-content:center;margin:0 auto 20px}
+.score-big{font-family:'Google Sans Display',sans-serif;font-size:2.8rem;font-weight:500;color:var(--md-primary);line-height:1}
+.score-denom{font-size:1.1rem;color:var(--md-on-surface-variant)}
+.score-pct{font-family:'Google Sans',sans-serif;font-size:.78rem;color:var(--md-on-primary-container);font-weight:500;margin-top:2px}
+.score-msg{font-family:'Google Sans Display',sans-serif;font-size:1.2rem;color:var(--md-on-surface);margin-bottom:24px;line-height:1.5}
+.clist{display:flex;flex-direction:column;gap:12px}
+.citem{background:var(--md-surface);border-radius:16px;border:1px solid var(--md-outline);padding:20px;display:grid;grid-template-columns:48px 1fr;gap:16px;align-items:start;transition:box-shadow .2s,border-color .2s}
+.citem:hover{box-shadow:var(--el1);border-color:var(--md-primary)}
+.cicon{width:48px;height:48px;background:var(--md-surface-container);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0}
+.citem h3{font-family:'Google Sans',sans-serif;font-size:.9375rem;font-weight:500;color:var(--md-on-surface);margin-bottom:6px}
+.citem p{font-size:.875rem;color:var(--md-on-surface-variant);line-height:1.7}
+@media(max-width:768px){
+  .bar-subtitle,.bar-divider{display:none}
+  .main{padding:16px 12px 40px}
+  .vocab-grid{grid-template-columns:1fr}
+  .qopts{grid-template-columns:1fr}
+  .drow{grid-template-columns:64px 1fr;gap:8px}
+  .hltip{width:180px;font-size:.74rem}
+}
+@media(max-width:480px){
+  .nav-btn{padding:0 10px;font-size:.8rem}
+  .nav-btn span.ni{display:none}
+  .drow{grid-template-columns:54px 1fr}
+  .spill{font-size:.6rem;padding:4px 5px}
+  .score-big{font-size:2.2rem}
+}
+.hidden{display:none!important}
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <div class="top-bar-inner">
+    <div class="top-bar-title-row">
+      <div class="logo">
+        <div class="logo-icon">📺</div>
+        <div class="logo-text"><span class="b">E</span><span class="r">n</span><span class="y">g</span><span class="g">l</span><span class="k">ish with Friends</span></div>
+      </div>
+      <div class="bar-divider"></div>
+      <div class="bar-subtitle">The One with Ursula · S01E16</div>
+    </div>
+    <nav class="top-nav">
+      <a class="nav-btn" href="https://tinyimprove-rgb.github.io/learnenglishwith-friends/"><span class="ni">🏠</span> Home</a>
+      <button class="nav-btn active" onclick="showSec('vocab')"><span class="ni">📖</span> Vocab</button>
+      <button class="nav-btn" onclick="showSec('dialogue')"><span class="ni">💬</span> Script</button>
+      <button class="nav-btn" onclick="showSec('quiz')"><span class="ni">🎯</span> Quiz</button>
+      <button class="nav-btn" onclick="showSec('culture')"><span class="ni">🌎</span> Culture</button>
+      <button class="nav-btn" id="reviewNavBtn" onclick="showSec('review')"><span class="ni">★</span> Review <span class="rev-badge" id="revBadge">0</span></button>
+    </nav>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<main class="main">
+
+  <!-- VOCAB -->
+  <div id="vocab" class="section active">
+    <div class="page-hd">
+      <h1 class="page-title">Vocabulary & Slang</h1>
+      <p class="page-sub">Every key word, phrase, and expression from this episode. Tap any card to reveal the meaning + an example sentence. Tap ★ to save words for later review.</p>
+    </div>
+    <div class="search-wrap">
+      <div class="search-bar">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="searchInput" placeholder="Search words, meanings, examples…" oninput="doSearch(this.value)">
+        <button class="search-x" id="searchX" onclick="clearSearch()">✕</button>
+      </div>
+    </div>
+    <div class="search-count" id="searchCount"></div>
+    <div class="chip-row" id="chips">
+      <div class="chip active" data-tag="all" onclick="filterV('all',this)">All</div>
+      <div class="chip" data-tag="slang" onclick="filterV('slang',this)">🔥 Slang</div>
+      <div class="chip" data-tag="idiom" onclick="filterV('idiom',this)">🎭 Idioms</div>
+      <div class="chip" data-tag="vocab" onclick="filterV('vocab',this)">📚 Vocabulary</div>
+      <div class="chip" data-tag="humor" onclick="filterV('humor',this)">😂 Comedy</div>
+      <div class="chip" data-tag="phrasal" onclick="filterV('phrasal',this)">🔗 Phrasal Verbs</div>
+      <div class="chip" data-tag="expression" onclick="filterV('expression',this)">💡 Expressions</div>
+      <div class="chip" data-tag="romantic" onclick="filterV('romantic',this)">❤️ Romantic</div>
+      <div class="chip" data-tag="business" onclick="filterV('business',this)">💼 Business</div>
+    </div>
+    <div class="vocab-grid" id="vocabGrid"></div>
+    <div class="no-results" id="noRes">
+      <div class="no-results-icon">🔎</div>
+      <p>No results for <b id="noResQ"></b>.<br>Try a different word or clear the search.</p>
+    </div>
+  </div>
+
+  <!-- DIALOGUE -->
+  <div id="dialogue" class="section">
+    <div class="page-hd">
+      <h1 class="page-title">Annotated Script</h1>
+      <p class="page-sub">Key lines with <span style="background:#FEF3C7;border-bottom:2px solid #FBBC04;padding:0 3px;border-radius:2px">highlighted words</span>. Hover or tap to see instant definitions.</p>
+    </div>
+    <div class="dlist" id="dlines"></div>
+  </div>
+
+  <!-- QUIZ -->
+  <div id="quiz" class="section">
+    <div class="page-hd">
+      <h1 class="page-title">Quiz Yourself</h1>
+      <p class="page-sub">Multiple choice and fill-in-the-blank. Questions shuffle on every attempt.</p>
+    </div>
+    <div class="qwrap" id="quizContainer"></div>
+  </div>
+
+  <!-- CULTURE -->
+  <div id="culture" class="section">
+    <div class="page-hd">
+      <h1 class="page-title">Culture Notes</h1>
+      <p class="page-sub">Understanding the American culture, comedy, and references inside this episode.</p>
+    </div>
+    <div class="clist" id="cNotes"></div>
+  </div>
+
+  <!-- REVIEW -->
+  <div id="review" class="section">
+    <div class="page-hd">
+      <h1 class="page-title">🔖 Review List</h1>
+      <p class="page-sub">Words you saved for review. Go back to Vocab and tap the ★ button on any card to add more.</p>
+    </div>
+    <div id="reviewContent"></div>
+  </div>
+
+</main>
+
+<script>
+// ── SAVED WORDS STATE ──
+let savedWords = new Set();
+
+function toggleSave(wordIndex, btn, event) {
+  event.stopPropagation();
+  if (savedWords.has(wordIndex)) {
+    savedWords.delete(wordIndex);
+    btn.textContent = '☆';
+    btn.classList.remove('saved');
+    btn.title = 'Save for review';
+    showToast('Removed from review list');
+  } else {
+    savedWords.add(wordIndex);
+    btn.textContent = '★';
+    btn.classList.add('saved');
+    btn.title = 'Remove from review';
+    showToast('Saved! Tap Review tab to study ✨');
+  }
+  updateBadge();
+  if (document.getElementById('review').classList.contains('active')) renderReview();
+}
+
+function updateBadge() {
+  const badge = document.getElementById('revBadge');
+  const count = savedWords.size;
+  badge.textContent = count;
+  if (count > 0) {
+    badge.classList.add('show');
+    badge.classList.remove('pop');
+    void badge.offsetWidth;
+    badge.classList.add('pop');
+  } else {
+    badge.classList.remove('show');
+  }
+}
+
+let toastTimer;
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 2200);
+}
+
+function renderReview() {
+  const el = document.getElementById('reviewContent');
+  if (savedWords.size === 0) {
+    el.innerHTML = `<div class="review-empty"><div class="review-empty-icon">★</div><h2>Your review list is empty</h2><p>Go to <b>Vocab</b> and tap the <b>★</b> button on any card to save words here.</p></div>`;
+    return;
+  }
+  const saved = [...savedWords].map(i => ({i, ...VD[i]}));
+  el.innerHTML = `
+    <div class="review-topbar">
+      <span class="review-count-pill">${saved.length} word${saved.length !== 1 ? 's' : ''} saved</span>
+      <button class="clear-all-btn" onclick="clearAllReview()">🗑️ Clear all</button>
+    </div>
+    <div class="vocab-grid">
+      ${saved.map(v => `
+        <div class="rcard vcard open" id="rcard-${v.i}">
+          <button class="remove-btn" onclick="removeFromReview(${v.i})" title="Remove">✕</button>
+          <div class="vtag" style="background:var(--md-primary-container);color:var(--md-on-primary-container)">${TL[v.tag]||v.tag}</div>
+          <div class="vword">${v.word}</div>
+          ${v.ph ? `<div class="vphon">${v.ph}</div>` : ''}
+          <div class="vctx">"${v.ctx}"</div>
+          <div class="vmean" style="display:block">${v.mean}<div class="ex">💡 ${v.ex}</div></div>
+        </div>`).join('')}
+    </div>`;
+}
+
+function removeFromReview(idx) {
+  const card = document.getElementById(`rcard-${idx}`);
+  if (card) {
+    card.classList.add('removing');
+    setTimeout(() => {
+      savedWords.delete(idx);
+      const saveBtn = document.querySelector(`.save-btn[data-idx="${idx}"]`);
+      if (saveBtn) { saveBtn.classList.remove('saved'); saveBtn.textContent = '☆'; }
+      updateBadge();
+      renderReview();
+    }, 280);
+  }
+}
+
+function clearAllReview() {
+  savedWords.forEach(idx => {
+    const saveBtn = document.querySelector(`.save-btn[data-idx="${idx}"]`);
+    if (saveBtn) { saveBtn.classList.remove('saved'); saveBtn.textContent = '☆'; }
+  });
+  savedWords.clear();
+  updateBadge();
+  renderReview();
+  showToast('Review list cleared');
+}
+
+// ── DATA ──
+const VD=[
+  // PHRASAL VERBS
+  {word:"start over",ph:"/stɑːrt ˈəʊvər/",tag:"phrasal",ctx:"Can we start over?",mean:"To begin again from the beginning after something went wrong. Chandler says this after the awkward confusion with Ursula at Riff's.",ex:"The presentation crashed halfway through, so we had to start over from slide one."},
+  {word:"get along",ph:"/ɡɛt əˈlɒŋ/",tag:"phrasal",ctx:"So, you guys just don't get along?",mean:"To have a friendly, harmonious relationship. Phoebe and Ursula have a strained relationship — they don't get along.",ex:"She gets along well with everyone in the office — always helpful and easy to talk to."},
+  {word:"run it by (someone)",ph:"/rʌn ɪt baɪ/",tag:"phrasal",ctx:"Before you do anything Joey-like, you might wanna run it by Pheebs.",mean:"To ask for someone's opinion or approval first. Chandler advises Joey to check with Phoebe before pursuing Ursula.",ex:"Before we finalize the design, let's run it by the client to make sure they're happy."},
+  {word:"ask (someone) out",ph:"/ɑːsk aʊt/",tag:"phrasal",ctx:"You think it would be ok if I asked out your sister?",mean:"To invite someone on a romantic date. Very common — you 'ask someone out,' not 'invite them for a date.'",ex:"He finally worked up the courage to ask her out after months of talking every day."},
+  {word:"grow apart",ph:"/ɡrəʊ əˈpɑːt/",tag:"phrasal",ctx:"We were one egg, once, but we've grown apart.",mean:"To gradually become less close over time. Used for friendships, siblings, or couples that drift emotionally.",ex:"We were best friends in school, but after moving to different cities we slowly grew apart."},
+  {word:"let (someone) go",ph:"/lɛt ɡəʊ/",tag:"phrasal",ctx:"After I let her go, I got a call from her psychiatrist.",mean:"A polite formal way to say 'fire someone.' The joke: Chandler never actually fired Nina — he asked her out instead.",ex:"The company had to let go of twenty employees due to budget cuts."},
+  {word:"keep it down",ph:"/kiːp ɪt daʊn/",tag:"phrasal",ctx:"We'll try to keep it down.",mean:"To reduce noise; to be quieter. Used as a polite response to a noise complaint.",ex:"Can you guys keep it down? I'm trying to finish an assignment."},
+  {word:"take (them) down",ph:"/teɪk daʊn/",tag:"phrasal",ctx:"Someone was supposed to take them down around New Year's.",mean:"To remove something hung or displayed. The Christmas lights are still up long after the holiday.",ex:"Can you take down the posters from the wall before the landlord sees them?"},
+  {word:"put through (paperwork)",ph:"/pʊt θruː/",tag:"phrasal",ctx:"Helen, would you make sure we put through the paperwork on Miss Bookbinder's raise?",mean:"To officially process or submit documents. Chandler is forced to honor the fake raise he invented.",ex:"They've been waiting three weeks for HR to put through their expense claims."},
+  {word:"stole him away",ph:"/stəʊl əˈweɪ/",tag:"phrasal",ctx:"She kind of stole him away, and then broke his heart.",mean:"To take someone's romantic partner through attraction or manipulation. Phoebe describes how Ursula took her boyfriend Randy.",ex:"She was furious when her best friend stole her boyfriend away."},
+  {word:"How come…?",ph:"/haʊ kʌm/",tag:"phrasal",ctx:"How come you're working here?",mean:"Informal for 'Why?' Very common in American English — casual and friendly.",ex:"How come you didn't call me back last night? I was worried."},
+  {word:"going out with",ph:"/ɡəʊɪŋ aʊt wɪð/",tag:"phrasal",ctx:"They've been going out a week.",mean:"To be in a romantic relationship; to date someone.",ex:"She's been going out with him for three months and they already seem really serious."},
+  // SLANG
+  {word:"hot",ph:"/hɒt/",tag:"slang",ctx:"Phoebe's Phoebe. Ursula's — hot!",mean:"Slang: very physically attractive. Joey uses it to describe Ursula. One of the most common informal adjectives in American English.",ex:"Everyone agreed the new actor in that show is absolutely hot."},
+  {word:"cool",ph:"/kuːl/",tag:"slang",ctx:"Cool tie. / Cool, thanks.",mean:"Informal: nice, impressive, or approval. One of the most versatile words in American English.",ex:"Cool, I'll see you at seven then."},
+  {word:"score",ph:"/skɔː/",tag:"slang",ctx:"She brought me a tuna melt and four plates of curly fries. Score.",mean:"Exclamation: a success or lucky result. Used to celebrate when something goes your way.",ex:"They had one ticket left and I got it — score!"},
+  {word:"whoo-whoo-whoo",ph:"",tag:"slang",ctx:"Nina — she is whoo-whoo-whoo-whoo.",mean:"Slang for acting crazy or unstable. Chandler waves his finger in circles. Completely invented but visually expressive.",ex:"That guy at the office party was completely whoo-whoo — talking to the plants."},
+  {word:"quickie",ph:"/ˈkwɪki/",tag:"slang",ctx:"Sweetheart, you're fired, but how 'bout a quickie before I go to work.",mean:"Informal: a very brief sexual encounter. Rachel uses it sarcastically to mock Chandler's absurd situation.",ex:"Used here for comedy — a jarring contrast between the serious (firing) and the casual (quickie)."},
+  {word:"gotta",ph:"/ˈɡɒtə/",tag:"slang",ctx:"You gotta talk to Joey.",mean:"Spoken contraction of 'have got to' = must. Extremely common in American informal speech. Never written formally.",ex:"You've gotta try this restaurant — the pasta is incredible."},
+  {word:"What else is new?",ph:"",tag:"slang",ctx:"By then it was like — what else is new?",mean:"Sarcastic: 'that's not surprising at all / typical.' Used when something predictably disappointing happens again.",ex:"He's late again? What else is new — he's never on time."},
+  // IDIOMS
+  {word:"dip your pen in the company ink",ph:"",tag:"idiom",ctx:"You don't dip your pen in the company ink.",mean:"Don't date someone you work with. An old idiom: mixing ink at work = messy and unprofessional. Ross warns Chandler about Nina.",ex:"Everyone warned him: don't dip your pen in the company ink. He dated his assistant anyway and it ended badly."},
+  {word:"out of whack",ph:"/aʊt əv wæk/",tag:"idiom",ctx:"It throws my WENUS out of whack.",mean:"Not working correctly; unbalanced. The bonus joke: Chandler says his 'WENUS' is out of whack with a straight face.",ex:"My sleep schedule has been completely out of whack since I started the night shift."},
+  {word:"big picture",ph:"/bɪɡ ˈpɪktʃər/",tag:"idiom",ctx:"Big picture — the birth part is just one day.",mean:"The overall, long-term perspective. Susan uses it to shift Carol's focus from the frightening immediate moment to becoming parents.",ex:"Yes, the first year is hard — but big picture, you're building a career that will last decades."},
+  {word:"play my sperm card",ph:"",tag:"idiom",ctx:"Ok, I'm gonna play my sperm card one more time.",mean:"Ross's invented phrase: use being the biological father as a trump card. 'Play a card' = use your strongest argument.",ex:"Playing your trump card = using your biggest advantage in a dispute."},
+  {word:"flip you for it",ph:"/flɪp fɔːr ɪt/",tag:"idiom",ctx:"I will flip you for it.",mean:"Toss a coin to decide fairly. Used when two people can't agree on something.",ex:"Neither of us wanted to do the dishes so we flipped for it — I lost."},
+  {word:"threat to herself or others",ph:"",tag:"idiom",ctx:"I decided not to fire her again until she will be no threat to herself or others.",mean:"A formal clinical/legal psychiatric phrase for assessing danger. Chandler uses it pompously and absurdly to justify not firing Nina.",ex:"This phrase comes from mental health law — using it in a silly office situation makes Chandler sound hilariously officious."},
+  {word:"catch you later",ph:"",tag:"idiom",ctx:"I've got Earth Science, but I'll catch you in gym.",mean:"'Catch you later' = see you soon. Chandler sarcastically uses school timetable language in response to Ross mentioning Lamaze class.",ex:"Gotta run — catch you later!"},
+  {word:"stuck at (a place)",ph:"/stʌk æt/",tag:"idiom",ctx:"Stuck at school. Some parent-teacher thing.",mean:"Unable to leave somewhere because of an obligation. Implies you'd rather be elsewhere.",ex:"Sorry I'm late — I got stuck at the office for an extra two hours."},
+  // EXPRESSIONS
+  {word:"looking like a ham",ph:"",tag:"expression",ctx:"If this was a cartoon, you'd be looking like a ham right about now.",mean:"A cartoon trope: when starving, you imagine people as food (usually a roasted ham). Chandler exaggerates the wait for a waitress.",ex:"Classic cartoon humor — Tom and Jerry, Looney Tunes. Very visual, very American."},
+  {word:"not from where I was standin'",ph:"",tag:"expression",ctx:"Is she fat? Not from where I was standin'.",mean:"From my point of view, no. Joey implies he was checking out Ursula's body from behind. The humor is in what's left unsaid.",ex:"A classic example of meaning more than you say — the joke lives in the implication."},
+  {word:"dumb sister stuff",ph:"",tag:"expression",ctx:"It's mostly just dumb sister stuff, you know.",mean:"Trivial sibling problems. Phoebe downplays real emotional pain with this casual phrase — but the story she tells reveals it runs much deeper.",ex:"'Dumb sister stuff' is a minimizing phrase — used to brush off something that actually matters."},
+  {word:"one egg, once",ph:"",tag:"expression",ctx:"We were one egg, once, but we've grown apart.",mean:"Phoebe's way of saying she and Ursula are identical twins. Scientific fact mixed with emotional distance — classic Phoebe.",ex:"A typical Phoebe-ism: precise biological language used to describe a personal feeling."},
+  {word:"the whole parenting team",ph:"",tag:"expression",ctx:"We've got dads, we've got lesbians — the whole parenting team.",mean:"Ross humorously lists everyone raising his baby as if they're a sports roster — showing his awkward attempt to sound comfortable.",ex:"A classic Ross line: using humor to mask discomfort about his unusual family situation."},
+  {word:"no recollection",ph:"/nəʊ ˌrɛkəˈlɛkʃən/",tag:"expression",ctx:"She would have no recollection of being fired at all.",mean:"No memory of something. Chandler uses this formal phrase to convince his boss that Nina forgot being fired — which never happened.",ex:"The witness had no recollection of the events — she said everything was a blur."},
+  {word:"size-wise",ph:"",tag:"expression",ctx:"It's for Ursula. I just figured, you know, size-wise.",mean:"The suffix -wise means 'in terms of' or 'regarding.' Joey uses Phoebe to check if a gift fits Ursula, since they're twins.",ex:"Cost-wise, the second option is better. Time-wise, they're about the same."},
+  {word:"What's up?",ph:"",tag:"expression",ctx:"Do you have a sec? Sure, Nina. What's up?",mean:"Very common American greeting: 'What's happening?' or 'What do you want to talk about?' Casual and friendly.",ex:"Hey, you wanted to see me — what's up?"},
+  {word:"I could have cats",ph:"",tag:"expression",ctx:"You don't even have cats. I could have cats.",mean:"Mr. Heckles invents a hypothetical grievance: 'Imagine I had cats — they'd be disturbed.' Classic absurd neighbor logic.",ex:"A perfect character comedy moment: the hypothetical as a complaint. 'I could' = 'what if I did.'"},
+  {word:"not serious",ph:"",tag:"expression",ctx:"They haven't even slept together yet — that's not serious.",mean:"Not a committed or deep relationship yet. Rachel uses this to reassure Phoebe that Joey's connection with Ursula is still shallow.",ex:"They only met twice — it's not serious at all. Don't worry about it."},
+  {word:"world's thinnest argument",ph:"",tag:"humor",ctx:"Congratulations, I think you've found the world's thinnest argument.",mean:"Monica's way of saying Chandler's excuse is the weakest possible reasoning. 'Thin argument' = unconvincing. 'World's thinnest' = comic exaggeration.",ex:"'I was going to do it yesterday but my pen ran out.' That's a pretty thin argument."},
+  // VOCABULARY
+  {word:"ANUS",ph:"/ˈeɪnəs/",tag:"humor",ctx:"We haven't seen an ANUS this bad since the seventies.",mean:"Annual Net Usage Statistics. The joke: the acronym spells ANUS, said completely straight-faced. A deliberate callback to the WENUS joke — the writers are doing this on purpose.",ex:"This is a running joke: the writers invented embarrassing corporate acronyms on purpose."},
+  {word:"Lamaze class",ph:"/ləˈmɑːz klɑːs/",tag:"vocab",ctx:"I've got Lamaze class. Oh, and I've got Earth Science, but I'll catch you in gym.",mean:"A childbirth preparation class teaching breathing and relaxation for labor. Common in the US. Chandler's joke compares it to a school timetable.",ex:"They attended Lamaze classes every week for two months before the baby was due."},
+  {word:"life partner",ph:"/laɪf ˈpɑːtnər/",tag:"vocab",ctx:"Susan is Carol's life partner.",mean:"A committed romantic partner. In 1994, before same-sex marriage was legal, this was the standard term for same-sex couples. Ross avoids saying it throughout the scene.",ex:"This reflects 1994 American reality — 'life partner' was the accepted term since legal marriage wasn't available."},
+  {word:"cleansing breath",ph:"/ˈklɛnzɪŋ brɛθ/",tag:"vocab",ctx:"Take a nice deep cleansing breath.",mean:"A slow, deep breath used in relaxation and childbirth techniques to calm the body. Central to the Lamaze method.",ex:"Before the presentation, she took a deep cleansing breath to calm her nerves."},
+  {word:"frenzy",ph:"/ˈfrɛnzi/",tag:"vocab",ctx:"He mentioned the word frenzy.",mean:"A state of wild, uncontrolled panic or excitement. Chandler uses this to imply Nina is dangerously unstable — completely fabricated.",ex:"The sale caused a buying frenzy — people were fighting over the last items."},
+  {word:"psychiatrist",ph:"/saɪˈkaɪətrɪst/",tag:"vocab",ctx:"I got a call from her psychiatrist, Dr. Fl—, Dr. Flan…",mean:"A medical doctor specializing in mental health. Chandler invents a fake psychiatrist mid-sentence — you can hear him making up the name on the spot.",ex:"The fumbling name is great acting: Chandler improvising a lie in real time."},
+  {word:"crossword",ph:"/ˈkrɒswɜːd/",tag:"vocab",ctx:"He got to the newspaper before I did and pee-ed all over the crossword.",mean:"A word puzzle in newspapers where you fill in words based on clues. Marcel ruins it daily — a running joke about the monkey's behavior.",ex:"He does the crossword every morning over coffee — he says it keeps his mind sharp."},
+  {word:"apron",ph:"/ˈeɪprən/",tag:"vocab",ctx:"The aprons are really cute.",mean:"A protective garment worn over clothes while working. Ursula's reason for working at Riff's is hilariously shallow: she likes the aprons.",ex:"She bought a matching apron and oven gloves for the new kitchen."},
+  {word:"pot roast",ph:"/pɒt rəʊst/",tag:"vocab",ctx:"Mind if we push this pot roast through it?",mean:"A large piece of beef cooked slowly. Carol uses it as an absurd metaphor for childbirth — the pot roast is the baby, the nostril is the birth canal.",ex:"A perfect example of how comedy uses unexpected comparisons to describe real fear."},
+  {word:"biscotti",ph:"/bɪˈskɒti/",tag:"vocab",ctx:"And some biscotti cookies.",mean:"Crispy, twice-baked Italian cookies, often served with coffee. A trendy cafe item in 1990s New York.",ex:"She ordered an espresso and two biscotti to go."},
+  {word:"stapler",ph:"/ˈsteɪplər/",tag:"humor",ctx:"Except for the stapler thing. Never leave your hand on the desk.",mean:"An office tool for binding papers. Nina apparently hit Chandler with a stapler when he finally told her the truth. The violence is implied, not shown — delivered as a casual workplace tip.",ex:"The joke works because Chandler narrates the violence so casually, as if it's just minor office advice."},
+  // ROMANTIC
+  {word:"falling in love with her",ph:"",tag:"romantic",ctx:"But he's falling in love with her.",mean:"Gradually developing deep romantic feelings. Phoebe believes Joey's feelings for Ursula are becoming serious — she's afraid history will repeat itself.",ex:"She realized she was falling in love with him when she felt nervous just seeing his name on her phone."},
+  {word:"haven't slept together yet",ph:"",tag:"romantic",ctx:"They haven't even slept together yet — that's not serious.",mean:"Have not had a sexual relationship yet. Rachel uses this as a marker of relationship seriousness.",ex:"A common measure of relationship progression in American culture and TV."},
+  {word:"Ice Capades",ph:"/aɪs kəˈpeɪdz/",tag:"romantic",ctx:"Are you seeing her again tonight? Yep. Ice Capades.",mean:"A famous American touring ice skating show. In the 1990s, taking a date to the Ice Capades was a real commitment. Chandler notes Joey never pays for 'any kind of capade' — meaning this is serious.",ex:"Taking someone to the Ice Capades in the 1990s was a genuine, paid-for date."},
+  // BUSINESS
+  {word:"post-dating (numbers)",ph:"/pəʊst ˈdeɪtɪŋ/",tag:"business",ctx:"You've been post-dating your Friday numbers.",mean:"Recording data with a later date than when it was actually created. This throws off the weekly statistics — the WENUS.",ex:"Post-dating a cheque means writing a future date so it can't be cashed immediately."},
+  {word:"layoffs / laying off",ph:"/ˈleɪɒfs/",tag:"business",ctx:"We're gonna be laying off people in every department.",mean:"Dismissing employees due to financial pressure. Different from 'firing' — layoffs aren't the employee's fault.",ex:"The company announced layoffs after reporting its worst financial quarter in ten years."},
+  {word:"raise",ph:"/reɪz/",tag:"business",ctx:"You're getting a big raise. I am?",mean:"An increase in salary. Chandler invents a raise to explain why colleagues are acting strangely — covering up that Nina was never properly fired.",ex:"After three years without a raise, she finally negotiated a 15% increase."},
+  {word:"personnel",ph:"/ˌpɜːsəˈnɛl/",tag:"business",ctx:"Do you still want me to send her psychological profile to personnel?",mean:"The HR department. Helen's question exposes Chandler's entire web of lies in one sentence.",ex:"All complaints should be directed to personnel — they handle employee relations."},
+];
+
+const DD=[
+  {sp:"Chandler",txt:`This is unbelievable. It's been like a half an hour. If this was a cartoon, you'd be <span class="hl">looking like a ham<span class="hltip">😂 COMEDY — When a cartoon character is starving, they imagine people as food (usually a roasted ham). Chandler exaggerates the wait for a waitress.</span></span> right about now.`},
+  {sp:"Joey",txt:`There's the waitress. Excuse me, Miss. Hello, Miss?`},
+  {sp:"Chandler",txt:`Wait — it's Phoebe! Hi!`},
+  {sp:"Ursula",txt:`Hi. Ok, will that be all?`},
+  {sp:"Joey",txt:`No, no — <span class="hl">how come<span class="hltip">🔗 PHRASAL — Informal for "Why?" Very common in American English. Softer and more casual than a direct "Why?"</span></span> are you working here?`},
+  {sp:"Ursula",txt:`Right, yeah, 'cause it's close to where I live, and the <span class="hl">aprons<span class="hltip">📚 VOCAB — Protective garments worn while working. Ursula's reason for working here is hilariously shallow: she likes the aprons.</span></span> are really cute.`},
+  {sp:"Chandler",txt:`Can we <span class="hl">start over<span class="hltip">🔗 PHRASAL — To begin again from scratch after something went wrong. Very common phrase for restarting conversations or situations.</span></span>?`},
+  {sp:"Joey",txt:`I don't care. Phoebe's Phoebe. Ursula's — <span class="hl">hot<span class="hltip">🔥 SLANG — Very physically attractive. Very common in American informal speech.</span></span>!`},
+  {sp:"Ross",txt:`He keeps erasing the messages on my machine, supposedly by accident. Three days in a row he got to the newspaper before me and pee-ed all over the <span class="hl">crossword<span class="hltip">📚 VOCAB — A word puzzle in newspapers. Marcel ruins it daily — a running joke about the monkey being out of control.</span></span>.`},
+  {sp:"Rachel",txt:`I've never done that.`},
+  {sp:"Phoebe",txt:`It's mostly just <span class="hl">dumb sister stuff<span class="hltip">💡 EXPRESSION — Trivial sibling problems. Phoebe downplays the real pain with this casual phrase — but the story that follows reveals it runs much deeper.</span></span>, you know. Like, everyone always thought of her as the pretty one. She was the first one to start walking — even though I did it later that same day. But by then it was like, <span class="hl">"What else is new?"<span class="hltip">🔥 SLANG — "That's not surprising / typical." Sarcastic expression used when something predictably disappointing happens again.</span></span>`},
+  {sp:"Ross",txt:`Oh, Pheebs, I've got to go. I've got <span class="hl">Lamaze class<span class="hltip">📚 VOCAB — A childbirth preparation class teaching breathing for labor. Common in the US. Ross, Carol, and Susan all attend together.</span></span>.`},
+  {sp:"Chandler",txt:`Oh, and I've got Earth Science, but I'll <span class="hl">catch you in gym<span class="hltip">🎭 IDIOM — "Catch you later" = see you soon. Chandler uses school timetable language sarcastically to mock Ross's Lamaze class schedule.</span></span>.`},
+  {sp:"Ross",txt:`We've got dads, we've got lesbians — <span class="hl">the whole parenting team<span class="hltip">💡 EXPRESSION — Ross lists everyone raising his baby as if they were a sports roster. His awkward attempt to sound comfortable with an unusual situation.</span></span>.`},
+  {sp:"Ross",txt:`I'm Ross Geller, and this is Carol Willick, and this is Susan Bunch. Susan is Carol's… Susan is Carol's… <span class="hl">friend<span class="hltip">😂 COMEDY — Ross can't say "life partner." He cycles through friend/buddy while Carol corrects him. His discomfort is the joke.</span></span>.`},
+  {sp:"Carol",txt:`<span class="hl">Life partner.<span class="hltip">📚 VOCAB — A committed romantic partner. In 1994, before same-sex marriage, this was the standard term for same-sex couples.</span></span>`},
+  {sp:"Ross",txt:`Like buddies.`},
+  {sp:"Susan",txt:`Like lovers.`},
+  {sp:"Chandler",txt:`I've been going over your data — little thing, you've been <span class="hl">post-dating<span class="hltip">💼 BUSINESS — Recording data with a later date than when it was created. This throws off the weekly statistics (the WENUS).</span></span> your Friday numbers.`},
+  {sp:"Chandler",txt:`Well, it throws my WENUS <span class="hl">out of whack.<span class="hltip">🎭 IDIOM — Not working correctly; unbalanced. The bonus joke: Chandler says this about his "WENUS" completely straight-faced.</span></span>`},
+  {sp:"Ross",txt:`You don't <span class="hl">dip your pen in the company ink.<span class="hltip">🎭 IDIOM — Don't date someone you work with. Comparing office romance to mixing ink — messy and unprofessional. Ross warns Chandler about Nina.</span></span>`},
+  {sp:"Mr. Douglas",txt:`The Annual Net Usage Statistics are in. We haven't seen an <span class="hl">ANUS<span class="hltip">😂 COMEDY — Annual Net Usage Statistics. The acronym spells ANUS — said completely straight-faced. A deliberate callback to the WENUS joke.</span></span> this bad since the seventies.`},
+  {sp:"Mr. Douglas",txt:`We're gonna be <span class="hl">laying off<span class="hltip">💼 BUSINESS — Dismissing employees due to financial pressure. Different from "firing" — layoffs aren't the employee's fault.</span></span> people in every department.`},
+  {sp:"Chandler",txt:`[nervously] Nina. Nina. Nina… please don't hate me. Would you like to have dinner sometime?`},
+  {sp:"Nina",txt:`For the past couple of days, people have been avoiding me and giving me really strange looks.`},
+  {sp:"Chandler",txt:`Maybe that's because they're jealous of us. Actually, it's because you're getting a big <span class="hl">raise.<span class="hltip">💼 BUSINESS — An increase in salary. Chandler invents a raise to explain why colleagues are acting strangely — covering up that Nina was never properly fired.</span></span>`},
+  {sp:"Chandler",txt:`Helen, would you make sure we <span class="hl">put through<span class="hltip">🔗 PHRASAL — To officially process documents. Chandler now has to honor the fake raise he invented to cover his lies.</span></span> the paperwork on Miss Bookbinder's raise?`},
+  {sp:"Helen",txt:`Do you still want me to send her psychological profile to <span class="hl">personnel?<span class="hltip">💼 BUSINESS — The HR department. Helen's question exposes Chandler's entire web of lies in one single sentence.</span></span>`},
+  {sp:"Chandler",txt:`[to Nina] Helen drinks. Will you marry me?`},
+  {sp:"Chandler",txt:`After I <span class="hl">let her go<span class="hltip">🔗 PHRASAL — A polite formal way to say "fire someone." The joke: Chandler never actually fired Nina at all.</span></span>, I got a call from her psychiatrist, Dr. Fl—, Dr. Flanen, Dr. Flan… he mentioned the word <span class="hl">"frenzy."<span class="hltip">📚 VOCAB — Wild, uncontrolled panic. Chandler uses this to imply Nina is dangerously unstable — completely made up to cover his cowardice.</span></span>`},
+  {sp:"Chandler",txt:`Nina — she is <span class="hl">whoo-whoo-whoo.<span class="hltip">🔥 SLANG — Crazy, unstable. Chandler makes a circular gesture. A made-up but perfectly visual expression.</span></span> She would have <span class="hl">no recollection<span class="hltip">💡 EXPRESSION — No memory at all. Used formally to sound authoritative while improvising an elaborate lie.</span></span> of being fired. I decided not to fire her again until I can be assured she will be <span class="hl">no threat to herself or others.<span class="hltip">🎭 IDIOM — A formal clinical/legal phrase from psychiatry for assessing danger. Chandler deploys it absurdly in a mundane office context.</span></span>`},
+  {sp:"Teacher",txt:`Mommies, get on your backs. Coaches, support Mommy's head.`},
+  {sp:"Susan",txt:`I am supposed to be the mommy?`},
+  {sp:"Ross",txt:`Ok, I'm gonna <span class="hl">play my sperm card<span class="hltip">🎭 IDIOM — To use being the biological father as a trump card. "Play a card" = use your strongest argument.</span></span> one more time.`},
+  {sp:"Susan",txt:`I will <span class="hl">flip you for it.<span class="hltip">🎭 IDIOM — Toss a coin to decide fairly when two people can't agree.</span></span>`},
+  {sp:"Teacher",txt:`Mommies, take a nice deep <span class="hl">cleansing breath.<span class="hltip">📚 VOCAB — A slow deep breath for relaxation and pain management. Central to the Lamaze childbirth method.</span></span>`},
+  {sp:"Carol",txt:`Mind if we push this <span class="hl">pot roast<span class="hltip">📚 VOCAB — A large piece of slow-cooked beef. Carol uses it as a wild metaphor for giving birth. The pot roast = the baby, the nostril = the birth canal.</span></span> through it?`},
+  {sp:"Susan",txt:`Cleansing breath. <span class="hl">Big picture<span class="hltip">🎭 IDIOM — The overall long-term perspective. Susan shifts Carol's focus from the frightening immediate moment to the reward of becoming parents.</span></span> — the birth part is just one day. When it's over, we're all gonna be parents for the rest of our lives.`},
+  {sp:"Ross",txt:`I'm gonna be a father. I always knew I was having a baby, I just never realized the baby was having me.`},
+  {sp:"Chandler",txt:`Before you do anything Joey-like, you might wanna <span class="hl">run it by<span class="hltip">🔗 PHRASAL — Ask for someone's opinion or approval first. Chandler advises Joey to check with Phoebe before pursuing Ursula.</span></span> Pheebs.`},
+  {sp:"Joey",txt:`Phoebe, you think it would be ok if I <span class="hl">asked out<span class="hltip">🔗 PHRASAL — To invite someone on a romantic date. Very common in English: "ask someone out," not "invite them for a date."</span></span> your sister?`},
+  {sp:"Phoebe",txt:`I mean, we were <span class="hl">one egg, once<span class="hltip">💡 EXPRESSION — Phoebe's poetic way of saying she and Ursula are identical twins. Scientific fact mixed with emotional distance — classic Phoebe.</span></span>, but we've <span class="hl">grown apart.<span class="hltip">🔗 PHRASAL — To gradually become less close emotionally over time.</span></span> So, why not?`},
+  {sp:"Joey",txt:`Yep. <span class="hl">Ice Capades.<span class="hltip">❤️ ROMANTIC — A famous American touring ice skating show. Taking a date to the Ice Capades in the 90s was a genuine commitment. Shows Joey is serious.</span></span>`},
+  {sp:"Chandler",txt:`Wow, this is serious. I've never known you to pay money for any kind of capade.`},
+  {sp:"Joey",txt:`I just wanna make sure it fits. I figured, you know, <span class="hl">size-wise.<span class="hltip">💡 EXPRESSION — "In terms of size." The suffix -wise means "regarding." Joey uses Phoebe to check if a gift fits Ursula, since they're twins.</span></span>`},
+  {sp:"Phoebe",txt:`Look, she threw my Judy Jetson thermos under the bus. And there was Randy Brown — she <span class="hl">stole him away<span class="hltip">🔗 PHRASAL — Took someone's romantic partner. This reveals the real emotional wound underneath the "dumb sister stuff."</span></span>, then broke his heart.`},
+  {sp:"Phoebe",txt:`But he's <span class="hl">falling in love with her.<span class="hltip">❤️ ROMANTIC — Gradually developing deep romantic feelings. Phoebe is afraid history will repeat itself with Joey.</span></span>`},
+  {sp:"Rachel",txt:`Please, they've been <span class="hl">going out<span class="hltip">🔗 PHRASAL — Dating; being in a romantic relationship.</span></span> a week. They haven't even slept together yet — that's <span class="hl">not serious.<span class="hltip">💡 EXPRESSION — Not a committed relationship yet. Rachel uses this to reassure Phoebe that the connection is still shallow.</span></span>`},
+  {sp:"Monica",txt:`Someone was supposed to <span class="hl">take them down<span class="hltip">🔗 PHRASAL — Remove something hung or displayed. The Christmas lights are still up long after New Year's.</span></span> around New Year's.`},
+  {sp:"Monica",txt:`Congratulations, I think you've found the <span class="hl">world's thinnest argument.<span class="hltip">😂 COMEDY — "Thin argument" = unconvincing reasoning. "World's thinnest" = comic exaggeration to the extreme. Monica's best put-down.</span></span>`},
+  {sp:"Rachel",txt:`Oh well, "Sweetheart, you're fired, but how 'bout a <span class="hl">quickie<span class="hltip">🔥 SLANG — A very brief sexual encounter. Rachel uses it sarcastically to mock the absurdity of Chandler's situation: dating the woman he's supposed to fire.</span></span> before I go to work."`},
+  {sp:"Mr. Heckles",txt:`You're doing it again.`},
+  {sp:"Mr. Heckles",txt:`I can hear you through the ceiling. My cats can't sleep.`},
+  {sp:"Rachel",txt:`You don't even have cats.`},
+  {sp:"Mr. Heckles",txt:`<span class="hl">I could have cats.<span class="hltip">💡 EXPRESSION — A hypothetical grievance: "Imagine I had cats — they'd be disturbed." Classic absurd neighbor logic from Mr. Heckles.</span></span>`},
+  {sp:"Rachel",txt:`We'll try to <span class="hl">keep it down.<span class="hltip">🔗 PHRASAL — To be quieter. A polite response to a noise complaint.</span></span>`},
+  {sp:"Chandler",txt:`Pretty well. Except for the <span class="hl">stapler<span class="hltip">😂 COMEDY — Nina apparently hit Chandler with a stapler when he told her the truth. Delivered as a casual workplace tip — the violence implied, not shown.</span></span> thing. Little tip: never leave your hand on the desk.`},
+  {sp:"Rachel",txt:`[on the balcony] You wanted me to take them down, so I'm takin' 'em down. Whoa! [falls off the balcony]`},
+  {sp:"Mr. Heckles",txt:`See, this is just the kind of thing I was talking about.`},
+];
+
+const QD=[
+  {t:"mc",q:"What does 'How come?' mean in American English?",ex:`"How come you're working here?"`,opts:["How did you get here?","Why?","Since when?","How often?"],ans:1,exp:"'How come' is an informal way to ask 'Why?' Very common in American conversation — casual and friendly."},
+  {t:"mc",q:"What does 'get along' mean?",ex:`"So, you guys just don't get along?"`,opts:["Travel together","Have a good relationship","Finish quickly","Agree on everything"],ans:1,exp:"To 'get along' = to have a friendly, harmonious relationship. Phoebe and Ursula don't — that's the emotional story of this episode."},
+  {t:"mc",q:"What does 'let someone go' mean at work?",ex:`"After I let her go, I got a call from her psychiatrist."`,opts:["Allow them to leave early","Fire them from their job","Give them a holiday","Promote them"],ans:1,exp:"'Let someone go' is a polite way to say 'fire.' The joke: Chandler never actually fired Nina — he asked her to dinner instead."},
+  {t:"mc",q:"What is 'out of whack'?",ex:`"It throws my WENUS out of whack."`,opts:["Very expensive","Not working correctly","Very exciting","Hidden from view"],ans:1,exp:"'Out of whack' = not working properly; unbalanced. The bonus joke: Chandler says his 'WENUS' is out of whack with a straight face."},
+  {t:"fill",q:"Fill in: 'You don't _____ your pen in the company _____.'",ex:`"You don't dip your pen in the company ink."`,ans:"dip / ink",exp:"'Dip your pen in the company ink' = don't date a coworker. The metaphor: mixing ink at work = messy and hard to undo."},
+  {t:"mc",q:"What does 'run it by someone' mean?",ex:`"Before you do anything Joey-like, you might wanna run it by Pheebs."`,opts:["Run past their house","Ask for their opinion first","Tell them after it's done","Race against them"],ans:1,exp:"'Run it by someone' = get their opinion or permission before acting. Chandler tells Joey to check with Phoebe first."},
+  {t:"mc",q:"What is 'the big picture'?",ex:`"Big picture — the birth part is just one day."`,opts:["A large photograph","A cinema film","The overall long-term situation","An important meeting"],ans:2,exp:"'Big picture' = the overall long-term view. Susan uses it to shift Carol's focus from the frightening immediate moment to the reward of becoming a parent."},
+  {t:"mc",q:"What does 'grow apart' mean?",ex:`"We were one egg, once, but we've grown apart."`,opts:["Grow taller at different rates","Become physically different","Gradually become less close emotionally","Fight constantly"],ans:2,exp:"'Grow apart' = drift apart emotionally over time. Phoebe and Ursula were literally one person (one egg) but have become very separate."},
+  {t:"fill",q:"Complete: 'I'm gonna play my _____ _____ one more time.'",ex:`"Ok, I'm gonna play my sperm card one more time."`,ans:"sperm card",exp:"Ross's invented phrase: using being the biological father as his trump card. 'Play a card' = use your strongest advantage."},
+  {t:"mc",q:"What does 'laying off' mean?",ex:`"We're gonna be laying off people in every department."`,opts:["Giving extra days off","Dismissing employees for financial reasons","Promoting staff","Moving employees to other offices"],ans:1,exp:"'Layoffs' = dismissing employees for financial reasons, not because of performance. Different from 'firing.'"},
+  {t:"mc",q:"What does 'What else is new?' mean?",ex:`"By then it was like — what else is new?"`,opts:["Tell me more interesting things","What has changed recently?","That's not surprising at all — typical","What's the latest news?"],ans:2,exp:"'What else is new?' is a sarcastic expression meaning 'how unsurprising' or 'that figures.' Used when something predictably disappointing happens."},
+  {t:"mc",q:"Why does Chandler say 'Helen drinks' to Nina?",ex:`"Do you still want me to send her profile to personnel?" "What?" "Helen drinks."`,opts:["He's warning Nina about Helen's health","He's covering for Helen's rudeness","He's making an excuse to dismiss what Helen said — which exposed his lie","He's ordering drinks"],ans:2,exp:"Helen's question exposed Chandler's entire fake story. He deflects by implying Helen is drunk and unreliable — then immediately proposes to Nina to change the subject."},
+];
+
+const CD=[
+  {e:"👯",t:"Ursula — The Twin from Another Show",p:"Ursula Buffay is Phoebe's identical twin sister, played by Lisa Kudrow (same actress!). She also appears as a waitress in 'Mad About You' — a different NBC sitcom set in the same New York universe. Friends and Mad About You were canonically connected. Ursula becomes a recurring character who creates chaos whenever she shows up."},
+  {e:"🏳️‍🌈",t:"Ross, Carol & Susan — Same-Sex Couples on 1994 TV",p:"In 1994, depicting a same-sex couple (Carol and Susan) in a mainstream sitcom was genuinely progressive. The show treats it with humor but also warmth. Ross's inability to say 'life partner' reflects the discomfort many Americans felt at the time. Same-sex marriage wasn't legal in the US until 2015 — over 20 years after this episode aired."},
+  {e:"💼",t:"WENUS + ANUS — The Corporate Acronym Joke",p:"The writers of Friends deliberately invent corporate acronyms that spell embarrassing words: WENUS (Weekly Estimated Net Usage Statistics) and ANUS (Annual Net Usage Statistics). Both are said completely straight-faced. This satirizes corporate culture's love of jargon — and its complete unawareness of how ridiculous it sounds."},
+  {e:"🏠",t:"Mr. Heckles — The Absurd Neighbor",p:"Mr. Heckles is the eccentric downstairs neighbor who complains about noise even when there is none. 'I could have cats' is the perfect example of his character: inventing hypothetical grievances. He became a beloved minor character because his logic is so delightfully broken. His story has a sad and memorable conclusion later in the series."},
+  {e:"🥊",t:"'Dip Your Pen in the Company Ink'",p:"This old idiom warns against dating coworkers. The metaphor: if you mix different inks (people who work together), the result is messy and hard to undo. The phrase likely dates from the era of actual ink pens in offices. Chandler, who is about to ask Nina to dinner, ignores this advice entirely — with escalating consequences throughout the episode."},
+  {e:"🎭",t:"Chandler's Comedy Style — The Elaborate Lie",p:"Chandler's storyline is a perfect showcase of his character: he avoids an uncomfortable truth (firing Nina) through increasingly elaborate fabrications. He invents a psychiatrist, a mental health crisis, and a salary raise — all to avoid one honest conversation. The humor escalates as each lie requires a bigger lie to cover it."},
+  {e:"🍼",t:"Lamaze — American Childbirth Culture",p:"Lamaze is a widely-used American childbirth preparation method (developed by French obstetrician Fernand Lamaze). Classes teach breathing techniques, relaxation, and pain management for labor. Having a 'Lamaze partner' or 'coach' at the birth is a cultural expectation. Ross, Carol, and Susan arguing over who gets to be 'the coach' is both funny and — under the surface — genuinely touching."},
+  {e:"🎿",t:"Ice Capades — 1990s American Dating Culture",p:"The Ice Capades was a touring professional ice skating show popular from the 1940s through the 1990s in America. Taking a date to the Ice Capades was a classic, family-friendly, paid event — a real commitment. When Joey takes Ursula, Chandler immediately recognizes it as serious: Joey never spends money on entertainment unless he really cares about someone."},
+];
+
+// ── RENDER VOCAB ──
+const TL={slang:'🔥 Slang',phrase:'💬 Phrase',vocab:'📚 Vocab',idiom:'🎭 Idiom',humor:'😂 Comedy',phrasal:'🔗 Phrasal Verb',expression:'💡 Expression',romantic:'❤️ Romantic',business:'💼 Business'};
+function renderVocab(){
+  document.getElementById('vocabGrid').innerHTML=VD.map((v,i)=>`
+    <div class="vcard" data-tag="${v.tag}" data-idx="${i}" onclick="this.classList.toggle('open')">
+      <button class="save-btn${savedWords.has(i)?' saved':''}" data-idx="${i}" onclick="toggleSave(${i},this,event)" title="${savedWords.has(i)?'Remove from review':'Save for review'}">${savedWords.has(i)?'★':'☆'}</button>
+      <div class="vtag">${TL[v.tag]||v.tag}</div>
+      <div class="vword">${v.word}</div>
+      ${v.ph?`<div class="vphon">${v.ph}</div>`:''}
+      <div class="vctx">"${v.ctx}"</div>
+      <div class="vhint">Tap to reveal ↓</div>
+      <div class="vmean">${v.mean}<div class="ex">💡 ${v.ex}</div></div>
+    </div>`).join('');
+}
+
+// ── FILTER + SEARCH ──
+function filterV(tag,el){
+  document.querySelectorAll('#chips .chip').forEach(c=>c.classList.remove('active'));
+  el.classList.add('active');
+  applyF(tag, document.getElementById('searchInput').value.trim().toLowerCase());
+}
+function doSearch(val){
+  const q=val.trim().toLowerCase();
+  document.getElementById('searchX').classList.toggle('on',q.length>0);
+  const tag=document.querySelector('#chips .chip.active')?.dataset?.tag||'all';
+  applyF(tag,q);
+}
+function applyF(tag,q){
+  let vis=0;
+  document.querySelectorAll('.vcard').forEach(c=>{
+    const mt=tag==='all'||c.dataset.tag===tag;
+    let ms=true;
+    if(q){
+      const txt=(c.querySelector('.vword')?.textContent||'')+(c.querySelector('.vctx')?.textContent||'')+(c.querySelector('.vmean')?.textContent||'');
+      ms=txt.toLowerCase().includes(q);
+      const we=c.querySelector('.vword');
+      if(we){
+        const orig=we.dataset.orig||we.textContent;
+        we.dataset.orig=orig;
+        if(ms){const re=new RegExp(`(${q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')})`,'gi');we.innerHTML=orig.replace(re,'<mark class="search-hl">$1</mark>');}
+        else{we.textContent=orig;}
+      }
+    } else {
+      const we=c.querySelector('.vword');
+      if(we?.dataset.orig)we.textContent=we.dataset.orig;
+    }
+    const show=mt&&ms;
+    c.classList.toggle('hidden',!show);
+    if(show)vis++;
+  });
+  const sc=document.getElementById('searchCount');
+  sc.innerHTML=q?`<b>${vis}</b> result${vis!==1?'s':''} for "<b>${q}</b>"`:'';
+  const nr=document.getElementById('noRes');
+  nr.classList.toggle('on',vis===0);
+  if(vis===0)document.getElementById('noResQ').textContent=`"${q}"`;
+}
+function clearSearch(){
+  const i=document.getElementById('searchInput');
+  i.value='';
+  document.getElementById('searchX').classList.remove('on');
+  document.getElementById('searchCount').innerHTML='';
+  document.getElementById('noRes').classList.remove('on');
+  const tag=document.querySelector('#chips .chip.active')?.dataset?.tag||'all';
+  applyF(tag,'');
+  i.focus();
+}
+
+// ── RENDER DIALOGUE ──
+function renderD(){
+  document.getElementById('dlines').innerHTML=DD.map(l=>`
+    <div class="drow">
+      <div><span class="spill s-${l.sp}">${l.sp}</span></div>
+      <div class="dbubble">${l.txt}</div>
+    </div>`).join('');
+}
+
+// ── RENDER CULTURE ──
+function renderC(){
+  document.getElementById('cNotes').innerHTML=CD.map(c=>`
+    <div class="citem">
+      <div class="cicon">${c.e}</div>
+      <div><h3>${c.t}</h3><p>${c.p}</p></div>
+    </div>`).join('');
+}
+
+// ── QUIZ ──
+let QS={cur:0,score:0,ans:false,qs:[]};
+const shuffle=a=>[...a].sort(()=>Math.random()-.5);
+function startQ(){QS={cur:0,score:0,ans:false,qs:shuffle(QD)};renderQ();}
+function renderQ(){
+  const{qs,cur,score}=QS;
+  if(cur>=qs.length){renderScore();return;}
+  const q=qs[cur],pct=(cur/qs.length)*100;
+  const qHTML=q.t==='mc'
+    ?`<div class="qopts">${q.opts.map((o,i)=>`<button class="qopt" onclick="chkMC(${i})">${o}</button>`).join('')}</div>`
+    :`<input class="tinput" id="fi" type="text" placeholder="Type your answer…" onkeydown="if(event.key==='Enter')chkFill()"><div class="brow"><button class="btn-f" onclick="chkFill()">Check Answer</button></div>`;
+  document.getElementById('quizContainer').innerHTML=`
+    <div class="qprog-lbl"><span>Question <b>${cur+1}</b> of ${qs.length}</span><span>Score: <b>${score}</b></span></div>
+    <div class="liner"><div class="liner-fill" style="width:${pct}%"></div></div>
+    <div class="qcard">
+      <div class="qbadge">${q.t==='fill'?'✏️ Fill in the blank':'🔘 Multiple choice'}</div>
+      <div class="qtext">${q.q}</div>
+      <div class="qexcerpt">${q.ex}</div>
+      ${qHTML}
+      <div class="qfb" id="qfb"></div>
+      <div id="nxt"></div>
+    </div>`;
+}
+function chkMC(sel){
+  if(QS.ans)return;QS.ans=true;
+  const q=QS.qs[QS.cur];
+  document.querySelectorAll('.qopt').forEach(b=>b.disabled=true);
+  document.querySelectorAll('.qopt')[q.ans].classList.add('correct');
+  if(sel===q.ans){QS.score++;document.querySelectorAll('.qopt')[sel].classList.add('correct');}
+  else{document.querySelectorAll('.qopt')[sel].classList.add('wrong');}
+  showFB(sel===q.ans,q.exp);
+}
+function chkFill(){
+  if(QS.ans)return;QS.ans=true;
+  const q=QS.qs[QS.cur],inp=document.getElementById('fi');
+  const ua=inp.value.trim().toLowerCase(),ca=q.ans.toLowerCase();
+  const ok=ua===ca||(ca.includes(ua)&&ua.length>4);
+  if(ok)QS.score++;
+  inp.className=`tinput ${ok?'correct':'wrong'}`;inp.disabled=true;
+  showFB(ok,ok?q.exp:`The answer is "${q.ans}". ${q.exp}`);
+}
+function showFB(ok,msg){
+  const fb=document.getElementById('qfb');
+  fb.className=`qfb on ${ok?'ok':'no'}`;
+  fb.textContent=(ok?'✅ Correct! ':'❌ Not quite. ')+msg;
+  const isLast=QS.cur>=QS.qs.length-1;
+  document.getElementById('nxt').innerHTML=`<div class="brow"><button class="btn-f" onclick="nextQ()">${isLast?'🏆 See Results':'Next →'}</button></div>`;
+}
+function nextQ(){QS.cur++;QS.ans=false;renderQ();}
+function renderScore(){
+  const{score:s,qs}=QS,total=qs.length,pct=Math.round(s/total*100);
+  const msgs=["Keep going! Every attempt builds your skills. 💪","Good start! Try reviewing the vocab cards.","Getting there! A few more reviews will help.","Nice work! Your English is improving.","Really solid! You're picking up the language fast.","Great job! The Friends method is working.","Impressive! You've mastered this episode.","Excellent work! Near-perfect.","Outstanding!","Almost perfect — just one slip!","PERFECT! 🎉 You know this episode inside out.","PERFECT! Phoebe would be proud.","FLAWLESS! Even the ANUS can't shake you!"];
+  document.getElementById('quizContainer').innerHTML=`
+    <div class="score-card">
+      <div class="score-ring">
+        <div class="score-big">${s}<span class="score-denom">/${total}</span></div>
+        <div class="score-pct">${pct}%</div>
+      </div>
+      <div class="score-msg">${msgs[Math.min(s,msgs.length-1)]}</div>
+      <div class="brow" style="justify-content:center">
+        <button class="btn-f" onclick="startQ()">Try Again</button>
+        <button class="btn-o" onclick="showSec('vocab')">Review Vocab</button>
+      </div>
+    </div>`;
+}
+
+// ── TABS ──
+function showSec(id){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.nav-btn[onclick]').forEach(b=>b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  const map={vocab:0,dialogue:1,quiz:2,culture:3,review:4};
+  const btns=document.querySelectorAll('.nav-btn[onclick]');
+  if(map[id]!==undefined&&btns[map[id]])btns[map[id]].classList.add('active');
+  if(id==='quiz'&&QS.cur===0&&QS.score===0)startQ();
+  if(id==='review')renderReview();
+}
+
+// ── INIT ──
+renderVocab();renderD();renderC();
+</script>
+</body>
+</html>
