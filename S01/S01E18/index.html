@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>English with Friends — The One with All the Poker</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Google+Sans+Display:wght@400;500;700&family=Roboto+Mono:wght@400;500&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --md-primary: #1A73E8;
+  --md-primary-container: #D3E4FD;
+  --md-on-primary: #FFFFFF;
+  --md-on-primary-container: #041E49;
+  --md-secondary: #EA4335;
+  --md-tertiary: #34A853;
+  --md-quaternary: #FBBC04;
+  --md-surface: #FFFFFF;
+  --md-surface-variant: #F1F3F4;
+  --md-surface-container: #F8F9FA;
+  --md-surface-high: #E8EAED;
+  --md-outline: #DADCE0;
+  --md-on-surface: #202124;
+  --md-on-surface-variant: #5F6368;
+  --md-bg: #F8F9FA;
+  --el1: 0 1px 2px rgba(60,64,67,.3), 0 1px 3px 1px rgba(60,64,67,.15);
+  --el2: 0 1px 2px rgba(60,64,67,.3), 0 2px 6px 2px rgba(60,64,67,.15);
+  --el3: 0 1px 3px rgba(60,64,67,.3), 0 4px 8px 3px rgba(60,64,67,.15);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Roboto',sans-serif;background:var(--md-bg);color:var(--md-on-surface);min-height:100vh;-webkit-font-smoothing:antialiased}
+.top-bar{background:var(--md-surface);border-bottom:1px solid var(--md-outline);position:sticky;top:0;z-index:200;box-shadow:var(--el1)}
+.top-bar-inner{max-width:1040px;margin:0 auto;padding:0 16px;display:flex;flex-direction:column;align-items:center}
+.top-bar-title-row{width:100%;display:flex;align-items:center;justify-content:center;padding:10px 0 6px;position:relative}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0}
+.logo-icon{font-size:1.35rem;line-height:1}
+.logo-text{font-family:'Google Sans Display',sans-serif;font-size:1.1rem;font-weight:500;letter-spacing:-.2px}
+.logo-text .b{color:#4285F4}.logo-text .r{color:#EA4335}.logo-text .y{color:#FBBC04}.logo-text .g{color:#34A853}.logo-text .k{color:var(--md-on-surface)}
+.bar-divider{width:1px;height:16px;background:var(--md-outline);margin:0 8px;flex-shrink:0}
+.bar-subtitle{font-family:'Google Sans',sans-serif;font-size:0.8rem;color:var(--md-on-surface-variant);white-space:nowrap}
+.top-nav{display:flex;gap:0;overflow-x:auto;scrollbar-width:none;border-top:1px solid var(--md-outline);width:100%}
+.top-nav::-webkit-scrollbar{display:none}
+.nav-btn{display:inline-flex;align-items:center;gap:6px;padding:0 14px;height:44px;border:none;background:none;cursor:pointer;font-family:'Google Sans',sans-serif;font-size:.8125rem;font-weight:500;color:var(--md-on-surface-variant);white-space:nowrap;text-decoration:none;border-bottom:3px solid transparent;margin-bottom:-1px;transition:color .15s;position:relative;flex:1;justify-content:center}
+.nav-btn::before{content:'';position:absolute;inset:4px 4px;border-radius:50px;background:transparent;transition:background .15s}
+.nav-btn:hover::before{background:rgba(26,115,232,.08)}
+.nav-btn:hover{color:var(--md-primary)}
+.nav-btn.active{color:var(--md-primary);border-bottom-color:var(--md-primary)}
+.rev-badge{display:inline-flex;align-items:center;justify-content:center;background:var(--md-secondary);color:#fff;border-radius:50px;font-size:.65rem;font-weight:700;min-width:18px;height:18px;padding:0 5px;font-family:'Google Sans',sans-serif;transition:transform .2s;display:none}
+.rev-badge.show{display:inline-flex}
+.rev-badge.pop{animation:badgePop .3s cubic-bezier(.36,.07,.19,.97)}
+@keyframes badgePop{0%{transform:scale(1)}40%{transform:scale(1.4)}70%{transform:scale(.9)}100%{transform:scale(1)}}
+.main{max-width:960px;margin:0 auto;padding:28px 16px 56px}
+.section{display:none;animation:fadeIn .2s ease}
+.section.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.page-hd{margin-bottom:24px}
+.page-title{font-family:'Google Sans Display',sans-serif;font-size:1.75rem;font-weight:400;color:var(--md-on-surface);margin-bottom:4px;letter-spacing:-.3px}
+.page-sub{font-size:.875rem;color:var(--md-on-surface-variant);line-height:1.6}
+.chip-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.chip{display:inline-flex;align-items:center;gap:4px;padding:6px 16px;border-radius:50px;border:1px solid var(--md-outline);background:var(--md-surface);font-family:'Google Sans',sans-serif;font-size:.8125rem;font-weight:500;color:var(--md-on-surface-variant);cursor:pointer;transition:all .15s;user-select:none}
+.chip:hover{background:var(--md-surface-variant);border-color:var(--md-on-surface-variant)}
+.chip.active{background:var(--md-primary-container);border-color:var(--md-primary);color:var(--md-on-primary-container)}
+.search-wrap{margin-bottom:16px}
+.search-bar{display:flex;align-items:center;background:var(--md-surface);border-radius:50px;box-shadow:var(--el1);padding:0 20px;gap:12px;height:48px;transition:box-shadow .2s}
+.search-bar:focus-within{box-shadow:var(--el2);outline:2px solid var(--md-primary);outline-offset:1px}
+.search-icon{color:var(--md-on-surface-variant);font-size:1.1rem;flex-shrink:0}
+.search-bar input{flex:1;border:none;outline:none;background:transparent;font-family:'Roboto',sans-serif;font-size:.9375rem;color:var(--md-on-surface)}
+.search-bar input::placeholder{color:var(--md-on-surface-variant)}
+.search-x{background:none;border:none;cursor:pointer;color:var(--md-on-surface-variant);font-size:.9rem;display:none;padding:4px;border-radius:50%;line-height:1;transition:background .15s}
+.search-x:hover{background:var(--md-surface-variant)}
+.search-x.on{display:flex;align-items:center}
+.search-count{font-size:.8125rem;color:var(--md-on-surface-variant);margin-bottom:16px;min-height:20px;padding-left:4px}
+.search-count b{color:var(--md-primary);font-weight:500}
+.search-hl{background:rgba(251,188,4,.35);border-radius:2px;padding:0 1px}
+.no-results{display:none;text-align:center;padding:56px 20px;color:var(--md-on-surface-variant)}
+.no-results.on{display:block}
+.no-results-icon{font-size:3rem;margin-bottom:12px}
+.no-results p{font-size:.9375rem;line-height:1.6}
+.vocab-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}
+.vcard{background:var(--md-surface);border-radius:16px;border:1px solid var(--md-outline);padding:16px;cursor:pointer;transition:box-shadow .2s,border-color .2s;position:relative;overflow:hidden}
+.vcard::after{content:'';position:absolute;inset:0;background:var(--md-primary);opacity:0;transition:opacity .15s;pointer-events:none}
+.vcard:hover{box-shadow:var(--el2);border-color:var(--md-primary)}
+.vcard:hover::after{opacity:.04}
+.vcard.open{border-color:var(--md-primary);border-width:2px}
+.vtag{display:inline-flex;align-items:center;gap:3px;background:var(--md-surface-variant);color:var(--md-on-surface-variant);border-radius:50px;padding:2px 10px;font-size:.72rem;font-family:'Google Sans',sans-serif;font-weight:500;margin-bottom:10px;transition:background .2s,color .2s}
+.vcard.open .vtag{background:var(--md-primary-container);color:var(--md-on-primary-container)}
+.vword{font-family:'Google Sans Display',sans-serif;font-size:1.15rem;font-weight:500;color:var(--md-on-surface);margin-bottom:2px;line-height:1.3}
+.vphon{font-family:'Roboto Mono',monospace;font-size:.7rem;color:var(--md-on-surface-variant);margin-bottom:10px}
+.vctx{font-size:.8125rem;color:var(--md-on-surface-variant);font-style:italic;padding:8px 12px;background:var(--md-surface-container);border-radius:8px;border-left:3px solid var(--md-primary);line-height:1.5;margin-bottom:8px}
+.vhint{font-size:.75rem;color:var(--md-primary);font-family:'Google Sans',sans-serif;font-weight:500;opacity:.7}
+.vcard.open .vhint{display:none}
+.vmean{display:none;font-size:.875rem;color:var(--md-on-surface);line-height:1.65;margin-top:10px;background:var(--md-surface-container);padding:12px;border-radius:8px}
+.vmean .ex{font-size:.8rem;color:var(--md-tertiary);font-style:italic;margin-top:8px;padding-top:8px;border-top:1px solid var(--md-outline)}
+.vcard.open .vmean{display:block}
+.save-btn{position:absolute;top:10px;right:10px;width:30px;height:30px;border-radius:50%;border:none;background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.25rem;line-height:1;z-index:10;transition:background .15s,transform .2s,color .2s;color:#DADCE0;font-family:sans-serif}
+.save-btn:hover{background:rgba(251,188,4,.12);transform:scale(1.15);color:#FBBC04}
+.save-btn.saved{color:#FBBC04;animation:starPop .3s cubic-bezier(.36,.07,.19,.97)}
+@keyframes starPop{0%{transform:scale(1)}40%{transform:scale(1.45)}70%{transform:scale(.88)}100%{transform:scale(1)}}
+.review-empty{text-align:center;padding:64px 20px;color:var(--md-on-surface-variant)}
+.review-empty-icon{font-size:3.5rem;margin-bottom:16px;color:#FBBC04;line-height:1}
+.review-empty h2{font-family:'Google Sans Display',sans-serif;font-size:1.3rem;font-weight:400;margin-bottom:8px;color:var(--md-on-surface)}
+.review-empty p{font-size:.9rem;line-height:1.7;max-width:380px;margin:0 auto}
+.review-empty p b{color:var(--md-primary)}
+.review-topbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;gap:10px}
+.review-count-pill{background:var(--md-primary-container);color:var(--md-on-primary-container);border-radius:50px;padding:4px 14px;font-size:.8rem;font-family:'Google Sans',sans-serif;font-weight:500}
+.clear-all-btn{display:inline-flex;align-items:center;gap:5px;padding:7px 16px;border-radius:50px;border:1px solid var(--md-outline);background:transparent;color:var(--md-on-surface-variant);font-family:'Google Sans',sans-serif;font-size:.8125rem;font-weight:500;cursor:pointer;transition:all .15s}
+.clear-all-btn:hover{border-color:#EA4335;color:#EA4335;background:#FCE8E6}
+.rcard{background:var(--md-surface);border-radius:16px;border:1px solid var(--md-outline);padding:16px;position:relative;overflow:hidden;transition:box-shadow .2s,border-color .2s,opacity .3s,transform .3s}
+.rcard:hover{box-shadow:var(--el1)}
+.rcard.removing{opacity:0;transform:scale(.93)}
+.remove-btn{position:absolute;top:10px;right:10px;width:28px;height:28px;border-radius:50%;border:none;background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.85rem;color:var(--md-on-surface-variant);transition:background .15s,color .15s}
+.remove-btn:hover{background:#FCE8E6;color:#EA4335}
+.toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(80px);background:#202124;color:#fff;border-radius:12px;padding:10px 20px;font-family:'Google Sans',sans-serif;font-size:.875rem;box-shadow:var(--el3);z-index:9999;transition:transform .3s cubic-bezier(.4,0,.2,1),opacity .3s;opacity:0;pointer-events:none;white-space:nowrap}
+.toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+.dlist{display:flex;flex-direction:column;gap:12px}
+.drow{display:grid;grid-template-columns:76px 1fr;gap:12px;align-items:start}
+.spill{display:inline-block;padding:5px 8px;border-radius:50px;font-size:.65rem;font-family:'Google Sans',sans-serif;font-weight:700;letter-spacing:.3px;text-align:center;color:#fff;margin-top:3px;text-transform:uppercase}
+.s-Monica{background:#1A73E8}.s-Chandler{background:#202124}.s-Rachel{background:#E37400}
+.s-Joey{background:#137333}.s-Ross{background:#7B1FA2}.s-Phoebe{background:#C2185B}
+.s-Ursula{background:#AD1457}.s-Teacher{background:#455A64}.s-Carol{background:#00838F}
+.s-Susan{background:#558B2F}.s-Nina{background:#6D4C41}.s-Mr{background:#37474F}
+.dbubble{background:var(--md-surface);border:1px solid var(--md-outline);border-radius:0 16px 16px 16px;padding:12px 16px;font-size:.9rem;line-height:1.75;box-shadow:var(--el1)}
+.hl{background:#FEF3C7;border-bottom:2px solid #FBBC04;cursor:pointer;padding:0 2px;border-radius:2px;position:relative}
+.hl:hover{background:#FDE68A}
+.hltip{display:none;position:absolute;bottom:calc(100% + 10px);left:50%;transform:translateX(-50%);background:#202124;color:#fff;padding:10px 14px;border-radius:12px;font-size:.77rem;width:220px;line-height:1.55;z-index:300;pointer-events:none;box-shadow:var(--el3)}
+.hltip::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:6px solid transparent;border-top-color:#202124}
+.hl:hover .hltip{display:block}
+.qwrap{max-width:600px}
+.qprog-lbl{display:flex;justify-content:space-between;font-size:.8125rem;color:var(--md-on-surface-variant);margin-bottom:6px;font-family:'Google Sans',sans-serif}
+.qprog-lbl b{color:var(--md-primary);font-weight:500}
+.liner{height:4px;background:var(--md-surface-high);border-radius:2px;margin-bottom:20px;overflow:hidden}
+.liner-fill{height:100%;background:var(--md-primary);border-radius:2px;transition:width .4s cubic-bezier(.4,0,.2,1)}
+.qcard{background:var(--md-surface);border-radius:24px;box-shadow:var(--el1);padding:24px}
+.qbadge{display:inline-flex;align-items:center;gap:5px;font-size:.75rem;font-family:'Google Sans',sans-serif;font-weight:500;color:var(--md-on-surface-variant);margin-bottom:14px;background:var(--md-surface-variant);padding:4px 12px;border-radius:50px}
+.qtext{font-family:'Google Sans Display',sans-serif;font-size:1.15rem;font-weight:500;line-height:1.5;color:var(--md-on-surface);margin-bottom:10px}
+.qexcerpt{font-style:italic;font-size:.85rem;color:var(--md-on-surface-variant);padding:10px 14px;background:var(--md-surface-container);border-radius:8px;border-left:3px solid var(--md-primary);margin-bottom:20px;line-height:1.6}
+.qopts{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px}
+.qopt{padding:12px 16px;border:1px solid var(--md-outline);border-radius:12px;background:var(--md-surface);cursor:pointer;font-size:.875rem;color:var(--md-on-surface);text-align:left;font-family:'Roboto',sans-serif;line-height:1.4;transition:all .15s;position:relative;overflow:hidden}
+.qopt::before{content:'';position:absolute;inset:0;background:var(--md-primary);opacity:0;transition:opacity .15s}
+.qopt:hover:not(:disabled)::before{opacity:.06}
+.qopt:hover:not(:disabled){border-color:var(--md-primary)}
+.qopt.correct{border-color:#137333;background:#E6F4EA;color:#137333;font-weight:500}
+.qopt.wrong{border-color:#C5221F;background:#FCE8E6;color:#C5221F}
+.qopt:disabled{cursor:default}
+.tinput{width:100%;padding:12px 16px;border:1px solid var(--md-outline);border-radius:12px;font-family:'Roboto',sans-serif;font-size:.9375rem;color:var(--md-on-surface);background:var(--md-surface);outline:none;margin-bottom:12px;transition:border .15s}
+.tinput:focus{border-color:var(--md-primary);border-width:2px}
+.tinput.correct{border-color:#137333;border-width:2px;background:#E6F4EA}
+.tinput.wrong{border-color:#C5221F;border-width:2px;background:#FCE8E6}
+.qfb{display:none;padding:12px 16px;border-radius:12px;font-size:.875rem;line-height:1.55;margin-bottom:14px}
+.qfb.on{display:block}
+.qfb.ok{background:#E6F4EA;color:#137333;border:1px solid #CEEAD6}
+.qfb.no{background:#FCE8E6;color:#C5221F;border:1px solid #FAD2CF}
+.btn-f{display:inline-flex;align-items:center;gap:6px;padding:10px 24px;border-radius:50px;border:none;background:var(--md-primary);color:#fff;font-family:'Google Sans',sans-serif;font-size:.875rem;font-weight:500;cursor:pointer;transition:box-shadow .2s,background .15s;letter-spacing:.1px}
+.btn-f:hover{box-shadow:var(--el2);background:#1557B0}
+.btn-o{display:inline-flex;align-items:center;gap:6px;padding:10px 24px;border-radius:50px;border:1px solid var(--md-outline);background:transparent;color:var(--md-primary);font-family:'Google Sans',sans-serif;font-size:.875rem;font-weight:500;cursor:pointer;transition:background .15s}
+.btn-o:hover{background:var(--md-primary-container)}
+.brow{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+.score-card{background:var(--md-surface);border-radius:24px;box-shadow:var(--el1);padding:48px 32px;text-align:center}
+.score-ring{width:120px;height:120px;border-radius:50%;background:var(--md-primary-container);display:flex;flex-direction:column;align-items:center;justify-content:center;margin:0 auto 20px}
+.score-big{font-family:'Google Sans Display',sans-serif;font-size:2.8rem;font-weight:500;color:var(--md-primary);line-height:1}
+.score-denom{font-size:1.1rem;color:var(--md-on-surface-variant)}
+.score-pct{font-family:'Google Sans',sans-serif;font-size:.78rem;color:var(--md-on-primary-container);font-weight:500;margin-top:2px}
+.score-msg{font-family:'Google Sans Display',sans-serif;font-size:1.2rem;color:var(--md-on-surface);margin-bottom:24px;line-height:1.5}
+.clist{display:flex;flex-direction:column;gap:12px}
+.citem{background:var(--md-surface);border-radius:16px;border:1px solid var(--md-outline);padding:20px;display:grid;grid-template-columns:48px 1fr;gap:16px;align-items:start;transition:box-shadow .2s,border-color .2s}
+.citem:hover{box-shadow:var(--el1);border-color:var(--md-primary)}
+.cicon{width:48px;height:48px;background:var(--md-surface-container);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0}
+.citem h3{font-family:'Google Sans',sans-serif;font-size:.9375rem;font-weight:500;color:var(--md-on-surface);margin-bottom:6px}
+.citem p{font-size:.875rem;color:var(--md-on-surface-variant);line-height:1.7}
+@media(max-width:768px){
+  .bar-subtitle,.bar-divider{display:none}
+  .main{padding:16px 12px 40px}
+  .vocab-grid{grid-template-columns:1fr}
+  .qopts{grid-template-columns:1fr}
+  .drow{grid-template-columns:64px 1fr;gap:8px}
+  .hltip{width:180px;font-size:.74rem}
+}
+@media(max-width:480px){
+  .nav-btn{padding:0 10px;font-size:.8rem}
+  .nav-btn span.ni{display:none}
+  .drow{grid-template-columns:54px 1fr}
+  .spill{font-size:.6rem;padding:4px 5px}
+  .score-big{font-size:2.2rem}
+}
+.hidden{display:none!important}
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <div class="top-bar-inner">
+    <div class="top-bar-title-row">
+      <div class="logo">
+        <div class="logo-icon">📺</div>
+        <div class="logo-text"><span class="b">E</span><span class="r">n</span><span class="y">g</span><span class="g">l</span><span class="k">ish with Friends</span></div>
+      </div>
+      <div class="bar-divider"></div>
+      <div class="bar-subtitle">The One with All the Poker · S01E18</div>
+    </div>
+    <nav class="top-nav">
+      <a class="nav-btn" href="https://tinyimprove-rgb.github.io/learnenglishwith-friends/"><span class="ni">🏠</span> Home</a>
+      <button class="nav-btn active" onclick="showSec('vocab')"><span class="ni">📖</span> Vocab</button>
+      <button class="nav-btn" onclick="showSec('dialogue')"><span class="ni">💬</span> Script</button>
+      <button class="nav-btn" onclick="showSec('quiz')"><span class="ni">🎯</span> Quiz</button>
+      <button class="nav-btn" onclick="showSec('culture')"><span class="ni">🌎</span> Culture</button>
+      <button class="nav-btn" id="reviewNavBtn" onclick="showSec('review')"><span class="ni">★</span> Review <span class="rev-badge" id="revBadge">0</span></button>
+    </nav>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<main class="main">
+
+  <!-- VOCAB -->
+  <div id="vocab" class="section active">
+    <div class="page-hd">
+      <h1 class="page-title">Vocabulary & Slang</h1>
+      <p class="page-sub">Every key word, phrase, and expression from this episode. Tap any card to reveal the meaning + an example sentence. Tap ★ to save words for later review.</p>
+    </div>
+    <div class="search-wrap">
+      <div class="search-bar">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="searchInput" placeholder="Search words, meanings, examples…" oninput="doSearch(this.value)">
+        <button class="search-x" id="searchX" onclick="clearSearch()">✕</button>
+      </div>
+    </div>
+    <div class="search-count" id="searchCount"></div>
+    <div class="chip-row" id="chips">
+      <div class="chip active" data-tag="all" onclick="filterV('all',this)">All</div>
+      <div class="chip" data-tag="slang" onclick="filterV('slang',this)">🔥 Slang</div>
+      <div class="chip" data-tag="idiom" onclick="filterV('idiom',this)">🎭 Idioms</div>
+      <div class="chip" data-tag="vocab" onclick="filterV('vocab',this)">📚 Vocabulary</div>
+      <div class="chip" data-tag="humor" onclick="filterV('humor',this)">😂 Comedy</div>
+      <div class="chip" data-tag="phrasal" onclick="filterV('phrasal',this)">🔗 Phrasal Verbs</div>
+      <div class="chip" data-tag="expression" onclick="filterV('expression',this)">💡 Expressions</div>
+      <div class="chip" data-tag="romantic" onclick="filterV('romantic',this)">❤️ Romantic</div>
+      <div class="chip" data-tag="business" onclick="filterV('business',this)">💼 Business</div>
+    </div>
+    <div class="vocab-grid" id="vocabGrid"></div>
+    <div class="no-results" id="noRes">
+      <div class="no-results-icon">🔎</div>
+      <p>No results for <b id="noResQ"></b>.<br>Try a different word or clear the search.</p>
+    </div>
+  </div>
+
+  <!-- DIALOGUE -->
+  <div id="dialogue" class="section">
+    <div class="page-hd">
+      <h1 class="page-title">Annotated Script</h1>
+      <p class="page-sub">Key lines with <span style="background:#FEF3C7;border-bottom:2px solid #FBBC04;padding:0 3px;border-radius:2px">highlighted words</span>. Hover or tap to see instant definitions.</p>
+    </div>
+    <div class="dlist" id="dlines"></div>
+  </div>
+
+  <!-- QUIZ -->
+  <div id="quiz" class="section">
+    <div class="page-hd">
+      <h1 class="page-title">Quiz Yourself</h1>
+      <p class="page-sub">Multiple choice and fill-in-the-blank. Questions shuffle on every attempt.</p>
+    </div>
+    <div class="qwrap" id="quizContainer"></div>
+  </div>
+
+  <!-- CULTURE -->
+  <div id="culture" class="section">
+    <div class="page-hd">
+      <h1 class="page-title">Culture Notes</h1>
+      <p class="page-sub">Understanding the American culture, comedy, and references inside this episode.</p>
+    </div>
+    <div class="clist" id="cNotes"></div>
+  </div>
+
+  <!-- REVIEW -->
+  <div id="review" class="section">
+    <div class="page-hd">
+      <h1 class="page-title">🔖 Review List</h1>
+      <p class="page-sub">Words you saved for review. Go back to Vocab and tap the ★ button on any card to add more.</p>
+    </div>
+    <div id="reviewContent"></div>
+  </div>
+
+</main>
+
+<script>
+// ── SAVED WORDS STATE ──
+let savedWords = new Set();
+
+function toggleSave(wordIndex, btn, event) {
+  event.stopPropagation();
+  if (savedWords.has(wordIndex)) {
+    savedWords.delete(wordIndex);
+    btn.textContent = '☆';
+    btn.classList.remove('saved');
+    btn.title = 'Save for review';
+    showToast('Removed from review list');
+  } else {
+    savedWords.add(wordIndex);
+    btn.textContent = '★';
+    btn.classList.add('saved');
+    btn.title = 'Remove from review';
+    showToast('Saved! Tap Review tab to study ✨');
+  }
+  updateBadge();
+  if (document.getElementById('review').classList.contains('active')) renderReview();
+}
+
+function updateBadge() {
+  const badge = document.getElementById('revBadge');
+  const count = savedWords.size;
+  badge.textContent = count;
+  if (count > 0) {
+    badge.classList.add('show');
+    badge.classList.remove('pop');
+    void badge.offsetWidth;
+    badge.classList.add('pop');
+  } else {
+    badge.classList.remove('show');
+  }
+}
+
+let toastTimer;
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 2200);
+}
+
+function renderReview() {
+  const el = document.getElementById('reviewContent');
+  if (savedWords.size === 0) {
+    el.innerHTML = `<div class="review-empty"><div class="review-empty-icon">★</div><h2>Your review list is empty</h2><p>Go to <b>Vocab</b> and tap the <b>★</b> button on any card to save words here.</p></div>`;
+    return;
+  }
+  const saved = [...savedWords].map(i => ({i, ...VD[i]}));
+  el.innerHTML = `
+    <div class="review-topbar">
+      <span class="review-count-pill">${saved.length} word${saved.length !== 1 ? 's' : ''} saved</span>
+      <button class="clear-all-btn" onclick="clearAllReview()">🗑️ Clear all</button>
+    </div>
+    <div class="vocab-grid">
+      ${saved.map(v => `
+        <div class="rcard vcard open" id="rcard-${v.i}">
+          <button class="remove-btn" onclick="removeFromReview(${v.i})" title="Remove">✕</button>
+          <div class="vtag" style="background:var(--md-primary-container);color:var(--md-on-primary-container)">${TL[v.tag]||v.tag}</div>
+          <div class="vword">${v.word}</div>
+          ${v.ph ? `<div class="vphon">${v.ph}</div>` : ''}
+          <div class="vctx">"${v.ctx}"</div>
+          <div class="vmean" style="display:block">${v.mean}<div class="ex">💡 ${v.ex}</div></div>
+        </div>`).join('')}
+    </div>`;
+}
+
+function removeFromReview(idx) {
+  const card = document.getElementById(`rcard-${idx}`);
+  if (card) {
+    card.classList.add('removing');
+    setTimeout(() => {
+      savedWords.delete(idx);
+      const saveBtn = document.querySelector(`.save-btn[data-idx="${idx}"]`);
+      if (saveBtn) { saveBtn.classList.remove('saved'); saveBtn.textContent = '☆'; }
+      updateBadge();
+      renderReview();
+    }, 280);
+  }
+}
+
+function clearAllReview() {
+  savedWords.forEach(idx => {
+    const saveBtn = document.querySelector(`.save-btn[data-idx="${idx}"]`);
+    if (saveBtn) { saveBtn.classList.remove('saved'); saveBtn.textContent = '☆'; }
+  });
+  savedWords.clear();
+  updateBadge();
+  renderReview();
+  showToast('Review list cleared');
+}
+
+// ── DATA ──
+const VD=[
+  // ── POKER TERMS ──
+  {word:"bluff",ph:"/blʌf/",tag:"vocab",ctx:`"I was bluffing." "And what is bluffing? Is it not another word for lying?"`,mean:"To pretend you have a stronger hand than you do in order to make opponents fold. Phoebe's question cuts right to the heart of it — bluffing IS a polite word for lying.",ex:"He had terrible cards but bluffed so convincingly that everyone else folded."},
+  {word:"fold",ph:"/fəʊld/",tag:"vocab",ctx:`"I fold like a cheap hooker who got hit in the stomach by a fat guy."`,mean:"To give up and drop out of a hand in poker, surrendering any chips already bet. Joey's version of 'I fold' is the most elaborate in television history.",ex:"She looked at her cards, looked at the pot, and quietly folded — not worth the risk."},
+  {word:"pot",ph:"/pɒt/",tag:"vocab",ctx:`"I'll raise you. [throws chips in pot]"`,mean:"The total amount of money in the centre of the table that the winner of the hand takes. Gets bigger as players raise each other.",ex:"By the final hand there was almost a hundred dollars in the pot — everyone leaned forward."},
+  {word:"flush",ph:"/flʌʃ/",tag:"vocab",ctx:`"You better hop outta the shower, cause I gotta flush."`,mean:"A poker hand where all five cards are the same suit. Ross uses it as a triumphant reveal — and Rachel immediately beats it with four sixes.",ex:"A flush beats a straight but loses to a full house — which is exactly what Rachel had."},
+  {word:"full house",ph:"/fʊl haʊs/",tag:"vocab",ctx:`"Full house." "You got me."`,mean:"A poker hand with three of one rank and two of another — beats a flush. Rachel's winning hand in the final showdown against Ross.",ex:"Full house — three aces and two kings. The table went silent."},
+  {word:"straight",ph:"/streɪt/",tag:"vocab",ctx:`"So I wouldn't need any, right? Cause I have a straight."`,mean:"Five cards in consecutive order regardless of suit. Monica has one on the first lesson night — though the girls don't quite understand the rules yet.",ex:"She laid down a straight — five, six, seven, eight, nine — and raked in the chips."},
+  {word:"ante",ph:"/ˈænti/",tag:"vocab",ctx:`"Everybody ante."`,mean:"The mandatory small bet every player puts in before cards are dealt to start the hand. Monica says it with great authority now that she's learned the terminology.",ex:"Everyone antes before the deal — it's the entry fee for each hand."},
+  {word:"raise",ph:"/reɪz/",tag:"vocab",ctx:`"I see your fifty cents and I raise you five dollars."`,mean:"To increase the current bet, forcing others to match it or fold. Rachel raises by ten times the agreed limit right after losing the job — emotion driving the game.",ex:"He called her bet and raised by twenty — forcing everyone else to make a decision."},
+  {word:"call",ph:"/kɔːl/",tag:"vocab",ctx:`"OK, I am calling your seventeen."`,mean:"To match the current bet exactly without raising, keeping yourself in the hand. Ross calls Rachel's final bet to force the showdown.",ex:"She raised to fifty, he thought for a long moment, then called — cards on the table."},
+  {word:"check",ph:"/tʃɛk/",tag:"vocab",ctx:`"Alright, check." "Check."`,mean:"To pass without betting when no one else has bet yet — staying in without spending. Monica and Joey both check, then Ross comes in with fifty cents.",ex:"When it was his turn and nobody had bet yet, he checked — keeping his options open."},
+  {word:"blind",ph:"/blaɪnd/",tag:"vocab",ctx:`"Cincinnati, no blinds, everybody ante."`,mean:"A forced bet placed by one or two players before cards are dealt, regardless of hand strength. Monica specifies 'no blinds' — everyone antes instead.",ex:"In Texas Hold'em, the two players left of the dealer post the small and big blinds."},
+  {word:"five card draw",ph:"",tag:"vocab",ctx:`"Five card draw, jacks or better, nothing wild, everybody ante."`,mean:"A classic poker variant where each player gets five cards and can exchange some for new ones once. The final emotional hand is played this way.",ex:"Five card draw is one of the oldest poker formats — simple but tense."},
+  {word:"shuffle",ph:"/ˈʃʌfəl/",tag:"vocab",ctx:`"I think I'm gonna give it a go." [shuffles cards expertly]`,mean:"To mix up the deck of cards randomly before dealing. Rachel's expert shuffle stuns all three guys into silence — she's been hiding her skill.",ex:"She cut the deck, shuffled it once, twice, three times — effortless and fast."},
+  // ── PHRASAL VERBS ──
+  {word:"running low on",ph:"/ˈrʌnɪŋ ləʊ/",tag:"phrasal",ctx:`"Rach, we're running low on resumes over here."`,mean:"To be almost out of a supply of something. Ross notices they're nearly out of printed copies of Rachel's resume.",ex:"We're running low on time — everyone needs to wrap up their presentations."},
+  {word:"go for",ph:"/ɡəʊ fɔː/",tag:"phrasal",ctx:`"I'm going for anything here, OK?"`,mean:"To try to get or achieve something; to apply for something. Rachel means she's applying to every job available, no matter how unlikely.",ex:"She applied everywhere — she was going for anything that paid a decent salary."},
+  {word:"hand over",ph:"/hænd ˈəʊvər/",tag:"phrasal",ctx:`"So, you gals wanna hand over your money now?"`,mean:"To give something to someone, often with a suggestion of reluctance. Ross mockingly invites the girls to surrender their money before the game even starts.",ex:"The customs officer told him to hand over his passport for inspection."},
+  {word:"duck under",ph:"/dʌk ˈʌndər/",tag:"phrasal",ctx:`"[The guys all duck under the table.]"`,mean:"To quickly lower your body to get below something — here, to physically hide from Monica's reaction to the Pictionary joke.",ex:"When the ball flew toward them, they all ducked under the table."},
+  {word:"give it a go",ph:"/ɡɪv ɪt ə ɡəʊ/",tag:"phrasal",ctx:`"I think I'm gonna give it a go."`,mean:"To attempt something, especially for the first time or with uncertainty. Rachel says it right before shocking everyone with her expert shuffle.",ex:"I've never tried surfing before, but I'm willing to give it a go."},
+  // ── SLANG ──
+  {word:"jerk",ph:"/dʒɜːk/",tag:"slang",ctx:`"Can you believe what a jerk Ross was being?"`,mean:"An unkind, selfish, or foolish person. Rachel uses it to describe Ross's aggressive, competitive behaviour at the poker table.",ex:"He forgot her birthday and didn't even apologize — what a jerk."},
+  {word:"bucko",ph:"/ˈbʌkəʊ/",tag:"slang",ctx:`"Hop back in bucko, cause I got four sixes!"`,mean:"Informal address — roughly 'buddy' or 'pal,' but used here triumphantly. Rachel uses it to gloat at Ross after beating his flush with four of a kind.",ex:"Not so fast, bucko — I've got the winning hand right here."},
+  {word:"monkey boy",ph:"",tag:"slang",ctx:`"We'll see who has the last laugh there, monkey boy."`,mean:"A mildly insulting nickname used playfully here. Rachel uses it to taunt Ross — extra funny because Ross literally owns a monkey.",ex:"Think you've already won, do you, monkey boy? We'll see about that."},
+  {word:"shy",ph:"/ʃaɪ/",tag:"slang",ctx:`"Joey, I'm a little shy."`,mean:"Short of a required amount of money — informal poker slang. Ross doesn't have enough chips and asks Joey and Chandler to cover him.",ex:"I'm five dollars shy — can anyone spot me until I get to an ATM?"},
+  {word:"inner",ph:"/ˈɪnər/",tag:"slang",ctx:`"I couldn't be inner."`,mean:"More 'in' — Rachel's invented superlative meaning she's as committed to the hand as possible. A made-up poker term that works perfectly in context.",ex:"A great example of how poker slang can be extended for comic effect."},
+  {word:"big ones",ph:"",tag:"slang",ctx:`"Rachel, you owe fifteen big ones."`,mean:"Dollars — informal. 'Big ones' means the stated amount in dollars, often used to make a sum sound more impressive.",ex:"The repair ended up costing two hundred big ones — more than she'd budgeted."},
+  // ── IDIOMS ──
+  {word:"sick of",ph:"/sɪk ɒv/",tag:"idiom",ctx:`"I'm sick of the lousy tips, I'm sick of being called 'Excuse me...'"`,mean:"Completely fed up with; unable to tolerate any more of something. Rachel is at her limit with waitressing — this complaint launches the whole job-search plot.",ex:"I'm sick of waiting — if they're not here in ten minutes, I'm leaving."},
+  {word:"how come",ph:"/haʊ kʌm/",tag:"idiom",ctx:`"How come you guys have never played poker with us?"`,mean:"Why? / For what reason? An informal alternative to 'why' — common in American spoken English.",ex:"How come you didn't tell me about the party? I would've come."},
+  {word:"lame excuse",ph:"/leɪm ɪkˈskjuːs/",tag:"idiom",ctx:`"That is such a lame excuse!"`,mean:"A weak, unconvincing, or pathetic reason for something. Monica calls out the guys for pretending no women know how to play poker.",ex:"'I forgot' is a lame excuse — you had three reminders on your phone."},
+  {word:"play for real",ph:"",tag:"idiom",ctx:`"Let's play for real."`,mean:"To play seriously with real consequences — money, stakes, genuine competition. Monica signals the training session is over; now it's a proper game.",ex:"Enough practice — let's play for real this time."},
+  {word:"high stakes",ph:"/haɪ steɪks/",tag:"idiom",ctx:`"High stakes... big bucks..."`,mean:"A situation with large amounts of money (or risk) involved. Monica says it dramatically as she tries to set the competitive tone.",ex:"This is a high stakes negotiation — one wrong word and the deal falls apart."},
+  {word:"big bucks",ph:"/bɪɡ bʌks/",tag:"idiom",ctx:`"High stakes... big bucks..."`,mean:"A large amount of money — informal American English. Used ironically here; they're playing for a few dollars.",ex:"She turned her hobby into a business and started making big bucks."},
+  {word:"last minute",ph:"/lɑːst ˈmɪnɪt/",tag:"idiom",ctx:`"Last minute lesson, last minute lesson."`,mean:"Done right before a deadline or the start of something. Chandler tries to squeeze in a final tip for Joey right before the game gets serious.",ex:"She crammed in a last minute review the night before the exam."},
+  {word:"rematch",ph:"/ˈriːmætʃ/",tag:"idiom",ctx:`"We want a rematch."`,mean:"A second game or competition against the same opponent, especially after a loss. Monica demands one immediately after the girls lose the first session.",ex:"After losing the championship, they demanded a rematch the following season."},
+  {word:"way off",ph:"/weɪ ɒf/",tag:"idiom",ctx:`"You are way off, pal."`,mean:"Completely wrong; far from the truth. Ross tells Chandler his theory about Rachel is completely mistaken — but Joey immediately agrees with Chandler.",ex:"Your estimate was way off — the actual cost was three times higher."},
+  {word:"same taste",ph:"",tag:"idiom",ctx:`"We have the same taste in clothes."`,mean:"Shared preferences or aesthetic sensibility. Rachel is excited about her job interview because she and the interviewer connect on a personal level.",ex:"They bonded immediately — they had the same taste in music, food, and films."},
+  {word:"chit-chat",ph:"/ˈtʃɪttʃæt/",tag:"idiom",ctx:`"OK, we done with the chit-chat?"`,mean:"Light, casual small talk — conversation that isn't about anything serious. Monica uses it to signal she's done being polite and ready to compete.",ex:"After five minutes of chit-chat, she got straight to the point of the meeting."},
+  {word:"tough hand to beat",ph:"",tag:"idiom",ctx:`"That's a tough hand to beat."`,mean:"A very strong poker hand that's hard to win against. Joey says it to console Ross — but the real meaning is: Rachel was a tough opponent in every sense.",ex:"A full house is a tough hand to beat unless your opponent has four of a kind or better."},
+  {word:"last laugh",ph:"/lɑːst lɑːf/",tag:"idiom",ctx:`"We'll see who has the last laugh there, monkey boy."`,mean:"The final victory or advantage — the one who laughs last is the one who ultimately wins.",ex:"He was mocked for his idea, but when it made millions, he had the last laugh."},
+  {word:"stepped on my point",ph:"",tag:"idiom",ctx:`"Kinda stepped on my point there, Mon."`,mean:"To ruin or undermine someone else's message by going too far or saying too much right after them. Rachel made a calm comeback; Monica's dramatic rant overshadowed it.",ex:"I was trying to be subtle, but he stepped all over my point with a five-minute speech."},
+  {word:"read 'em and weep",ph:"/riːd əm ənd wiːp/",tag:"idiom",ctx:`"Read 'em and weep."`,mean:"Classic poker phrase: 'look at my winning cards and feel sorry for yourself.' Ross says it about Joey's cards before Joey starts actually crying.",ex:"He laid his royal flush on the table and said, 'read 'em and weep.'"},
+  // ── EXPRESSIONS ──
+  {word:"get your ya-yas",ph:"/jɑː jɑːz/",tag:"expression",ctx:`"You get your ya-yas by taking money from all of your friends."`,mean:"To get your thrills, satisfaction, or excitement — an informal expression for finding pleasure in something. Rachel accuses Ross of enjoying winning at others' expense.",ex:"Some people get their ya-yas from extreme sports; he got his from a perfectly brewed coffee."},
+  {word:"not a nice guy",ph:"",tag:"expression",ctx:`"Once those cards are dealt… I'm not a nice guy."`,mean:"Ross's self-mythologizing poker persona — he's trying to be intimidating, but Chandler immediately mocks it as a 'Black Bart speech.'",ex:"A perfect example of how someone can build up a tough image that no one actually believes."},
+  {word:"full of it",ph:"",tag:"expression",ctx:`"Were you just full of it?"`,mean:"Saying things you don't mean; talking nonsense or making empty threats. Rachel calls Ross out after he folds — he said he was a ruthless player and then backed down.",ex:"He promised to run a marathon but never trained once — he was completely full of it."},
+  {word:"pure crap",ph:"",tag:"expression",ctx:`"Everything you hear at a poker game is pure crap."`,mean:"Completely worthless information; absolute nonsense. Aunt Iris's first poker lesson: don't believe anything anyone tells you at the table.",ex:"Don't believe the sales pitch — it's pure crap designed to make you spend more."},
+  {word:"the fifth dentist caved",ph:"",tag:"expression",ctx:`"The fifth dentist caved and now they're all recommending Trident?"`,mean:"A reference to the old Trident gum ad slogan: 'four out of five dentists recommend Trident.' Chandler guesses the fifth holdout finally agreed — a classic pop-culture non-sequitur guess.",ex:"Classic Chandler: he guesses Rachel's news using a decades-old toothpaste commercial."},
+  {word:"the mother ship is calling you home",ph:"",tag:"expression",ctx:`"It's like the mother ship is calling you home."`,mean:"Phoebe's poetic way of saying: this is where you truly belong. Saks Fifth Avenue is Rachel's natural habitat — luxury fashion.",ex:"When she walked into the five-star kitchen for the first time, it felt like the mother ship was calling her home."},
+  {word:"I hit him with my car",ph:"",tag:"expression",ctx:`"I think I hit him with my car." "No! That's bluffing."`,mean:"Aunt Iris's demonstration of a poker bluff — she invents a shocking story to see if the girls react. The 'lesson number one' moment.",ex:"A perfect demonstration: shock someone with false information and watch their reaction."},
+  {word:"I'm in",ph:"/aɪm ɪn/",tag:"expression",ctx:`"Oh, I am very in."`,mean:"I'm participating; I'm staying in this hand. The simplest poker declaration — and Rachel uses it as a statement of personal determination in the final hand.",ex:"You're doing another round? I'm in."},
+  {word:"I'm out",ph:"/aɪm aʊt/",tag:"expression",ctx:`"I'm out." [throws in cards]`,mean:"I'm folding; I'm withdrawing from this hand. The opposite of 'I'm in' — said when your hand isn't worth the risk.",ex:"After seeing the raise, he looked at his cards one more time and said, 'I'm out.'"},
+  {word:"hop back in",ph:"",tag:"expression",ctx:`"Hop back in bucko, cause I got four sixes!"`,mean:"Get back in the game — used here triumphantly to invite Ross back into defeat. Rachel uses it after beating his flush.",ex:"You folded too early — hop back in, there's still a hand to play."},
+  {word:"couldn't be more out",ph:"",tag:"expression",ctx:`"Couldn't be more out."`,mean:"Emphatically folding — an intensified version of 'I'm out.' Chandler's way of saying he's as far out as it's possible to be.",ex:"After seeing the pot size, I couldn't be more out — that's not my kind of risk."},
+  {word:"get your hands outta there",ph:"",tag:"expression",ctx:`"Get your hands out of there! No!"`,mean:"Stop touching something that isn't yours — said with urgency. Rachel refuses to show Ross her cards and physically blocks him.",ex:"Get your hands out of there — those are my files, not yours."},
+  {word:"hello, kettle? This is Monica. You're black.",ph:"",tag:"expression",ctx:`"Oh, hello, kettle? This is Monica. You're black."`,mean:"A twist on the idiom 'the pot calling the kettle black' — accusing someone of the same fault they criticize in others. Phoebe uses it because Monica is just as competitive as Ross.",ex:"The full idiom is: 'the pot calling the kettle black' — here Phoebe personalises it brilliantly for Monica."},
+  {word:"I beg to differ",ph:"/aɪ bɛɡ tə ˈdɪfər/",tag:"expression",ctx:`"Oh, I beg to differ. The Pictionary incident?"`,mean:"A polite but firm way of disagreeing with what someone just said. Rachel uses it to point out that Monica is just as competitive as Ross.",ex:"I beg to differ — the data tells a completely different story."},
+  // ── VOCABULARY ──
+  {word:"proofread",ph:"/ˈpruːfriːd/",tag:"vocab",ctx:`"Rach, did you proofread these?"`,mean:"To carefully read a document to check for and correct errors. Ross notices a typo in Rachel's resume — the source of the episode's opening comedy.",ex:"Always proofread your CV before sending it — one typo can make a terrible first impression."},
+  {word:"syllable",ph:"/ˈsɪləbəl/",tag:"vocab",ctx:`"You can't serve food with more than one syllable."`,mean:"A unit of sound in a word — one vowel sound, possibly with surrounding consonants. Joey's rule: poker food must be simple. 'Chips' = 1 syllable ✅. 'Salmon roulettes' = many ❌.",ex:"'Potato' has three syllables: po-ta-to. 'Chip' has one."},
+  {word:"curse",ph:"/kɜːs/",tag:"vocab",ctx:`"I cursed it. So now bad things will happen to he who spends it."`,mean:"To put a supernatural hex or spell on something, causing bad luck. Phoebe curses the money she gives the guys — a perfectly logical Phoebe move.",ex:"In folklore, cursed objects bring misfortune to anyone who possesses them."},
+  {word:"gesture",ph:"/ˈdʒɛstʃər/",tag:"vocab",ctx:`"I was gesturing, and the plate slipped out of my hand."`,mean:"To make a hand or body movement to express something. Monica's euphemism for whatever she did during Pictionary that resulted in a broken plate.",ex:"He gestured wildly while telling the story, knocking over three glasses."},
+  {word:"competitive",ph:"/kəmˈpɛtɪtɪv/",tag:"vocab",ctx:`"He can get really competitive."`,mean:"Having a strong desire to win or outdo others. Monica says it about Ross — Phoebe immediately points out Monica is exactly the same.",ex:"She's so competitive that she turned a casual board game into a three-hour grudge match."},
+  {word:"Pictionary",ph:"/ˈpɪkʃənəri/",tag:"humor",ctx:`"The Pictionary incident?" "That was not an incident!"`,mean:"A board game where players draw clues for teammates to guess. Monica's explosive reaction to losing at Pictionary is presented as a known, documented event — 'the incident.'",ex:"A running joke: everyone in the group remembers 'the Pictionary incident' — Monica does not want to discuss it."},
+  {word:"Saks Fifth Avenue",ph:"/sæks fɪfθ ˈævənjuː/",tag:"vocab",ctx:`"Saks... Fifth... Avenue."`,mean:"One of the most prestigious luxury department stores in the US, located on Fifth Avenue in New York City. Rachel's dream destination — both as a shopper and (apparently) as an employee.",ex:"Saks Fifth Avenue is one of New York's most iconic luxury retailers, known for high fashion and designer goods."},
+  {word:"assistant buyer",ph:"/əˈsɪstənt ˈbaɪər/",tag:"vocab",ctx:`"Assistant buyer. Oh! I would be shopping... for a living!"`,mean:"A retail professional who helps select and purchase merchandise for a store to sell. Rachel's description — 'shopping for a living' — is both accurate and wonderfully her.",ex:"An assistant buyer works with designers and suppliers to choose what goes on the shelves each season."},
+  {word:"crudités",ph:"/ˈkruːdɪteɪ/",tag:"humor",ctx:`"We've got salmon roulettes and assorted crudités."`,mean:"Raw cut vegetables served as a starter or snack — a French culinary term. Monica serving this at a poker game perfectly captures the class divide between her and the guys.",ex:"The appetiser platter included crudités with three kinds of dip — carrots, celery, and peppers."},
+  {word:"Cincinnati",ph:"/ˌsɪnsɪˈnæti/",tag:"vocab",ctx:`"Alright, Cincinnati, no blinds, everybody ante."`,mean:"A poker variant where players get five cards and can swap them strategically. Monica announces it with complete confidence — she's been studying.",ex:"Cincinnati is a draw poker game with an open community card twist — more complex than five-card draw."},
+  {word:"temple",ph:"/ˈtɛmpəl/",tag:"vocab",ctx:`"Little veins popping out on your temple."`,mean:"The flat area at the side of the head, between the eye and the ear. Rachel describes Ross's visible fury: face red, veins showing at the temples.",ex:"He was so stressed you could see the veins in his temple pulsing."},
+  {word:"exert power over",ph:"/ɪɡˈzɜːt ˈpaʊər/",tag:"vocab",ctx:`"I have to win money to exert my power over women."`,mean:"To use one's authority or influence to dominate others. Rachel's sarcastic impersonation of 'a man' at the poker table.",ex:"A leader who constantly tries to exert power over the team usually ends up with a resentful staff."},
+  {word:"The Lion Sleeps Tonight",ph:"",tag:"humor",ctx:`"The Lion Sleeps Tonight starts to play. Marcel starts to dance."`,mean:"A 1961 song originally by Solomon Linda, popularized by The Tokens. Marcel's obsession with it is a running Season 1 joke — Ross is forced to listen to it on loop.",ex:"One of the show's great running gags: Marcel loves this song and Ross simply cannot stop him."},
+];
+
+const DD=[
+  // ── SCENE 1: Monica's Apartment — Resumes ──
+  {sp:"Ross",txt:`Rach, we're <span class="hl">running low on<span class="hltip">🔗 PHRASAL — Almost out of a supply of something. They're nearly out of printed copies of Rachel's resume.</span></span> resumes over here.`},
+  {sp:"Monica",txt:"Do you really want a job with Popular Mechanics?"},
+  {sp:"Chandler",txt:"Well, if you're gonna work for mechanics, those are the ones to work for."},
+  {sp:"Rachel",txt:`Hey, look, you guys, I'm <span class="hl">going for<span class="hltip">🔗 PHRASAL — Trying to get or achieve something. Rachel is applying to every job available, no matter how unlikely.</span></span> anything here, OK? I cannot be a waitress anymore, I mean it. I'm <span class="hl">sick of<span class="hltip">🎭 IDIOM — Completely fed up with; unable to tolerate any more. Rachel has reached her absolute limit with waitressing.</span></span> the lousy tips, I'm sick of being called 'Excuse me...'`},
+  {sp:"Ross",txt:`Rach, did you <span class="hl">proofread<span class="hltip">📚 VOCAB — Carefully read a document to check for errors. Ross has spotted a typo in Rachel's resume.</span></span> these?`},
+  {sp:"Rachel",txt:"Uh... yeah, why?"},
+  {sp:"Ross",txt:"Uh, nothing, I'm sure they'll be impressed with your excellent computer skills."},
+  {sp:"Rachel",txt:"Oh my Goood! Oh, do you think it's on all of them?"},
+  {sp:"Joey",txt:"Oh no, I'm sure the Xerox machine caught a few."},
+  // ── SCENE 2: Central Perk ──
+  {sp:"Monica",txt:"Hey, guys."},
+  {sp:"Chandler",txt:"Hey."},
+  {sp:"Rachel",txt:"Hey... hi, ladies... uh, can I get you anything? Did you bring the mail?"},
+  {sp:"Monica",txt:"Lots of responses."},
+  {sp:"Rachel",txt:"Really? Sure, we have scones left! OK, read them to me."},
+  {sp:"Phoebe",txt:"Dear Ms. Green, thank you for your inquiry, however... oh... [crumples up letter]"},
+  {sp:"Rachel",txt:"We have apple cinnamon..."},
+  {sp:"Monica",txt:"OK... Dear Ms. Green... yeah... yeah... yeah... No. [crumples up letter]"},
+  {sp:"Phoebe",txt:"Wow!"},
+  {sp:"Rachel",txt:"What?"},
+  {sp:"Phoebe",txt:"Your Visa bill is huge!"},
+  {sp:"Rachel",txt:"Give me that!"},
+  {sp:"Chandler",txt:"You know, I can't believe you. Linda is so great! Why won't you go out with her again?"},
+  {sp:"Ross",txt:"I don't know."},
+  {sp:"Chandler",txt:"Is this still about her whole 'The Flintstones could've really happened' thing?"},
+  {sp:"Ross",txt:"No, it's not just that. It's just — I want someone who does something for me, y'know? Who gets my heart pounding, who makes me... [stares lovingly at Rachel]"},
+  {sp:"Chandler",txt:"...little playthings with yarn?"},
+  {sp:"Ross",txt:"What?"},
+  {sp:"Chandler",txt:"Could you want her more?"},
+  {sp:"Ross",txt:"Who?"},
+  {sp:"Chandler",txt:"Dee, the sarcastic sister from What's Happening."},
+  {sp:"Ross",txt:"Look, I am totally, totally over her, OK, I just... [Rachel comes over, Ross lays head on table] Hiiii!"},
+  {sp:"Rachel",txt:"Hi! How are you?"},
+  {sp:"Ross",txt:"We're fine, we're fine."},
+  {sp:"Rachel",txt:"OK. [walks away]"},
+  {sp:"Joey",txt:"Shut up!"},
+  {sp:"Chandler",txt:"We're not — we're not saying anything."},
+  {sp:"Ross",txt:"Uhhhh... Joey cried last night."},
+  {sp:"Joey",txt:"Thank you."},
+  {sp:"Chandler",txt:"We were playing poker..."},
+  {sp:"Joey",txt:"There was chocolate on the three. It looked like an eight, alright?"},
+  {sp:"Ross",txt:`Oh, guys, you should've seen him. '<span class="hl">Read 'em and weep.<span class="hltip">🎭 IDIOM — Classic poker phrase: look at my winning cards and feel sorry for yourself. Ross says it — then Joey actually weeps.</span></span>'`},
+  {sp:"Chandler",txt:"And then he did."},
+  {sp:"Rachel",txt:`Well, now, <span class="hl">how come<span class="hltip">🎭 IDIOM — Why? An informal American alternative to 'why.' Very common in spoken English.</span></span> you guys have never played poker with us?`},
+  {sp:"Phoebe",txt:"Yeah, what is that? Like, some kind of guy thing? Like, some kind of sexist guy thing? Like it's poker, so only guys can play?"},
+  {sp:"Ross",txt:"No, women are welcome to play."},
+  {sp:"Phoebe",txt:"Oh, OK, so then what is it? Some kind of... alright, what is it?"},
+  {sp:"Chandler",txt:"There just don't happen to be any women in our games."},
+  {sp:"Joey",txt:"Yeah, we just don't happen to know any women that know how to play poker."},
+  {sp:"Monica",txt:`Oh, please, that is such a <span class="hl">lame excuse!<span class="hltip">🎭 IDIOM — A weak, unconvincing reason. Monica calls out the guys for their feeble defence.</span></span>`},
+  {sp:"Monica",txt:"I mean, that's a typical guy response."},
+  {sp:"Ross",txt:"Excuse me, do any of you know how to play?"},
+  {sp:"Girls",txt:"No."},
+  {sp:"Rachel",txt:"But you could teach us."},
+  {sp:"Guys",txt:"No."},
+  // ── SCENE 3: First Poker Lesson ──
+  {sp:"Monica",txt:`So I wouldn't need any, right? Cause I have a <span class="hl">straight.<span class="hltip">🃏 POKER — Five cards in consecutive order. Monica has one on the very first practice hand.</span></span>`},
+  {sp:"Rachel",txt:"Oh, good for you!"},
+  {sp:"Phoebe",txt:"Congratulations!"},
+  {sp:"Chandler",txt:"OK Phoebs, how many do you want?"},
+  {sp:"Phoebe",txt:"OK, I just need two... the, um, ten of spades and the six of clubs."},
+  {sp:"Rachel",txt:"Oh wait, I have the ten of spades! Here! [gives it to Phoebe]"},
+  {sp:"Rachel",txt:"Oh, no no no no, that's OK, I don't need them. I'm going for fours."},
+  {sp:"Monica",txt:`Alright, here we go. We've got salmon roulettes and assorted <span class="hl">crudités.<span class="hltip">😂 COMEDY — Raw cut vegetables served as a starter — a French culinary term. Monica serving this at a poker game is perfect characterisation.</span></span>`},
+  {sp:"Joey",txt:`Whoa, whoa, whoa, Monica, what're you doin'? This is a poker game. You can't serve food with more than one <span class="hl">syllable.<span class="hltip">📚 VOCAB — A unit of sound in a word. Joey's rule: poker food must be simple. 'Chips' = 1 syllable ✅. 'Salmon roulettes' = many ❌.</span></span> It's gotta be like chips, or dip, or pretz— [look of realization]`},
+  {sp:"Monica",txt:`Alright, you know, we got it. Let's <span class="hl">play for real.<span class="hltip">💡 EXPRESSION — Play seriously with real consequences. Monica signals the training session is over; now it's a proper game.</span></span> <span class="hl">High stakes<span class="hltip">🎭 IDIOM — A situation with large amounts of money or risk involved.</span></span>... <span class="hl">big bucks<span class="hltip">🎭 IDIOM — A large amount of money — informal. Used ironically; they're playing for a few dollars.</span></span>...`},
+  {sp:"Ross",txt:"Alright, now, you sure? Phoebe just threw away two jacks because they didn't look happy..."},
+  {sp:"Phoebe",txt:"But... I'm ready, so, just deal."},
+  {sp:"Chandler",txt:`OK, alright, <span class="hl">last minute<span class="hltip">🎭 IDIOM — Done right before a deadline or the start of something. Chandler tries to squeeze in one final tip before the game begins.</span></span> lesson, last minute lesson. [holds up two cards] Joey... three... eight. Eight... three. [Joey is unamused] Alright babe, deal the cards.`},
+  // ── TIME LAPSE ──
+  {sp:"Monica",txt:"[throws down her cards] Dammit, dammit, dammit!"},
+  {sp:"Phoebe",txt:"Oh I see, so then, you were lying."},
+  {sp:"Joey",txt:"About what?"},
+  {sp:"Phoebe",txt:"About how good your cards were."},
+  {sp:"Joey",txt:`Heh... I was <span class="hl">bluffing.<span class="hltip">🃏 POKER — Pretending to have a stronger hand to make opponents fold. Phoebe's next question is the episode's funniest philosophical moment.</span></span>`},
+  {sp:"Phoebe",txt:"A-ha! And... what is bluffing? Is it not another word for... lying?"},
+  {sp:"Rachel",txt:"OK, sorry to break up this party, but I've got resumes to fax before work tomorrow... [gets up to leave]"},
+  {sp:"Chandler",txt:"Rach, Rach, we gotta settle."},
+  {sp:"Rachel",txt:"Settle what?"},
+  {sp:"Chandler",txt:"The... Jamestown colony of Virginia. You see, King George is giving us the land, so..."},
+  {sp:"Ross",txt:"The game, Rachel, the game. You owe us money for the game."},
+  {sp:"Joey",txt:"You know what, you guys? It's their first time, why don't we just forget about the money, alright?"},
+  {sp:"Monica",txt:"Hell no, we'll pay!"},
+  {sp:"Phoebe",txt:"OK, Monica? I had another answer all ready."},
+  {sp:"Monica",txt:"And you know what? We want a <span class=\"hl\">rematch.<span class=\"hltip\">🎭 IDIOM — A second game against the same opponent, especially after a loss. Monica demands one immediately.</span></span>"},
+  {sp:"Ross",txt:"Well that's fine with me. Could use the money."},
+  {sp:"Rachel",txt:`So basically, you <span class="hl">get your ya-yas<span class="hltip">💡 EXPRESSION — Get your thrills or satisfaction from something. Rachel accuses Ross of genuinely enjoying winning at others' expense.</span></span> by taking money from all of your friends.`},
+  {sp:"Ross",txt:"...Yeah."},
+  {sp:"Chandler",txt:"Yes, and I get my ya-yas from Ikea. You have to put them together yourself, but they cost a little less."},
+  {sp:"Ross",txt:`Look, Rachel, this is poker. I play to win, alright? In order for me to win, other people have to lose. So if you're gonna play poker with me, don't expect me to be a 'nice guy,' OK? Cause once those cards are dealt... [claps hands] I'm <span class="hl">not a nice guy.<span class="hltip">💡 EXPRESSION — Ross's self-mythologizing poker persona. Chandler immediately mocks it as a 'Black Bart speech.'</span></span>`},
+  {sp:"Joey",txt:"...Yeah?"},
+  {sp:"Ross",txt:"I'm not a nice guy."},
+  // ── SCENE 4: Ross's Apartment ──
+  {sp:"Chandler",txt:"Oh, did you get that from the 'I Love Rachel' pizzeria?"},
+  {sp:"Ross",txt:"You still on that?"},
+  {sp:"Chandler",txt:"Oh, come on. What was with that whole Black Bart speech? [mimicking] When I play poker, I'm not a nice guy!"},
+  {sp:"Ross",txt:`You are <span class="hl">way off, pal.<span class="hltip">🎭 IDIOM — Completely wrong; far from the truth. Ross insists Chandler's theory about Rachel is mistaken — but Joey immediately agrees with Chandler.</span></span>`},
+  {sp:"Joey",txt:"No, I don't think so, see Ross, because I think you love her."},
+  {sp:"Ross",txt:"Um.... no. See, I might've had feelings for her at one time — not any more. I just — I — "},
+  {sp:"Ross",txt:"Marcel! Where are you going with that disc?"},
+  {sp:"Ross",txt:`You are not putting that on again! Marcel, OK — if you press that button, you are in very, very big trouble.`},
+  {sp:"Ross",txt:`[<span class="hl">The Lion Sleeps Tonight<span class="hltip">😂 COMEDY — A 1961 song Marcel is obsessed with. A running Season 1 joke — Ross is forced to listen to it on loop while Marcel dances.</span></span> starts to play. Marcel starts to dance.]`},
+  // ── SCENE 5: Monica's Apartment — Kettle ──
+  {sp:"Rachel",txt:`Can you believe what a <span class="hl">jerk<span class="hltip">🔥 SLANG — An unkind, selfish, or foolish person. Rachel uses it to describe Ross's aggressive competitive behaviour at the table.</span></span> Ross was being?`},
+  {sp:"Monica",txt:`Yeah, I know. He can get really <span class="hl">competitive.<span class="hltip">📚 VOCAB — Having a strong desire to win or outdo others. Monica says it about Ross — Phoebe immediately points out Monica is exactly the same.</span></span>`},
+  {sp:"Phoebe",txt:"Ha. Ha, ha."},
+  {sp:"Monica",txt:"What?"},
+  {sp:"Phoebe",txt:`Oh, <span class="hl">hello, kettle? This is Monica. You're black.<span class="hltip">💡 EXPRESSION — A twist on 'the pot calling the kettle black' — criticising someone for faults you share. Phoebe personalises it brilliantly.</span></span>`},
+  {sp:"Monica",txt:"Please! I am not as bad as Ross."},
+  {sp:"Rachel",txt:`Oh, <span class="hl">I beg to differ.<span class="hltip">💡 EXPRESSION — A polite but firm way of disagreeing. Rachel uses it to raise the Pictionary incident as evidence.</span></span> The Pictionary incident?`},
+  {sp:"Monica",txt:`That was not an incident! I-I was <span class="hl">gesturing,<span class="hltip">📚 VOCAB — Making hand or body movements to express something. Monica's euphemism for whatever she did that broke the plate during Pictionary.</span></span> and the plate slipped out of my hand.`},
+  {sp:"Rachel",txt:"Oooooh. [reads letter] Oh! I got an interview! I got an interview!"},
+  {sp:"Monica",txt:"You're kidding! Where? Where?"},
+  {sp:"Rachel",txt:`<span class="hl">Saks... Fifth... Avenue.<span class="hltip">📚 VOCAB — One of the most prestigious luxury department stores in the US. Rachel's dream destination — both as a shopper and an employee.</span></span>`},
+  {sp:"Monica",txt:"Oh, Rachel!"},
+  {sp:"Phoebe",txt:`Oh, it's like <span class="hl">the mother ship is calling you home.<span class="hltip">💡 EXPRESSION — This is where you truly belong. Saks Fifth Avenue is Rachel's natural habitat — luxury fashion.</span></span>`},
+  {sp:"Monica",txt:"Well, what's the job?"},
+  {sp:"Rachel",txt:`<span class="hl">Assistant buyer.<span class="hltip">📚 VOCAB — A retail professional who helps select merchandise for a store. Rachel's description — 'shopping for a living' — is accurate and wonderfully her.</span></span> Oh! I would be shopping... for a living!`},
+  // ── Aunt Iris arrives ──
+  {sp:"Monica",txt:"OK, look. That is Aunt Iris. This woman has been playing poker since she was five. You gotta listen to every word she says."},
+  {sp:"Iris",txt:"Is Tony Randall dead?"},
+  {sp:"Rachel",txt:"No."},
+  {sp:"Monica",txt:"I don't think so."},
+  {sp:"Iris",txt:`Well, he may be now, because <span class="hl">I think I hit him with my car.<span class="hltip">💡 EXPRESSION — A shocking statement invented purely to test the girls' reactions — a live bluff demonstration. Lesson number one.</span></span>`},
+  {sp:"Iris",txt:`No! That's bluffing. Lesson number one. [walks in] Let me tell you something... everything you hear at a poker game is <span class="hl">pure crap.<span class="hltip">💡 EXPRESSION — Completely worthless information; absolute nonsense. Aunt Iris's core poker philosophy: trust nothing.</span></span> [to Phoebe] Nice earrings.`},
+  {sp:"Phoebe",txt:"Thank y— [thinks about it]"},
+  {sp:"Iris",txt:"Girls, sit down. Listen, I am parked at a meter. Let's do it."},
+  // ── SCENE 6: Ross's Apartment — Rematch Night ──
+  {sp:"Phoebe",txt:"Ross, could we please, please, please listen to anything else?"},
+  {sp:"Ross",txt:"Alright. [shuts off CD. Marcel runs into bedroom and slams the door] I'm gonna pay for that tonight."},
+  {sp:"Rachel",txt:"Hi! Guys! Guess what, guess what, guess what, guess what!"},
+  {sp:"Chandler",txt:`Um, ok... <span class="hl">the fifth dentist caved<span class="hltip">💡 EXPRESSION — Reference to the Trident gum slogan: 'four out of five dentists recommend Trident.' Chandler guesses the fifth holdout finally agreed — a classic pop-culture non-sequitur.</span></span> and now they're all recommending Trident?`},
+  {sp:"Rachel",txt:`Noooo... the interview! She loved me! She absolutely loved me. We talked for like two and a half hours, we have the <span class="hl">same taste<span class="hltip">🎭 IDIOM — Shared preferences or aesthetic sensibility. Rachel and the interviewer connected personally as well as professionally.</span></span> in clothes, and oh, I went to camp with her cousin... and the job is perfect. I can do this. I can do this well!`},
+  {sp:"All",txt:"That's great! That's wonderful!"},
+  {sp:"Rachel",txt:"Oh God, and then she told the funniest story—"},
+  {sp:"Monica",txt:"OK, great. You'll tell us and we'll laugh. Let's play poker."},
+  {sp:"Joey",txt:"Alright now listen, you guys, we talked about it, and if you don't want to play, we completely understand."},
+  {sp:"Chandler",txt:`Oh yes, yes, we could play some other game... like, uh, I don't know... <span class="hl">Pictionary?<span class="hltip">😂 COMEDY — A drawing guessing game. All three guys immediately duck under the table after Chandler says it — Monica's reaction to that word is legendary.</span></span>`},
+  {sp:"All Guys",txt:"[duck under the table]"},
+  {sp:"Monica",txt:"Ha, ha, very funny, very funny. But I think we'd like to give poker another try. Shall we, ladies?"},
+  {sp:"Ross",txt:"Uh, Rach, do you want me to shuffle those?"},
+  {sp:"Rachel",txt:`No, no, that's OK. Y'know, I think I'm gonna <span class="hl">give it a go.<span class="hltip">🔗 PHRASAL — To attempt something, especially with some uncertainty. Said right before Rachel's expert shuffle stuns everyone.</span></span>`},
+  {sp:"Rachel",txt:"Alright... [shuffles cards expertly — all three guys stare in amazement]"},
+  // ── TIME LAPSE — After first round of rematch ──
+  {sp:"Ross",txt:`So, Phoebs owes $7.50, Monica, you owe $10, and Rachel, you owe fifteen <span class="hl">big ones.<span class="hltip">🔥 SLANG — Dollars, informally. 'Big ones' makes the amount sound more significant than it is.</span></span>`},
+  {sp:"Joey",txt:"But hey, thanks for teachin' us Cross-Eyed Mary. You guys, we gotta play that at our regular game."},
+  {sp:"Phoebe",txt:`Alright, here's my $7.50. But I think you should know that this money is <span class="hl">cursed.<span class="hltip">📚 VOCAB — Hexed with a supernatural spell that causes bad luck. Phoebe curses the money she gives the guys — a perfectly logical Phoebe move.</span></span>`},
+  {sp:"Joey",txt:"What?"},
+  {sp:"Phoebe",txt:"Oh, I cursed it. So now bad things will happen to he who spends it."},
+  {sp:"Chandler",txt:"That's alright, I'll take it. Bad things happen to me anyway. This way I can break 'em up with a movie."},
+  {sp:"Ross",txt:"Well, that just leaves the big Green poker machine, who owes fifteen..."},
+  {sp:"Rachel",txt:`Mmm-hmmm. Oh, so typical. Ooo, I'm a man. Ooo, I have a penis. Ooo, I have to win money to <span class="hl">exert my power over<span class="hltip">📚 VOCAB — To use authority or influence to dominate others. Rachel's sarcastic impersonation of 'a man' at the poker table.</span></span> women. [hands over money]`},
+  {sp:"Monica",txt:"You know what? This is not over. We will play you again, and we will win, and you will lose, and you will beg, and we will laugh, and we will take every last dime you have, and you will hate yourselves forever."},
+  {sp:"Rachel",txt:`Hmm. Kinda <span class="hl">stepped on my point<span class="hltip">🎭 IDIOM — Undermined someone's message by going too far right after them. Rachel made a calm point; Monica's dramatic rant completely overshadowed it.</span></span> there, Mon.`},
+  // ── SCENE 7: Monica's Apartment — Second Rematch ──
+  {sp:"Ross",txt:`So, you gals wanna <span class="hl">hand over<span class="hltip">🔗 PHRASAL — To give something to someone, often reluctantly. Ross mockingly invites the girls to surrender before the game even starts.</span></span> your money now? That way, we don't have to go through the formality of actually playing.`},
+  {sp:"Rachel",txt:`Ooooh, that's fine. We'll see who has the <span class="hl">last laugh<span class="hltip">🎭 IDIOM — The final victory — whoever laughs last ultimately wins. Rachel says it as 'monkey boy' which is extra funny because Ross has an actual monkey.</span></span> there, <span class="hl">monkey boy.<span class="hltip">🔥 SLANG — A mildly insulting nickname used playfully. Extra funny here because Ross literally owns a monkey.</span></span>`},
+  {sp:"Monica",txt:`OK, we done with the <span class="hl">chit-chat?<span class="hltip">🎭 IDIOM — Light, casual small talk. Monica signals she's done being polite and is ready to compete seriously.</span></span> Are we ready to play some <span class="hl">serious poker?<span class="hltip">💡 EXPRESSION — Real, high-focus, competitive poker — not practice. Monica's war face.</span></span>`},
+  {sp:"Phoebe",txt:"Hey you guys, look, the one-eyed jack follows me wherever I go. [they look at her] Right, OK, serious poker."},
+  {sp:"Monica",txt:"Excuse me, where are you going?"},
+  {sp:"Ross",txt:"Uh... to the bathroom."},
+  {sp:"Monica",txt:"Do you want to go to the bathroom, or do you wanna play poker?"},
+  {sp:"Ross",txt:"I want to go to the bathroom. [exits]"},
+  {sp:"Joey",txt:"Alright, well, I'm gonna order a pizza."},
+  {sp:"Rachel",txt:"Oh no no no no no, I'm still waiting to hear from that job and the store closes at nine, so you can eat then."},
+  {sp:"Joey",txt:"That's fine. I'll just have a Tic-Tac to hold me over."},
+  {sp:"Monica",txt:`Alright, <span class="hl">Cincinnati,<span class="hltip">📚 VOCAB — A poker variant where players get five cards and can swap strategically. Monica announces it with complete authority.</span></span> no blinds, everybody <span class="hl">ante.<span class="hltip">🃏 POKER — The mandatory small bet every player puts in before cards are dealt.</span></span>`},
+  {sp:"Phoebe",txt:"[looks at her cards] Yes! [everyone looks at her] .... or no."},
+  {sp:"Ross",txt:"Alright. [to Rachel] Your money's mine, Green."},
+  {sp:"Rachel",txt:"Your fly is open, Geller. [he checks it, and zips up]"},
+  // ── TIME LAPSE ──
+  {sp:"Phoebe",txt:"You guys, you know what I just realized? 'Joker' is 'poker' with a 'J.' Coincidence?"},
+  {sp:"Chandler",txt:"Hey, that's... that's 'joincidence' with a 'C'!"},
+  {sp:"Phoebe",txt:"Yeah. Um... I'm out. [throws in cards]"},
+  {sp:"Rachel",txt:`<span class="hl">I'm in.<span class="hltip">💡 EXPRESSION — I'm staying in this hand. The simplest poker declaration — and Rachel uses it as a statement of personal determination.</span></span>`},
+  {sp:"Monica",txt:"Me too."},
+  {sp:"Joey",txt:"Me too. Alright, whattaya got."},
+  {sp:"Ross",txt:`Well, you better hop outta the shower, cause... I gotta <span class="hl">flush.<span class="hltip">🃏 POKER — All five cards the same suit. Ross reveals it triumphantly — Rachel immediately beats it with four sixes.</span></span>`},
+  {sp:"Rachel",txt:`Well, well, well, hop back in <span class="hl">bucko,<span class="hltip">🔥 SLANG — Informal address meaning 'buddy' or 'pal,' used triumphantly. Rachel gloats at Ross after beating his flush with four of a kind.</span></span> cause I got four sixes! [lays down cards] I won! I actually won! Oh my God! [collects chips, singing] Well, I have got your money, and you'll never see it...`},
+  {sp:"Rachel",txt:"And your fly's still open... [Ross looks down] Ha, I made you look...."},
+  // ── TIME LAPSE ──
+  {sp:"Rachel",txt:`I couldn't be <span class="hl">inner.<span class="hltip">🔥 SLANG — Rachel's invented superlative for 'very much in.' A made-up poker term that works perfectly in context.</span></span> Monica?`},
+  {sp:"Phoebe",txt:"Monica, in or out?"},
+  {sp:"Monica",txt:"[slams down cards] I hate this game!"},
+  {sp:"Joey",txt:`Ahhh, I <span class="hl">fold<span class="hltip">🃏 POKER — To give up and drop out of a hand. Joey's version of folding is the most elaborate statement in television history.</span></span> like a cheap hooker who got hit in the stomach by a fat guy with sores on his face. Oh, <span class="hl">I'm out.<span class="hltip">💡 EXPRESSION — I'm folding; withdrawing from this hand. Joey clarifies after his poetic speech.</span></span>`},
+  {sp:"Ross",txt:"Oh, I am very in."},
+  {sp:"Chandler",txt:`<span class="hl">Couldn't be more out.<span class="hltip">💡 EXPRESSION — An emphatic fold — as far out as it's possible to be. Chandler's style: always the most extreme version of anything.</span></span> [throws in cards]`},
+  {sp:"Rachel",txt:`Uh, I will see you... and I'll raise you. [throws chips in <span class="hl">pot<span class="hltip">🃏 POKER — The total money in the centre of the table that the winner takes.</span></span>] What do you say... want to waste another buck?`},
+  {sp:"Ross",txt:"No, not this time. [folds] So... what'd you have?"},
+  {sp:"Rachel",txt:"I'm not telling. [collects chips]"},
+  {sp:"Ross",txt:"Come on, show them to me. [reaches for cards]"},
+  {sp:"Rachel",txt:`No! <span class="hl">Get your hands out of there!<span class="hltip">💡 EXPRESSION — Stop touching something that isn't yours — said with urgency. Rachel physically blocks Ross from seeing her cards.</span></span> No!`},
+  {sp:"Chandler",txt:"Y'know, I've had dates like this."},
+  {sp:"Rachel",txt:"Boy, you really can't stand to lose, can you? Your whole face is getting red... little veins popping out on your <span class=\"hl\">temple...<span class=\"hltip\">📚 VOCAB — The flat area at the side of the head between the eye and the ear. Rachel describes Ross's visible fury in clinical detail.</span></span>"},
+  {sp:"Phoebe",txt:"Plus that shirt doesn't really match those pants."},
+  {sp:"Ross",txt:"First of all, I'm not losing..."},
+  {sp:"Rachel",txt:"Oh, you are losing. Definitely losing. [phone rings]"},
+  {sp:"Rachel",txt:"Hel-lo, Rachel Green."},
+  {sp:"Rachel",txt:"Barbara! Hi, how are you? [pause] Uh-huh. No, I understand. Yeah. Oh, oh, come on, no, I'm fine. Don't be silly. Yeah... oh, but you know, if anything else opens up, plea— Hello? Hello? [hangs up, very depressed]"},
+  {sp:"Monica",txt:"Sorry, Rach."},
+  {sp:"Phoebe",txt:"Y'know, there's gonna be lots of other stuff."},
+  {sp:"Rachel",txt:"Yeah... OK. Where were we? Oh, OK... <span class=\"hl\">five card draw,<span class=\"hltip\">🃏 POKER — A classic variant where each player gets five cards and can exchange some once. The final emotional showdown hand.</span></span> uh... jacks or better... nothing wild, everybody ante."},
+  {sp:"Joey",txt:"Look, Rachel, we don't have to do this."},
+  {sp:"Rachel",txt:"Yes, we do."},
+  {sp:"Monica",txt:`Alright, <span class="hl">check.<span class="hltip">🃏 POKER — Pass without betting when no one has bet yet — staying in without spending.</span></span>`},
+  {sp:"Joey",txt:"Check."},
+  {sp:"Ross",txt:"I'm in for fifty cents. [throws it in]"},
+  {sp:"Chandler",txt:`<span class="hl">Call.<span class="hltip">🃏 POKER — Match the current bet exactly without raising. Chandler matches Ross's fifty cents.</span></span>`},
+  {sp:"Phoebe",txt:"I'm in."},
+  {sp:"Rachel",txt:"I see your fifty cents... and I raise you... five dollars. [throws it in]"},
+  {sp:"Ross",txt:"I thought, uh... it was a fifty cent limit."},
+  {sp:"Rachel",txt:"Well, I just lost a job, and I'd like to raise the bet five bucks. Does anybody have a problem with that?"},
+  {sp:"Rachel",txt:"[to Ross] Loser?"},
+  {sp:"Ross",txt:"No, I fold. [lays cards down, gets up]"},
+  {sp:"Rachel",txt:`What do you mean, you fold? Hey, come on! What is this? I thought that 'once the cards were dealt, I'm not a nice guy.' I mean, what, were you just <span class="hl">full of it?<span class="hltip">💡 EXPRESSION — Saying things you don't mean; making empty threats. Rachel calls Ross out after he backs down from his own tough talk.</span></span>`},
+  {sp:"Ross",txt:"I'm in. [throws in chips]"},
+  {sp:"Rachel",txt:"How many you want?"},
+  {sp:"Ross",txt:"One."},
+  {sp:"Rachel",txt:"Dealer takes two. What do you bet?"},
+  {sp:"Ross",txt:"I bet two dollars. [throws it in]"},
+  {sp:"Rachel",txt:"OK... see your two... and I raise you twenty. [throws it in]"},
+  {sp:"Ross",txt:"I see your twenty, raise you twenty-five. [throws it in]"},
+  {sp:"Rachel",txt:"See your twenty-five... and... uh, Monica, get my purse."},
+  {sp:"Monica",txt:"Rachel, there's nothing in it."},
+  {sp:"Rachel",txt:"OK, then get me your purse."},
+  {sp:"Monica",txt:"OK, here you go. Good luck."},
+  {sp:"Rachel",txt:"[to Ross] I saw your twenty-five, and I raise you... seven."},
+  {sp:"Phoebe",txt:"...teen! [throws in a ten-dollar bill]"},
+  {sp:"Ross",txt:"[to Joey] Joey, I'm a little <span class=\"hl\">shy.<span class=\"hltip\">🔥 SLANG — Short of money in poker — informal. Ross doesn't have enough chips and needs Chandler and Joey to cover him.</span></span>"},
+  {sp:"Joey",txt:"That's OK, Ross, you can ask me. What?"},
+  {sp:"Chandler",txt:"What do you need, what do you need?"},
+  {sp:"Ross",txt:"Fifteen."},
+  {sp:"Chandler",txt:"Alright, here's ten. [gives it to him]"},
+  {sp:"Joey",txt:"Here, I got five. [Ross takes the money]"},
+  {sp:"Ross",txt:"[to Rachel] OK, I am calling your seventeen. What do you got?"},
+  {sp:"Rachel",txt:`[lays down cards] <span class="hl">Full house.<span class="hltip">🃏 POKER — Three of one rank and two of another — beats a flush. Rachel's winning hand in the final showdown.</span></span>`},
+  {sp:"Ross",txt:"[stares at her. Puts cards face down.] You got me."},
+  {sp:"Joey",txt:`Ahhh, that's alright. Y'know, that's a <span class="hl">tough hand to beat.<span class="hltip">🎭 IDIOM — A very strong poker hand that's hard to win against. Joey consoles Ross — but the real meaning: Rachel was a tough opponent in every sense.</span></span>`},
+  {sp:"Chandler",txt:"I thought we had them!"},
+  {sp:"Ross",txt:"Oh, well, when you don't have the cards, you don't have the cards, you know. [looks at Rachel] But, uh... look how happy she is. [smiles]"},
+  {sp:"Chandler",txt:"[to Joey] He folded. On purpose. [they dive for Ross's hand to see what he had]"},
+  // ── CLOSING CREDITS: Pictionary ──
+  {sp:"Chandler",txt:"Airplane! Airport! Airport '75! Airport '77! Airport '79!"},
+  {sp:"Rachel",txt:"Oh, time's up."},
+  {sp:"Monica",txt:"[pointing at drawing, upset] Bye... bye... BIRDIE."},
+  {sp:"Joey",txt:"Oh!"},
+  {sp:"Phoebe",txt:"That's a bird?"},
+  {sp:"Monica",txt:"[glares] That's a bird!"},
+  {sp:"Rachel",txt:"OK, OK, it's my turn. [reads answer, starts drawing what looks like a bean]"},
+  {sp:"Ross",txt:"Uh.... bean! Bean! [Rachel taps the picture frantically]"},
+  {sp:"Joey",txt:"[triumphantly] The Unbearable Likeness of Being!"},
+  {sp:"Rachel",txt:"Yes!"},
+  {sp:"Monica",txt:"That, you get? That, you get?"},
+];
+
+const QD=[
+  {t:"mc",q:"What does 'running low on' mean?",ex:`"Rach, we're running low on resumes over here."`,opts:["Having too many of something","Almost out of a supply","Looking for something","Making more of something"],ans:1,exp:"'Running low on' = almost out of something. Ross notices they're nearly out of printed copies of Rachel's resume at the very start of the episode."},
+  {t:"mc",q:"What does 'sick of' mean?",ex:`"I'm sick of the lousy tips, I'm sick of being called 'Excuse me...'"`,opts:["Ill because of something","Tired and unable to tolerate any more of something","Really enjoying something","Worried about something"],ans:1,exp:"'Sick of' = completely fed up with; at the absolute limit of tolerance. Rachel has had enough of waitressing — this frustration drives the whole episode's plot."},
+  {t:"mc",q:"What does 'how come' mean?",ex:`"How come you guys have never played poker with us?"`,opts:["How often","Why?","When?","What for?"],ans:1,exp:"'How come' = why? An informal American English alternative to 'why' — very common in spoken conversation."},
+  {t:"mc",q:"What is a 'lame excuse'?",ex:`"That is such a lame excuse!"`,opts:["A very good reason","A polite way of declining","A weak, unconvincing, pathetic reason","A complicated explanation"],ans:2,exp:"A 'lame excuse' = a weak, unconvincing or pathetic justification. Monica uses it when the guys claim no women know how to play poker."},
+  {t:"mc",q:"In poker, what does 'bluffing' mean?",ex:`"I was bluffing." "Is it not another word for lying?"`,opts:["Playing very carefully","Pretending you have a stronger hand to make opponents fold","Raising the bet very high","Folding immediately"],ans:1,exp:"Bluffing = pretending to have a better hand than you do in order to make your opponents give up. Phoebe's question is the episode's funniest philosophical observation."},
+  {t:"mc",q:"What does 'fold' mean in poker?",ex:`"I fold like a cheap hooker who got hit in the stomach by a fat guy."`,opts:["Win the hand","Bet everything you have","Give up and drop out of the hand","Shuffle the cards"],ans:2,exp:"To fold = give up and withdraw from the current hand, surrendering any chips already bet. Joey's way of announcing it is uniquely dramatic."},
+  {t:"mc",q:"What is the 'pot' in poker?",ex:`"I'll raise you. [throws chips in pot]"`,opts:["The card dealer's box","The total money in the centre of the table the winner takes","The maximum bet allowed","Each player's personal chips"],ans:1,exp:"The pot = the total amount of money in the centre of the table, accumulated from all bets, that the winner of the hand collects."},
+  {t:"mc",q:"What does 'play for real' mean?",ex:`"Let's play for real."`,opts:["Play using fake money","Play seriously with real stakes and consequences","Play a different game","Practice quietly"],ans:1,exp:"'Play for real' = play seriously with genuine consequences — money on the line, proper rules, genuine competition. Monica signals the training session is over."},
+  {t:"mc",q:"What are 'high stakes'?",ex:`"High stakes... big bucks..."`,opts:["Playing for fun with no money","A situation involving large amounts of money or significant risk","Being very tall at the poker table","Eating steak during the game"],ans:1,exp:"'High stakes' = a situation where large amounts of money — or significant risk — are involved. Monica uses it dramatically though they're actually playing for a few dollars."},
+  {t:"mc",q:"What does 'rematch' mean?",ex:`"We want a rematch."`,opts:["A refund","A second competition against the same opponent after a loss","A different game entirely","An apology"],ans:1,exp:"A rematch = a second contest against the same opponent, especially after losing the first. Monica demands one immediately after the girls lose the first poker session."},
+  {t:"mc",q:"What does 'way off' mean?",ex:`"You are way off, pal."`,opts:["Very far away physically","Completely wrong; far from the truth","A little bit mistaken","About to leave"],ans:1,exp:"'Way off' = completely wrong; far from the mark. Ross insists Chandler's theory about his feelings for Rachel is mistaken — but Joey immediately agrees with Chandler."},
+  {t:"mc",q:"What does 'get your ya-yas' mean?",ex:`"You get your ya-yas by taking money from all of your friends."`,opts:["Get your revenge","Get your thrills or satisfaction from something","Get your money back","Make your friends angry"],ans:1,exp:"'Get your ya-yas' = get your kicks or satisfaction from something. Rachel accuses Ross of genuinely enjoying winning at the expense of his own friends."},
+  {t:"mc",q:"What does 'full of it' mean?",ex:`"Were you just full of it?"`,opts:["Full of confidence","Full of food","Saying things you don't really mean; talking nonsense","Very focused and serious"],ans:2,exp:"'Full of it' = not meaning what you say; making empty threats or boasts. Rachel confronts Ross after he folds despite having declared himself a ruthless player."},
+  {t:"mc",q:"What does 'chit-chat' mean?",ex:`"OK, we done with the chit-chat?"`,opts:["Eating snacks","Cheating at cards","Light casual small talk","Arguing seriously"],ans:2,exp:"Chit-chat = light, casual conversation about nothing important. Monica uses it to signal she's done being polite and is ready to compete seriously."},
+  {t:"mc",q:"What does 'hand over' mean?",ex:`"So, you gals wanna hand over your money now?"`,opts:["Clap your hands","Give something to someone, often reluctantly","Pick up money from the floor","Count your money carefully"],ans:1,exp:"'Hand over' = to give something to someone, often with reluctance. Ross mockingly invites the girls to surrender their money before the game even starts."},
+  {t:"mc",q:"What does 'last laugh' mean?",ex:`"We'll see who has the last laugh there, monkey boy."`,opts:["The loudest laugh in the room","The final victory — whoever laughs last wins","A joke at the end of a game","Laughing nervously"],ans:1,exp:"'Have the last laugh' = achieve the final victory after a struggle. Rachel says it to Ross — ironically, she does end up winning the final hand of the episode."},
+  {t:"mc",q:"What does 'stepped on my point' mean?",ex:`"Kinda stepped on my point there, Mon."`,opts:["Stood on someone's foot","Agreed with everything someone said","Undermined someone's message by going too far right after them","Made a stronger argument"],ans:2,exp:"'Step on someone's point' = ruin their message by overdoing or overlapping it. Rachel made a calm comeback; Monica's dramatic rant completely overshadowed it."},
+  {t:"mc",q:"What does 'pure crap' mean?",ex:`"Everything you hear at a poker game is pure crap."`,opts:["Very good advice","Completely worthless information or nonsense","Official poker rules","Common sense"],ans:1,exp:"'Pure crap' = absolute nonsense, completely worthless. Aunt Iris's first poker lesson: don't believe anything anyone tells you at the poker table."},
+  {t:"mc",q:"What does 'the mother ship is calling you home' mean?",ex:`"It's like the mother ship is calling you home."`,opts:["You should go to space","You need to call your mother","This is where you truly belong","You are being controlled"],ans:2,exp:"'The mother ship is calling you home' = this is where you naturally belong, your true environment. Phoebe says it because Saks Fifth Avenue is Rachel's natural habitat."},
+  {t:"mc",q:"What does 'give it a go' mean?",ex:`"I think I'm gonna give it a go."`,opts:["Give up and leave","Attempt something, especially for the first time","Give something to someone else","Play a card"],ans:1,exp:"'Give it a go' = try something, especially with some uncertainty. Rachel says it right before shocking everyone with her expert card shuffle."},
+  {t:"fill",q:"Complete the sentence: 'I'm _____ of waiting — if they're not here in ten minutes, I'm leaving.'",ex:`"I'm sick of the lousy tips, I'm sick of being called 'Excuse me...'"`,ans:"sick",exp:"'Sick of' = completely fed up with; unable to tolerate any more. One of the most useful expressions for showing frustration in everyday English."},
+  {t:"mc",q:"What does 'ante' mean in poker?",ex:`"Alright, Cincinnati, no blinds, everybody ante."`,opts:["Fold before seeing your cards","The mandatory small bet placed before cards are dealt","Win extra money","Take someone else's chips"],ans:1,exp:"Ante = the mandatory bet every player makes before cards are dealt — it starts the pot. Monica announces it confidently now that she's learned the terminology."},
+  {t:"mc",q:"What does 'I'm in' mean at a poker table?",ex:`"Oh, I am very in."`,opts:["I agree with you","I'm staying in this hand and matching the bet","I've won the hand","I want more cards"],ans:1,exp:"'I'm in' = I'm participating; I'm matching the bet and staying in the hand. The simplest declaration in poker — and Rachel uses it as personal determination in the final hand."},
+  {t:"mc",q:"What does 'couldn't be more out' mean?",ex:`"Couldn't be more out." [throws in cards]`,opts:["Barely deciding to fold","Emphatically folding — as far out as possible","Winning the hand","Raising the bet"],ans:1,exp:"'Couldn't be more out' = an emphatic fold. Chandler intensifies the simple 'I'm out' to the absolute extreme — his typical style."},
+  {t:"mc",q:"What does 'proofread' mean?",ex:`"Rach, did you proofread these?"`,opts:["Print multiple copies","Carefully read a document to check for and correct errors","Send a document by email","Ask someone else to write for you"],ans:1,exp:"Proofread = to carefully check a document for spelling, grammar, or factual errors. Rachel clearly didn't — the resume contains a notable typo about her 'computer skills.'"},
+  {t:"mc",q:"What does 'a syllable' refer to?",ex:`"You can't serve food with more than one syllable."`,opts:["The flavour of a food","A unit of sound in a word","The number of ingredients","The price of something"],ans:1,exp:"A syllable = a unit of sound in a word, containing one vowel. Joey's rule: poker food must be short and simple. 'Chips' = 1 syllable ✅. 'Salmon roulettes' = many ❌."},
+  {t:"fill",q:"Fill in: 'She looked at her cards, looked at the pot, and quietly _____ — not worth the risk.'",ex:`"I fold like a cheap hooker who got hit in the stomach by a fat guy."`,ans:"folded",exp:"To fold = give up and drop out of a poker hand. One of the most essential poker terms, and the basis of Joey's most elaborate joke in the episode."},
+  {t:"mc",q:"What does 'read 'em and weep' mean?",ex:`"'Read 'em and weep.'"`,opts:["Look at my cards and feel sorry for yourself — I'm winning","Cry while reading the cards","Read the rules of poker out loud","Beg your opponent to fold"],ans:0,exp:"'Read 'em and weep' = look at my winning cards and be upset. A classic poker boast. Ross says it about Joey — and then Joey actually starts crying."},
+  {t:"mc",q:"What does 'last minute' mean?",ex:`"OK, alright, last minute lesson, last minute lesson."`,opts:["Very important","Done right before a deadline or the start of something","Done very slowly","A lesson about time"],ans:1,exp:"'Last minute' = right before something is about to begin, with barely any time left. Chandler tries to give Joey one final tip as the real game is about to start."},
+  {t:"mc",q:"What does 'same taste' mean?",ex:`"We have the same taste in clothes."`,opts:["We cook the same food","We share the same preferences or aesthetic sensibility","We are the same size","We work at the same store"],ans:1,exp:"'Same taste' = shared preferences and sensibilities. Rachel bonds with her interviewer over fashion — one reason she's so excited about the Saks opportunity."},
+];
+
+const CD=[
+  {e:"🃏",t:"Poker 101 — The Hands",p:"This episode is a crash course in poker hand rankings. From weakest to strongest: high card → pair → two pair → three of a kind → straight (five consecutive cards) → flush (all same suit) → full house (three of one + two of another) → four of a kind → straight flush. Ross reveals a flush; Rachel beats it with four sixes. In the final showdown, Rachel shows a full house and Ross folds. The hand rankings determine everything."},
+  {e:"💸",t:"Poker Vocabulary — How the Game Works",p:"Key terms from this episode: 'ante' = the small mandatory bet before cards are dealt; 'raise' = increase the current bet; 'call' = match the current bet; 'check' = pass without betting; 'fold' = give up the hand; 'pot' = the total money on the table; 'bluff' = pretend to have better cards than you do. Rachel uses them all perfectly by the end — proving she was hiding her knowledge the entire time."},
+  {e:"🎰",t:"Bluffing — The Heart of Poker",p:"Phoebe's question — 'what is bluffing? Is it not another word for lying?' — is deceptively profound. Bluffing is legal deception; it's a skill that Aunt Iris demonstrates immediately by pretending she hit Tony Randall with her car. Her lesson: 'Everything you hear at a poker game is pure crap.' In poker, what you say is performance, not information. The real information is in the betting patterns."},
+  {e:"🧾",t:"Rachel's Job Hunt — A 1990s Reality",p:"Rachel's resume journey reflects real 1990s job-searching: printing physical copies, faxing them, waiting for mailed responses. The Saks Fifth Avenue job — assistant buyer — represents a realistic step up from waitressing for someone with Rachel's background in fashion and retail. The mix-up (great interview → rejection phone call mid-poker-game) is a classic Friends structure: give the character hope, then take it away at the worst possible moment."},
+  {e:"🏬",t:"Saks Fifth Avenue — The Dream Job",p:"Saks Fifth Avenue is one of America's most prestigious luxury department stores, located on Fifth Avenue in Midtown Manhattan. Founded in 1924, it sells high-end designer fashion, beauty, and accessories. For Rachel — who grew up shopping at places like this — working there as an assistant buyer (choosing which luxury items the store stocks) would be a professional homecoming. Phoebe's 'mother ship calling you home' is the perfect description."},
+  {e:"🎨",t:"Pictionary and Monica's Competitiveness",p:"Pictionary is a board game where players draw clues for teammates to guess — no words allowed. The closing credits reveal that 'the Pictionary incident' involved Monica throwing a plate (while 'gesturing'). This is pure Monica characterisation: her competitiveness makes even a casual drawing game dangerous. The contrast between her explosive reaction to 'Bye Bye Birdie' and Joey's confident guess of 'The Unbearable Likeness of Being' is a perfect comedic coda."},
+  {e:"❤️",t:"Ross and Rachel — The Poker Subtext",p:"The poker games are layered with romantic subtext. Ross can't stop watching Rachel. His 'not a nice guy' persona collapses the moment she's upset. In the final hand, Chandler and Joey dive for his cards — implying he deliberately lost to let Rachel win something after losing the job. The line 'look how happy she is' says everything. Ross folds the hand he could have won because her happiness matters more than the pot."},
+  {e:"🔮",t:"Phoebe's Logic — Curses and Coincidences",p:"Phoebe's two contributions to the poker storyline are perfectly in character. First, she throws away two jacks because they 'don't look happy.' Then she curses the money she pays the guys. Chandler's response — 'bad things happen to me anyway; this way I can break 'em up with a movie' — is one of his best lines. Phoebe's world runs on an entirely different logic, and the show takes it completely seriously."},
+];
+
+// ── RENDER VOCAB ──
+const TL={slang:'🔥 Slang',phrase:'💬 Phrase',vocab:'📚 Vocab',idiom:'🎭 Idiom',humor:'😂 Comedy',phrasal:'🔗 Phrasal Verb',expression:'💡 Expression',romantic:'❤️ Romantic',business:'💼 Business'};
+function renderVocab(){
+  document.getElementById('vocabGrid').innerHTML=VD.map((v,i)=>`
+    <div class="vcard" data-tag="${v.tag}" data-idx="${i}" onclick="this.classList.toggle('open')">
+      <button class="save-btn${savedWords.has(i)?' saved':''}" data-idx="${i}" onclick="toggleSave(${i},this,event)" title="${savedWords.has(i)?'Remove from review':'Save for review'}">${savedWords.has(i)?'★':'☆'}</button>
+      <div class="vtag">${TL[v.tag]||v.tag}</div>
+      <div class="vword">${v.word}</div>
+      ${v.ph?`<div class="vphon">${v.ph}</div>`:''}
+      <div class="vctx">"${v.ctx}"</div>
+      <div class="vhint">Tap to reveal ↓</div>
+      <div class="vmean">${v.mean}<div class="ex">💡 ${v.ex}</div></div>
+    </div>`).join('');
+}
+
+// ── FILTER + SEARCH ──
+function filterV(tag,el){
+  document.querySelectorAll('#chips .chip').forEach(c=>c.classList.remove('active'));
+  el.classList.add('active');
+  applyF(tag, document.getElementById('searchInput').value.trim().toLowerCase());
+}
+function doSearch(val){
+  const q=val.trim().toLowerCase();
+  document.getElementById('searchX').classList.toggle('on',q.length>0);
+  const tag=document.querySelector('#chips .chip.active')?.dataset?.tag||'all';
+  applyF(tag,q);
+}
+function applyF(tag,q){
+  let vis=0;
+  document.querySelectorAll('.vcard').forEach(c=>{
+    const mt=tag==='all'||c.dataset.tag===tag;
+    let ms=true;
+    if(q){
+      const txt=(c.querySelector('.vword')?.textContent||'')+(c.querySelector('.vctx')?.textContent||'')+(c.querySelector('.vmean')?.textContent||'');
+      ms=txt.toLowerCase().includes(q);
+      const we=c.querySelector('.vword');
+      if(we){
+        const orig=we.dataset.orig||we.textContent;
+        we.dataset.orig=orig;
+        if(ms){const re=new RegExp(`(${q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')})`,'gi');we.innerHTML=orig.replace(re,'<mark class="search-hl">$1</mark>');}
+        else{we.textContent=orig;}
+      }
+    } else {
+      const we=c.querySelector('.vword');
+      if(we?.dataset.orig)we.textContent=we.dataset.orig;
+    }
+    const show=mt&&ms;
+    c.classList.toggle('hidden',!show);
+    if(show)vis++;
+  });
+  const sc=document.getElementById('searchCount');
+  sc.innerHTML=q?`<b>${vis}</b> result${vis!==1?'s':''} for "<b>${q}</b>"`:'';
+  const nr=document.getElementById('noRes');
+  nr.classList.toggle('on',vis===0);
+  if(vis===0)document.getElementById('noResQ').textContent=`"${q}"`;
+}
+function clearSearch(){
+  const i=document.getElementById('searchInput');
+  i.value='';
+  document.getElementById('searchX').classList.remove('on');
+  document.getElementById('searchCount').innerHTML='';
+  document.getElementById('noRes').classList.remove('on');
+  const tag=document.querySelector('#chips .chip.active')?.dataset?.tag||'all';
+  applyF(tag,'');
+  i.focus();
+}
+
+// ── RENDER DIALOGUE ──
+function renderD(){
+  document.getElementById('dlines').innerHTML=DD.map(l=>`
+    <div class="drow">
+      <div><span class="spill s-${l.sp}">${l.sp}</span></div>
+      <div class="dbubble">${l.txt}</div>
+    </div>`).join('');
+}
+
+// ── RENDER CULTURE ──
+function renderC(){
+  document.getElementById('cNotes').innerHTML=CD.map(c=>`
+    <div class="citem">
+      <div class="cicon">${c.e}</div>
+      <div><h3>${c.t}</h3><p>${c.p}</p></div>
+    </div>`).join('');
+}
+
+// ── QUIZ ──
+let QS={cur:0,score:0,ans:false,qs:[]};
+const shuffle=a=>[...a].sort(()=>Math.random()-.5);
+function startQ(){QS={cur:0,score:0,ans:false,qs:shuffle(QD)};renderQ();}
+function renderQ(){
+  const{qs,cur,score}=QS;
+  if(cur>=qs.length){renderScore();return;}
+  const q=qs[cur],pct=(cur/qs.length)*100;
+  const qHTML=q.t==='mc'
+    ?`<div class="qopts">${q.opts.map((o,i)=>`<button class="qopt" onclick="chkMC(${i})">${o}</button>`).join('')}</div>`
+    :`<input class="tinput" id="fi" type="text" placeholder="Type your answer…" onkeydown="if(event.key==='Enter')chkFill()"><div class="brow"><button class="btn-f" onclick="chkFill()">Check Answer</button></div>`;
+  document.getElementById('quizContainer').innerHTML=`
+    <div class="qprog-lbl"><span>Question <b>${cur+1}</b> of ${qs.length}</span><span>Score: <b>${score}</b></span></div>
+    <div class="liner"><div class="liner-fill" style="width:${pct}%"></div></div>
+    <div class="qcard">
+      <div class="qbadge">${q.t==='fill'?'✏️ Fill in the blank':'🔘 Multiple choice'}</div>
+      <div class="qtext">${q.q}</div>
+      <div class="qexcerpt">${q.ex}</div>
+      ${qHTML}
+      <div class="qfb" id="qfb"></div>
+      <div id="nxt"></div>
+    </div>`;
+}
+function chkMC(sel){
+  if(QS.ans)return;QS.ans=true;
+  const q=QS.qs[QS.cur];
+  document.querySelectorAll('.qopt').forEach(b=>b.disabled=true);
+  document.querySelectorAll('.qopt')[q.ans].classList.add('correct');
+  if(sel===q.ans){QS.score++;document.querySelectorAll('.qopt')[sel].classList.add('correct');}
+  else{document.querySelectorAll('.qopt')[sel].classList.add('wrong');}
+  showFB(sel===q.ans,q.exp);
+}
+function chkFill(){
+  if(QS.ans)return;QS.ans=true;
+  const q=QS.qs[QS.cur],inp=document.getElementById('fi');
+  const ua=inp.value.trim().toLowerCase(),ca=q.ans.toLowerCase();
+  const ok=ua===ca||(ca.includes(ua)&&ua.length>4);
+  if(ok)QS.score++;
+  inp.className=`tinput ${ok?'correct':'wrong'}`;inp.disabled=true;
+  showFB(ok,ok?q.exp:`The answer is "${q.ans}". ${q.exp}`);
+}
+function showFB(ok,msg){
+  const fb=document.getElementById('qfb');
+  fb.className=`qfb on ${ok?'ok':'no'}`;
+  fb.textContent=(ok?'✅ Correct! ':'❌ Not quite. ')+msg;
+  const isLast=QS.cur>=QS.qs.length-1;
+  document.getElementById('nxt').innerHTML=`<div class="brow"><button class="btn-f" onclick="nextQ()">${isLast?'🏆 See Results':'Next →'}</button></div>`;
+}
+function nextQ(){QS.cur++;QS.ans=false;renderQ();}
+function renderScore(){
+  const{score:s,qs}=QS,total=qs.length,pct=Math.round(s/total*100);
+  const msgs=["Keep going! Every attempt builds your skills. 💪","Good start! Try reviewing the vocab cards.","Getting there! A few more reviews will help.","Nice work! Your English is improving.","Really solid! You're picking up the language fast.","Great job! The Friends method is working.","Impressive! You've mastered this episode.","Excellent work! Near-perfect.","Outstanding!","Almost perfect — just one slip!","PERFECT! 🎉 You know this episode inside out.","PERFECT! Phoebe would be proud.","FLAWLESS! Even the ANUS can't shake you!"];
+  document.getElementById('quizContainer').innerHTML=`
+    <div class="score-card">
+      <div class="score-ring">
+        <div class="score-big">${s}<span class="score-denom">/${total}</span></div>
+        <div class="score-pct">${pct}%</div>
+      </div>
+      <div class="score-msg">${msgs[Math.min(s,msgs.length-1)]}</div>
+      <div class="brow" style="justify-content:center">
+        <button class="btn-f" onclick="startQ()">Try Again</button>
+        <button class="btn-o" onclick="showSec('vocab')">Review Vocab</button>
+      </div>
+    </div>`;
+}
+
+// ── TABS ──
+function showSec(id){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.nav-btn[onclick]').forEach(b=>b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  const map={vocab:0,dialogue:1,quiz:2,culture:3,review:4};
+  const btns=document.querySelectorAll('.nav-btn[onclick]');
+  if(map[id]!==undefined&&btns[map[id]])btns[map[id]].classList.add('active');
+  if(id==='quiz'&&QS.cur===0&&QS.score===0)startQ();
+  if(id==='review')renderReview();
+}
+
+// ── INIT ──
+renderVocab();renderD();renderC();
+</script>
+</body>
+</html>
