@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>English with Friends — The One with the Monkey</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Google+Sans+Display:wght@400;500;700&family=Roboto+Mono:wght@400;500&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --md-primary: #1A73E8;
+  --md-primary-container: #D3E4FD;
+  --md-on-primary: #FFFFFF;
+  --md-on-primary-container: #041E49;
+  --md-secondary: #EA4335;
+  --md-tertiary: #34A853;
+  --md-quaternary: #FBBC04;
+  --md-surface: #FFFFFF;
+  --md-surface-variant: #F1F3F4;
+  --md-surface-container: #F8F9FA;
+  --md-surface-high: #E8EAED;
+  --md-outline: #DADCE0;
+  --md-on-surface: #202124;
+  --md-on-surface-variant: #5F6368;
+  --md-bg: #F8F9FA;
+  --el1: 0 1px 2px rgba(60,64,67,.3), 0 1px 3px 1px rgba(60,64,67,.15);
+  --el2: 0 1px 2px rgba(60,64,67,.3), 0 2px 6px 2px rgba(60,64,67,.15);
+  --el3: 0 1px 3px rgba(60,64,67,.3), 0 4px 8px 3px rgba(60,64,67,.15);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Roboto',sans-serif;background:var(--md-bg);color:var(--md-on-surface);min-height:100vh;-webkit-font-smoothing:antialiased}
+.top-bar{background:var(--md-surface);border-bottom:1px solid var(--md-outline);position:sticky;top:0;z-index:200;box-shadow:var(--el1)}
+.top-bar-inner{max-width:1040px;margin:0 auto;padding:0 16px;display:flex;flex-direction:column;align-items:center}
+.top-bar-title-row{width:100%;display:flex;align-items:center;justify-content:center;padding:10px 0 6px;position:relative}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0}
+.logo-icon{font-size:1.35rem;line-height:1}
+.logo-text{font-family:'Google Sans Display',sans-serif;font-size:1.1rem;font-weight:500;letter-spacing:-.2px}
+.logo-text .b{color:#4285F4}.logo-text .r{color:#EA4335}.logo-text .y{color:#FBBC04}.logo-text .g{color:#34A853}.logo-text .k{color:var(--md-on-surface)}
+.bar-divider{width:1px;height:16px;background:var(--md-outline);margin:0 8px;flex-shrink:0}
+.bar-subtitle{font-family:'Google Sans',sans-serif;font-size:0.8rem;color:var(--md-on-surface-variant);white-space:nowrap}
+.top-nav{display:flex;gap:0;overflow-x:auto;scrollbar-width:none;border-top:1px solid var(--md-outline);width:100%}
+.top-nav::-webkit-scrollbar{display:none}
+.nav-btn{display:inline-flex;align-items:center;gap:6px;padding:0 14px;height:44px;border:none;background:none;cursor:pointer;font-family:'Google Sans',sans-serif;font-size:.8125rem;font-weight:500;color:var(--md-on-surface-variant);white-space:nowrap;text-decoration:none;border-bottom:3px solid transparent;margin-bottom:-1px;transition:color .15s;position:relative;flex:1;justify-content:center}
+.nav-btn::before{content:'';position:absolute;inset:4px 4px;border-radius:50px;background:transparent;transition:background .15s}
+.nav-btn:hover::before{background:rgba(26,115,232,.08)}
+.nav-btn:hover{color:var(--md-primary)}
+.nav-btn.active{color:var(--md-primary);border-bottom-color:var(--md-primary)}
+.rev-badge{display:inline-flex;align-items:center;justify-content:center;background:var(--md-secondary);color:#fff;border-radius:50px;font-size:.65rem;font-weight:700;min-width:18px;height:18px;padding:0 5px;font-family:'Google Sans',sans-serif;transition:transform .2s;display:none}
+.rev-badge.show{display:inline-flex}
+.rev-badge.pop{animation:badgePop .3s cubic-bezier(.36,.07,.19,.97)}
+@keyframes badgePop{0%{transform:scale(1)}40%{transform:scale(1.4)}70%{transform:scale(.9)}100%{transform:scale(1)}}
+.main{max-width:960px;margin:0 auto;padding:28px 16px 56px}
+.section{display:none;animation:fadeIn .2s ease}
+.section.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.page-hd{margin-bottom:24px}
+.page-title{font-family:'Google Sans Display',sans-serif;font-size:1.75rem;font-weight:400;color:var(--md-on-surface);margin-bottom:4px;letter-spacing:-.3px}
+.page-sub{font-size:.875rem;color:var(--md-on-surface-variant);line-height:1.6}
+.chip-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.chip{display:inline-flex;align-items:center;gap:4px;padding:6px 16px;border-radius:50px;border:1px solid var(--md-outline);background:var(--md-surface);font-family:'Google Sans',sans-serif;font-size:.8125rem;font-weight:500;color:var(--md-on-surface-variant);cursor:pointer;transition:all .15s;user-select:none}
+.chip:hover{background:var(--md-surface-variant);border-color:var(--md-on-surface-variant)}
+.chip.active{background:var(--md-primary-container);border-color:var(--md-primary);color:var(--md-on-primary-container)}
+.search-wrap{margin-bottom:16px}
+.search-bar{display:flex;align-items:center;background:var(--md-surface);border-radius:50px;box-shadow:var(--el1);padding:0 20px;gap:12px;height:48px;transition:box-shadow .2s}
+.search-bar:focus-within{box-shadow:var(--el2);outline:2px solid var(--md-primary);outline-offset:1px}
+.search-icon{color:var(--md-on-surface-variant);font-size:1.1rem;flex-shrink:0}
+.search-bar input{flex:1;border:none;outline:none;background:transparent;font-family:'Roboto',sans-serif;font-size:.9375rem;color:var(--md-on-surface)}
+.search-bar input::placeholder{color:var(--md-on-surface-variant)}
+.search-x{background:none;border:none;cursor:pointer;color:var(--md-on-surface-variant);font-size:.9rem;display:none;padding:4px;border-radius:50%;line-height:1;transition:background .15s}
+.search-x:hover{background:var(--md-surface-variant)}
+.search-x.on{display:flex;align-items:center}
+.search-count{font-size:.8125rem;color:var(--md-on-surface-variant);margin-bottom:16px;min-height:20px;padding-left:4px}
+.search-count b{color:var(--md-primary);font-weight:500}
+.search-hl{background:rgba(251,188,4,.35);border-radius:2px;padding:0 1px}
+.no-results{display:none;text-align:center;padding:56px 20px;color:var(--md-on-surface-variant)}
+.no-results.on{display:block}
+.no-results-icon{font-size:3rem;margin-bottom:12px}
+.no-results p{font-size:.9375rem;line-height:1.6}
+.vocab-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}
+.vcard{background:var(--md-surface);border-radius:16px;border:1px solid var(--md-outline);padding:16px;cursor:pointer;transition:box-shadow .2s,border-color .2s;position:relative;overflow:hidden}
+.vcard::after{content:'';position:absolute;inset:0;background:var(--md-primary);opacity:0;transition:opacity .15s;pointer-events:none}
+.vcard:hover{box-shadow:var(--el2);border-color:var(--md-primary)}
+.vcard:hover::after{opacity:.04}
+.vcard.open{border-color:var(--md-primary);border-width:2px}
+.vtag{display:inline-flex;align-items:center;gap:3px;background:var(--md-surface-variant);color:var(--md-on-surface-variant);border-radius:50px;padding:2px 10px;font-size:.72rem;font-family:'Google Sans',sans-serif;font-weight:500;margin-bottom:10px;transition:background .2s,color .2s}
+.vcard.open .vtag{background:var(--md-primary-container);color:var(--md-on-primary-container)}
+.vword{font-family:'Google Sans Display',sans-serif;font-size:1.15rem;font-weight:500;color:var(--md-on-surface);margin-bottom:2px;line-height:1.3}
+.vphon{font-family:'Roboto Mono',monospace;font-size:.7rem;color:var(--md-on-surface-variant);margin-bottom:10px}
+.vctx{font-size:.8125rem;color:var(--md-on-surface-variant);font-style:italic;padding:8px 12px;background:var(--md-surface-container);border-radius:8px;border-left:3px solid var(--md-primary);line-height:1.5;margin-bottom:8px}
+.vhint{font-size:.75rem;color:var(--md-primary);font-family:'Google Sans',sans-serif;font-weight:500;opacity:.7}
+.vcard.open .vhint{display:none}
+.vmean{display:none;font-size:.875rem;color:var(--md-on-surface);line-height:1.65;margin-top:10px;background:var(--md-surface-container);padding:12px;border-radius:8px}
+.vmean .ex{font-size:.8rem;color:var(--md-tertiary);font-style:italic;margin-top:8px;padding-top:8px;border-top:1px solid var(--md-outline)}
+.vcard.open .vmean{display:block}
+.save-btn{position:absolute;top:10px;right:10px;width:30px;height:30px;border-radius:50%;border:none;background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.25rem;line-height:1;z-index:10;transition:background .15s,transform .2s,color .2s;color:#DADCE0;font-family:sans-serif}
+.save-btn:hover{background:rgba(251,188,4,.12);transform:scale(1.15);color:#FBBC04}
+.save-btn.saved{color:#FBBC04;animation:starPop .3s cubic-bezier(.36,.07,.19,.97)}
+@keyframes starPop{0%{transform:scale(1)}40%{transform:scale(1.45)}70%{transform:scale(.88)}100%{transform:scale(1)}}
+.review-empty{text-align:center;padding:64px 20px;color:var(--md-on-surface-variant)}
+.review-empty-icon{font-size:3.5rem;margin-bottom:16px;color:#FBBC04;line-height:1}
+.review-empty h2{font-family:'Google Sans Display',sans-serif;font-size:1.3rem;font-weight:400;margin-bottom:8px;color:var(--md-on-surface)}
+.review-empty p{font-size:.9rem;line-height:1.7;max-width:380px;margin:0 auto}
+.review-empty p b{color:var(--md-primary)}
+.review-topbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;gap:10px}
+.review-count-pill{background:var(--md-primary-container);color:var(--md-on-primary-container);border-radius:50px;padding:4px 14px;font-size:.8rem;font-family:'Google Sans',sans-serif;font-weight:500}
+.clear-all-btn{display:inline-flex;align-items:center;gap:5px;padding:7px 16px;border-radius:50px;border:1px solid var(--md-outline);background:transparent;color:var(--md-on-surface-variant);font-family:'Google Sans',sans-serif;font-size:.8125rem;font-weight:500;cursor:pointer;transition:all .15s}
+.clear-all-btn:hover{border-color:#EA4335;color:#EA4335;background:#FCE8E6}
+.rcard{background:var(--md-surface);border-radius:16px;border:1px solid var(--md-outline);padding:16px;position:relative;overflow:hidden;transition:box-shadow .2s,border-color .2s,opacity .3s,transform .3s}
+.rcard:hover{box-shadow:var(--el1)}
+.rcard.removing{opacity:0;transform:scale(.93)}
+.remove-btn{position:absolute;top:10px;right:10px;width:28px;height:28px;border-radius:50%;border:none;background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.85rem;color:var(--md-on-surface-variant);transition:background .15s,color .15s}
+.remove-btn:hover{background:#FCE8E6;color:#EA4335}
+.toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(80px);background:#202124;color:#fff;border-radius:12px;padding:10px 20px;font-family:'Google Sans',sans-serif;font-size:.875rem;box-shadow:var(--el3);z-index:9999;transition:transform .3s cubic-bezier(.4,0,.2,1),opacity .3s;opacity:0;pointer-events:none;white-space:nowrap}
+.toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+.dlist{display:flex;flex-direction:column;gap:12px}
+.drow{display:grid;grid-template-columns:76px 1fr;gap:12px;align-items:start}
+.spill{display:inline-block;padding:5px 8px;border-radius:50px;font-size:.65rem;font-family:'Google Sans',sans-serif;font-weight:700;letter-spacing:.3px;text-align:center;color:#fff;margin-top:3px;text-transform:uppercase}
+.s-Monica{background:#1A73E8}.s-Chandler{background:#202124}.s-Rachel{background:#E37400}
+.s-Joey{background:#137333}.s-Ross{background:#7B1FA2}.s-Phoebe{background:#C2185B}
+.s-Ursula{background:#AD1457}.s-Teacher{background:#455A64}.s-Carol{background:#00838F}
+.s-Susan{background:#558B2F}.s-Nina{background:#6D4C41}.s-Mr{background:#37474F}
+.dbubble{background:var(--md-surface);border:1px solid var(--md-outline);border-radius:0 16px 16px 16px;padding:12px 16px;font-size:.9rem;line-height:1.75;box-shadow:var(--el1)}
+.hl{background:#FEF3C7;border-bottom:2px solid #FBBC04;cursor:pointer;padding:0 2px;border-radius:2px;position:relative}
+.hl:hover{background:#FDE68A}
+.hltip{display:none;position:absolute;bottom:calc(100% + 10px);left:50%;transform:translateX(-50%);background:#202124;color:#fff;padding:10px 14px;border-radius:12px;font-size:.77rem;width:220px;line-height:1.55;z-index:300;pointer-events:none;box-shadow:var(--el3)}
+.hltip::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:6px solid transparent;border-top-color:#202124}
+.hl:hover .hltip{display:block}
+.qwrap{max-width:600px}
+.qprog-lbl{display:flex;justify-content:space-between;font-size:.8125rem;color:var(--md-on-surface-variant);margin-bottom:6px;font-family:'Google Sans',sans-serif}
+.qprog-lbl b{color:var(--md-primary);font-weight:500}
+.liner{height:4px;background:var(--md-surface-high);border-radius:2px;margin-bottom:20px;overflow:hidden}
+.liner-fill{height:100%;background:var(--md-primary);border-radius:2px;transition:width .4s cubic-bezier(.4,0,.2,1)}
+.qcard{background:var(--md-surface);border-radius:24px;box-shadow:var(--el1);padding:24px}
+.qbadge{display:inline-flex;align-items:center;gap:5px;font-size:.75rem;font-family:'Google Sans',sans-serif;font-weight:500;color:var(--md-on-surface-variant);margin-bottom:14px;background:var(--md-surface-variant);padding:4px 12px;border-radius:50px}
+.qtext{font-family:'Google Sans Display',sans-serif;font-size:1.15rem;font-weight:500;line-height:1.5;color:var(--md-on-surface);margin-bottom:10px}
+.qexcerpt{font-style:italic;font-size:.85rem;color:var(--md-on-surface-variant);padding:10px 14px;background:var(--md-surface-container);border-radius:8px;border-left:3px solid var(--md-primary);margin-bottom:20px;line-height:1.6}
+.qopts{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px}
+.qopt{padding:12px 16px;border:1px solid var(--md-outline);border-radius:12px;background:var(--md-surface);cursor:pointer;font-size:.875rem;color:var(--md-on-surface);text-align:left;font-family:'Roboto',sans-serif;line-height:1.4;transition:all .15s;position:relative;overflow:hidden}
+.qopt::before{content:'';position:absolute;inset:0;background:var(--md-primary);opacity:0;transition:opacity .15s}
+.qopt:hover:not(:disabled)::before{opacity:.06}
+.qopt:hover:not(:disabled){border-color:var(--md-primary)}
+.qopt.correct{border-color:#137333;background:#E6F4EA;color:#137333;font-weight:500}
+.qopt.wrong{border-color:#C5221F;background:#FCE8E6;color:#C5221F}
+.qopt:disabled{cursor:default}
+.tinput{width:100%;padding:12px 16px;border:1px solid var(--md-outline);border-radius:12px;font-family:'Roboto',sans-serif;font-size:.9375rem;color:var(--md-on-surface);background:var(--md-surface);outline:none;margin-bottom:12px;transition:border .15s}
+.tinput:focus{border-color:var(--md-primary);border-width:2px}
+.tinput.correct{border-color:#137333;border-width:2px;background:#E6F4EA}
+.tinput.wrong{border-color:#C5221F;border-width:2px;background:#FCE8E6}
+.qfb{display:none;padding:12px 16px;border-radius:12px;font-size:.875rem;line-height:1.55;margin-bottom:14px}
+.qfb.on{display:block}
+.qfb.ok{background:#E6F4EA;color:#137333;border:1px solid #CEEAD6}
+.qfb.no{background:#FCE8E6;color:#C5221F;border:1px solid #FAD2CF}
+.btn-f{display:inline-flex;align-items:center;gap:6px;padding:10px 24px;border-radius:50px;border:none;background:var(--md-primary);color:#fff;font-family:'Google Sans',sans-serif;font-size:.875rem;font-weight:500;cursor:pointer;transition:box-shadow .2s,background .15s;letter-spacing:.1px}
+.btn-f:hover{box-shadow:var(--el2);background:#1557B0}
+.btn-o{display:inline-flex;align-items:center;gap:6px;padding:10px 24px;border-radius:50px;border:1px solid var(--md-outline);background:transparent;color:var(--md-primary);font-family:'Google Sans',sans-serif;font-size:.875rem;font-weight:500;cursor:pointer;transition:background .15s}
+.btn-o:hover{background:var(--md-primary-container)}
+.brow{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+.score-card{background:var(--md-surface);border-radius:24px;box-shadow:var(--el1);padding:48px 32px;text-align:center}
+.score-ring{width:120px;height:120px;border-radius:50%;background:var(--md-primary-container);display:flex;flex-direction:column;align-items:center;justify-content:center;margin:0 auto 20px}
+.score-big{font-family:'Google Sans Display',sans-serif;font-size:2.8rem;font-weight:500;color:var(--md-primary);line-height:1}
+.score-denom{font-size:1.1rem;color:var(--md-on-surface-variant)}
+.score-pct{font-family:'Google Sans',sans-serif;font-size:.78rem;color:var(--md-on-primary-container);font-weight:500;margin-top:2px}
+.score-msg{font-family:'Google Sans Display',sans-serif;font-size:1.2rem;color:var(--md-on-surface);margin-bottom:24px;line-height:1.5}
+.clist{display:flex;flex-direction:column;gap:12px}
+.citem{background:var(--md-surface);border-radius:16px;border:1px solid var(--md-outline);padding:20px;display:grid;grid-template-columns:48px 1fr;gap:16px;align-items:start;transition:box-shadow .2s,border-color .2s}
+.citem:hover{box-shadow:var(--el1);border-color:var(--md-primary)}
+.cicon{width:48px;height:48px;background:var(--md-surface-container);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0}
+.citem h3{font-family:'Google Sans',sans-serif;font-size:.9375rem;font-weight:500;color:var(--md-on-surface);margin-bottom:6px}
+.citem p{font-size:.875rem;color:var(--md-on-surface-variant);line-height:1.7}
+@media(max-width:768px){
+  .bar-subtitle,.bar-divider{display:none}
+  .main{padding:16px 12px 40px}
+  .vocab-grid{grid-template-columns:1fr}
+  .qopts{grid-template-columns:1fr}
+  .drow{grid-template-columns:64px 1fr;gap:8px}
+  .hltip{width:180px;font-size:.74rem}
+}
+@media(max-width:480px){
+  .nav-btn{padding:0 10px;font-size:.8rem}
+  .nav-btn span.ni{display:none}
+  .drow{grid-template-columns:54px 1fr}
+  .spill{font-size:.6rem;padding:4px 5px}
+  .score-big{font-size:2.2rem}
+}
+.hidden{display:none!important}
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <div class="top-bar-inner">
+    <div class="top-bar-title-row">
+      <div class="logo">
+        <div class="logo-icon">📺</div>
+        <div class="logo-text"><span class="b">E</span><span class="r">n</span><span class="y">g</span><span class="g">l</span><span class="k">ish with Friends</span></div>
+      </div>
+      <div class="bar-divider"></div>
+      <div class="bar-subtitle">The One with the Monkey · S01E19</div>
+    </div>
+    <nav class="top-nav">
+      <a class="nav-btn" href="https://tinyimprove-rgb.github.io/learnenglishwith-friends/"><span class="ni">🏠</span> Home</a>
+      <button class="nav-btn active" onclick="showSec('vocab')"><span class="ni">📖</span> Vocab</button>
+      <button class="nav-btn" onclick="showSec('dialogue')"><span class="ni">💬</span> Script</button>
+      <button class="nav-btn" onclick="showSec('quiz')"><span class="ni">🎯</span> Quiz</button>
+      <button class="nav-btn" onclick="showSec('culture')"><span class="ni">🌎</span> Culture</button>
+      <button class="nav-btn" id="reviewNavBtn" onclick="showSec('review')"><span class="ni">★</span> Review <span class="rev-badge" id="revBadge">0</span></button>
+    </nav>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<main class="main">
+
+  <!-- VOCAB -->
+  <div id="vocab" class="section active">
+    <div class="page-hd">
+      <h1 class="page-title">Vocabulary & Slang</h1>
+      <p class="page-sub">Every key word, phrase, and expression from this episode. Tap any card to reveal the meaning + an example sentence. Tap ★ to save words for later review.</p>
+    </div>
+    <div class="search-wrap">
+      <div class="search-bar">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="searchInput" placeholder="Search words, meanings, examples…" oninput="doSearch(this.value)">
+        <button class="search-x" id="searchX" onclick="clearSearch()">✕</button>
+      </div>
+    </div>
+    <div class="search-count" id="searchCount"></div>
+    <div class="chip-row" id="chips">
+      <div class="chip active" data-tag="all" onclick="filterV('all',this)">All</div>
+      <div class="chip" data-tag="slang" onclick="filterV('slang',this)">🔥 Slang</div>
+      <div class="chip" data-tag="idiom" onclick="filterV('idiom',this)">🎭 Idioms</div>
+      <div class="chip" data-tag="vocab" onclick="filterV('vocab',this)">📚 Vocabulary</div>
+      <div class="chip" data-tag="humor" onclick="filterV('humor',this)">😂 Comedy</div>
+      <div class="chip" data-tag="phrasal" onclick="filterV('phrasal',this)">🔗 Phrasal Verbs</div>
+      <div class="chip" data-tag="expression" onclick="filterV('expression',this)">💡 Expressions</div>
+      <div class="chip" data-tag="romantic" onclick="filterV('romantic',this)">❤️ Romantic</div>
+      <div class="chip" data-tag="business" onclick="filterV('business',this)">💼 Business</div>
+    </div>
+    <div class="vocab-grid" id="vocabGrid"></div>
+    <div class="no-results" id="noRes">
+      <div class="no-results-icon">🔎</div>
+      <p>No results for <b id="noResQ"></b>.<br>Try a different word or clear the search.</p>
+    </div>
+  </div>
+
+  <!-- DIALOGUE -->
+  <div id="dialogue" class="section">
+    <div class="page-hd">
+      <h1 class="page-title">Annotated Script</h1>
+      <p class="page-sub">Key lines with <span style="background:#FEF3C7;border-bottom:2px solid #FBBC04;padding:0 3px;border-radius:2px">highlighted words</span>. Hover or tap to see instant definitions.</p>
+    </div>
+    <div class="dlist" id="dlines"></div>
+  </div>
+
+  <!-- QUIZ -->
+  <div id="quiz" class="section">
+    <div class="page-hd">
+      <h1 class="page-title">Quiz Yourself</h1>
+      <p class="page-sub">Multiple choice and fill-in-the-blank. Questions shuffle on every attempt.</p>
+    </div>
+    <div class="qwrap" id="quizContainer"></div>
+  </div>
+
+  <!-- CULTURE -->
+  <div id="culture" class="section">
+    <div class="page-hd">
+      <h1 class="page-title">Culture Notes</h1>
+      <p class="page-sub">Understanding the American culture, comedy, and references inside this episode.</p>
+    </div>
+    <div class="clist" id="cNotes"></div>
+  </div>
+
+  <!-- REVIEW -->
+  <div id="review" class="section">
+    <div class="page-hd">
+      <h1 class="page-title">🔖 Review List</h1>
+      <p class="page-sub">Words you saved for review. Go back to Vocab and tap the ★ button on any card to add more.</p>
+    </div>
+    <div id="reviewContent"></div>
+  </div>
+
+</main>
+
+<script>
+// ── SAVED WORDS STATE ──
+let savedWords = new Set();
+
+function toggleSave(wordIndex, btn, event) {
+  event.stopPropagation();
+  if (savedWords.has(wordIndex)) {
+    savedWords.delete(wordIndex);
+    btn.textContent = '☆';
+    btn.classList.remove('saved');
+    btn.title = 'Save for review';
+    showToast('Removed from review list');
+  } else {
+    savedWords.add(wordIndex);
+    btn.textContent = '★';
+    btn.classList.add('saved');
+    btn.title = 'Remove from review';
+    showToast('Saved! Tap Review tab to study ✨');
+  }
+  updateBadge();
+  if (document.getElementById('review').classList.contains('active')) renderReview();
+}
+
+function updateBadge() {
+  const badge = document.getElementById('revBadge');
+  const count = savedWords.size;
+  badge.textContent = count;
+  if (count > 0) {
+    badge.classList.add('show');
+    badge.classList.remove('pop');
+    void badge.offsetWidth;
+    badge.classList.add('pop');
+  } else {
+    badge.classList.remove('show');
+  }
+}
+
+let toastTimer;
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 2200);
+}
+
+function renderReview() {
+  const el = document.getElementById('reviewContent');
+  if (savedWords.size === 0) {
+    el.innerHTML = `<div class="review-empty"><div class="review-empty-icon">★</div><h2>Your review list is empty</h2><p>Go to <b>Vocab</b> and tap the <b>★</b> button on any card to save words here.</p></div>`;
+    return;
+  }
+  const saved = [...savedWords].map(i => ({i, ...VD[i]}));
+  el.innerHTML = `
+    <div class="review-topbar">
+      <span class="review-count-pill">${saved.length} word${saved.length !== 1 ? 's' : ''} saved</span>
+      <button class="clear-all-btn" onclick="clearAllReview()">🗑️ Clear all</button>
+    </div>
+    <div class="vocab-grid">
+      ${saved.map(v => `
+        <div class="rcard vcard open" id="rcard-${v.i}">
+          <button class="remove-btn" onclick="removeFromReview(${v.i})" title="Remove">✕</button>
+          <div class="vtag" style="background:var(--md-primary-container);color:var(--md-on-primary-container)">${TL[v.tag]||v.tag}</div>
+          <div class="vword">${v.word}</div>
+          ${v.ph ? `<div class="vphon">${v.ph}</div>` : ''}
+          <div class="vctx">"${v.ctx}"</div>
+          <div class="vmean" style="display:block">${v.mean}<div class="ex">💡 ${v.ex}</div></div>
+        </div>`).join('')}
+    </div>`;
+}
+
+function removeFromReview(idx) {
+  const card = document.getElementById(`rcard-${idx}`);
+  if (card) {
+    card.classList.add('removing');
+    setTimeout(() => {
+      savedWords.delete(idx);
+      const saveBtn = document.querySelector(`.save-btn[data-idx="${idx}"]`);
+      if (saveBtn) { saveBtn.classList.remove('saved'); saveBtn.textContent = '☆'; }
+      updateBadge();
+      renderReview();
+    }, 280);
+  }
+}
+
+function clearAllReview() {
+  savedWords.forEach(idx => {
+    const saveBtn = document.querySelector(`.save-btn[data-idx="${idx}"]`);
+    if (saveBtn) { saveBtn.classList.remove('saved'); saveBtn.textContent = '☆'; }
+  });
+  savedWords.clear();
+  updateBadge();
+  renderReview();
+  showToast('Review list cleared');
+}
+
+// ── DATA ──
+const VD=[
+  // ── PHRASAL VERBS ──
+  {word:"give (someone) up",ph:"/ɡɪv ʌp/",tag:"phrasal",ctx:`"I gave Barry up, right? I should be happy for them."`,mean:"To stop a relationship voluntarily; to let someone go. Rachel chose to leave Barry at the altar — now she questions that decision when she sees he's engaged to Mindy.",ex:"She gave up the relationship because she knew it wasn't right, even though it was comfortable."},
+  {word:"run something by (someone)",ph:"/rʌn baɪ/",tag:"phrasal",ctx:`"I was kinda wanting to run something by you."`,mean:"To mention or propose an idea to someone to get their reaction or approval. Ross's careful way of trying to open up about his feelings for Rachel.",ex:"Before I make the decision, let me run it by my manager first."},
+  {word:"push past",ph:"/pʊʃ pɑːst/",tag:"phrasal",ctx:`"Ross pushes past Mr. Heckles and enters his apartment."`,mean:"To move forcefully past someone to get through. Ross doesn't wait for an invitation — he barges straight in to find Marcel.",ex:"She pushed past the crowd to get to the front of the stage."},
+  {word:"take (something) up with",ph:"/teɪk ʌp wɪð/",tag:"phrasal",ctx:`"You're both gonna have to take this up with the judge."`,mean:"To bring a complaint or dispute to an authority for a decision. Luisa refuses to settle the argument herself and passes it to a higher authority.",ex:"If you disagree with the fine, you'll have to take it up with the local council."},
+  {word:"hobble after",ph:"/ˈhɒbəl ˈɑːftər/",tag:"phrasal",ctx:`"They stare for a minute and then hobble after him."`,mean:"To follow someone with difficulty, limping or moving awkwardly. Both Ross and Rachel have hurt feet from kicking the sign and must chase the banana man at an awkward pace.",ex:"She twisted her ankle but still hobbled after the bus, hoping it would stop."},
+  // ── SLANG ──
+  {word:"suck-fest",ph:"/ˈsʌkfɛst/",tag:"slang",ctx:`"Suck-fest."`,mean:"Informal: a terrible, awful experience. Joey's entire review of the film in one word. '-fest' is a suffix meaning 'a lot of something' — here, a lot of things that suck.",ex:"That three-hour meeting was a total suck-fest — nothing got decided."},
+  {word:"chick-flick",ph:"/ˈtʃɪkflɪk/",tag:"slang",ctx:`"Total chick-flick."`,mean:"A film primarily aimed at women, typically romantic or emotional. Chandler uses it dismissively — though he clearly enjoyed the Hugh Grant film too.",ex:"He pretended he hated chick-flicks but always cried during the final scene."},
+  {word:"frolicking",ph:"/ˈfrɒlɪkɪŋ/",tag:"slang",ctx:`"I don't need to see Lou Grant frolicking."`,mean:"Playing around or moving in a carefree, playful way — usually associated with animals or children. Joey uses it to describe male nudity in the film, making it sound ridiculous.",ex:"The puppies spent the afternoon frolicking in the garden."},
+  {word:"woo",ph:"/wuː/",tag:"slang",ctx:`"I figured I'd go pick up a bottle of wine and try to woo her."`,mean:"To romantically pursue someone; to try to win their affection. An old-fashioned word — which is exactly why Chandler mocks it, telling Ross to go back to the 1890s.",ex:"He wooed her with flowers, candlelit dinners, and handwritten letters."},
+  {word:"poo",ph:"/puː/",tag:"slang",ctx:`"Marcel, did you poo in the shoe?"`,mean:"To defecate — a childish/informal word. Rachel uses it naturally with the monkey as if she's talking to a toddler.",ex:"The dog poo'd on the carpet — again."},
+  {word:"bitch",ph:"/bɪtʃ/",tag:"slang",ctx:`"But you? What a bitch!" / "You had to be a bitch in high school, you couldn't've been fat."`,mean:"A vulgar term for a cruel, unkind, or selfish woman. Used twice in the episode with different tones: Luisa uses it as a genuine accusation; Ross uses it almost as a compliment — if Rachel had been fat like Monica she'd have been forgiven.",ex:"A strong word — the context here shows how the same term can be an insult or a backhanded acknowledgement of social power."},
+  {word:"bunk",ph:"/bʌŋk/",tag:"slang",ctx:`"Mail call, Rachel Green, bunk seven."`,mean:"A bed in a dormitory or cabin, often at summer camp. Monica uses it sarcastically — delivering Rachel's mail as if they're still at summer camp, since Rachel still has things sent to her home address.",ex:"At summer camp, I had the top bunk and my best friend had the bottom one."},
+  // ── IDIOMS ──
+  {word:"penis embargo",ph:"/ˈiːmbɑːɡəʊ/",tag:"idiom",ctx:`"What happened to 'Forget relationships! I'm done with men!' The whole, uh, penis embargo?"`,mean:"Ross's comic term for Rachel's vow to swear off men entirely. An 'embargo' is a formal prohibition on trade — Ross applies it to Rachel's dating life.",ex:"Classic Chandler-style wordplay from Ross: turning a personal vow into a diplomatic trade policy."},
+  {word:"make your toes curl",ph:"",tag:"idiom",ctx:`"Someone who's like your best friend, but then also can make your toes curl."`,mean:"To cause an intense physical or emotional reaction — excitement, pleasure, or attraction so strong it's physical. Rachel uses it to describe the perfect relationship: friendship AND passion.",ex:"That guitar solo was so beautiful it made my toes curl."},
+  {word:"there's no heat",ph:"",tag:"idiom",ctx:`"With Barry, it was safe and it was easy, but there was no heat."`,mean:"No passion, no romantic spark, no chemistry. Rachel uses 'heat' as a metaphor for sexual and emotional intensity — she had safety but no fire.",ex:"They got along perfectly but there was just no heat between them — it never went anywhere."},
+  {word:"raw animal",ph:"",tag:"idiom",ctx:`"It was just this raw animal sexual—"`,mean:"Primal, instinctive, physical — without refinement or thought. Rachel describes her relationship with Paolo as purely driven by animal instinct. Ross cuts her off before she finishes.",ex:"The performance had a raw animal energy — completely unrestrained and powerful."},
+  {word:"for old times' sake",ph:"/fər əʊld taɪmz seɪk/",tag:"idiom",ctx:`"D'you think you could just help us out here? Just for old times' sake?"`,mean:"Out of nostalgia or loyalty to a past shared experience. Monica appeals to Luisa's sense of shared history — even though they barely spoke in high school.",ex:"We don't see each other much anymore, but we met for coffee, just for old times' sake."},
+  {word:"be the bigger person",ph:"",tag:"idiom",ctx:`"You have a chance to be the bigger person here! Take it!"`,mean:"To act with more maturity, generosity, or forgiveness than the situation requires — to rise above grudges. Rachel's appeal to Luisa: let go of the past and do the right thing.",ex:"It's hard, but sometimes you just have to be the bigger person and apologise first."},
+  {word:"a million years ago",ph:"",tag:"idiom",ctx:`"Gosh, doesn't it seem like a million years ago?"`,mean:"A very long time in the past; feeling distant and nostalgic. Monica says this while looking at the high school yearbook.",ex:"We used to play there as kids — it seems like a million years ago now."},
+  {word:"on purpose",ph:"/ɒn ˈpɜːpəs/",tag:"idiom",ctx:`"It is not like I did this on purpose."`,mean:"Intentionally; with deliberate intent. Rachel defends herself — she didn't lose Marcel deliberately. The opposite: 'by accident.'",ex:"I didn't break it on purpose — it slipped out of my hands."},
+  {word:"in the mood for",ph:"/ɪn ðə muːd fɔː/",tag:"idiom",ctx:`"You in the mood for something grape?"`,mean:"Feeling like doing or having something at a particular moment. Ross's charming way of asking Rachel if she'd like wine.",ex:"I'm not really in the mood for a big dinner — can we just order pizza?"},
+  {word:"I'm done with men",ph:"",tag:"idiom",ctx:`"Forget relationships! I'm done with men!"`,mean:"A declaration of giving up on romance entirely, usually after a bad experience. Ross quotes Rachel's earlier vow back at her when she admits she misses having a relationship.",ex:"After three bad dates in a row she declared, 'I am completely done with men.'"},
+  // ── EXPRESSIONS ──
+  {word:"mail call",ph:"/meɪl kɔːl/",tag:"expression",ctx:`"Mail call, Rachel Green, bunk seven."`,mean:"Military/camp expression for distributing mail. Monica uses it playfully — mocking Rachel for still having things sent to her parents' address.",ex:"Mail call was the best part of summer camp — everyone ran to see if they'd gotten a letter from home."},
+  {word:"free sample",ph:"/friː ˈsɑːmpəl/",tag:"expression",ctx:`"Oh, cool! Free sample of coffee!"`,mean:"A small amount of a product given away at no cost for promotional purposes. The irony: Rachel is thrilled to receive a free sample of coffee while working in a coffee shop.",ex:"The supermarket was giving out free samples of the new cheese — she tried six of them."},
+  {word:"engagement notice",ph:"/ɪnˈɡeɪdʒmənt ˈnəʊtɪs/",tag:"expression",ctx:`"My mother sends me the engagement notices for 'inspiration'."`,mean:"A formal announcement, usually in a newspaper or newsletter, that two people are engaged to be married. Rachel's mother sends them as passive-aggressive hints.",ex:"The engagement notice appeared in the Sunday paper with a photo of the happy couple."},
+  {word:"maid of honour",ph:"/meɪd əv ˈɒnər/",tag:"expression",ctx:`"And Mindy, your maid of—?"`,mean:"The chief bridesmaid at a wedding — the bride's closest female friend or relative who helps organise the wedding and stands beside the bride during the ceremony.",ex:"She asked her sister to be maid of honour — they'd been planning it since they were children."},
+  {word:"illegal exotic",ph:"/ɪˈliːɡəl ɪɡˈzɒtɪk/",tag:"expression",ctx:`"Marcel is an illegal exotic animal. I'm not allowed to have him in the city."`,mean:"An animal that is both non-native and prohibited from being kept as a pet by law. Ross has been casually keeping a capuchin monkey in a New York City apartment in violation of local law.",ex:"Many cities ban the keeping of illegal exotics — monkeys, tigers, and alligators are common examples."},
+  {word:"confiscation of the animal",ph:"/ˌkɒnfɪˈskeɪʃən/",tag:"expression",ctx:`"Punishable by up to two years in prison and confiscation of the animal."`,mean:"The official seizure of property by an authority as a penalty. Luisa quotes the full legal consequence: prison AND losing Marcel permanently.",ex:"The smuggler faced a large fine and confiscation of all the animals he was illegally transporting."},
+  {word:"Say things quietly to yourself first",ph:"",tag:"expression",ctx:`"Pheebs, you remember how we talked about saying things quietly to yourself first?"`,mean:"Monica's gentle reminder to Phoebe to think before speaking — to filter thoughts internally before saying them aloud in front of the authorities.",ex:"A classic Monica line: she and Phoebe have clearly had this conversation before."},
+  {word:"be that as it may",ph:"/biː ðæt əz ɪt meɪ/",tag:"expression",ctx:`"Be that as it may, d'you think you could help us out here?"`,mean:"A formal expression meaning: even if what you said is true, it doesn't change what I'm asking. Monica acknowledges Luisa's grievance but pivots to her request.",ex:"Be that as it may, we still need to find a solution before the deadline."},
+  {word:"prom queen",ph:"/prɒm kwiːn/",tag:"expression",ctx:`"Sorry, prom queen." / "In high school I was the prom queen..."`,mean:"The girl voted most popular by her classmates at the American high school prom dance. Used by Rachel to explain who she was — and by Luisa as a dismissive title for someone who ignored her.",ex:"Being prom queen meant everything in high school — years later, it means almost nothing."},
+  {word:"homecoming queen",ph:"/ˈhəʊmkʌmɪŋ kwiːn/",tag:"expression",ctx:`"I was the prom queen and the homecoming queen and the class president."`,mean:"The girl elected queen at the annual homecoming football game celebration — another American high school popularity title. Rachel lists all three titles to establish her former social status.",ex:"Homecoming queen, prom queen, class president — Rachel's high school career was a greatest-hits collection of popularity."},
+  {word:"I'm still in love with you",ph:"",tag:"expression",ctx:`"I think I'm still in love with you."`,mean:"A declaration that romantic feelings have not ended despite separation or time passing. Barry bursts in and says this — completely derailing Ross's own attempt to tell Rachel his feelings.",ex:"The timing is perfect dramatic irony: Ross is one sentence away from confessing, and Barry gets there first."},
+  {word:"we have got to start locking that door",ph:"",tag:"expression",ctx:`"We have got to start locking that door!"`,mean:"A running exasperated reaction to people walking in uninvited at the worst possible moment. Used here and throughout the series — the door is essentially always open.",ex:"One of the show's most reliable running jokes: everyone enters everyone else's apartment without knocking."},
+  {word:"register for",ph:"/ˈrɛdʒɪstər fɔː/",tag:"expression",ctx:`"I'm sure you didn't register for that."`,mean:"To create a gift list at a store before a wedding, so guests know what to buy. Rachel sarcastically 'gifts' Barry the contents of Monica's shoe — noting he probably didn't put that on the registry.",ex:"They registered for the wedding at three different stores — everything from kitchen equipment to bed linen."},
+  {word:"touristy things",ph:"/ˈtʊərɪsti/",tag:"humor",ctx:`"It's his first time out, so he's probably gonna wanna do some of the touristy things."`,mean:"The classic, well-known sights and activities that first-time visitors to a city typically do. Chandler applies standard tourist logic to a missing monkey.",ex:"It was her first time in Paris, so she did all the touristy things — Eiffel Tower, Louvre, boat trip."},
+  {word:"tranquiliser",ph:"/ˈtræŋkwɪlaɪzər/",tag:"vocab",ctx:`"Just a small tranquiliser." [fires dart gun]`,mean:"A drug used to sedate an animal or person, often delivered by dart. Luisa arrives in the basement with a dart gun — intended for Marcel, but Phoebe intercepts it.",ex:"The vet used a tranquiliser dart to safely sedate the escaped zoo animal."},
+  {word:"vintage",ph:"/ˈvɪntɪdʒ/",tag:"slang",ctx:`"This is just vintage Rachel."`,mean:"Informal: a classic, typical, or characteristic example of someone's behaviour. Ross uses it — not as a compliment — meaning 'this is exactly what Rachel always does.'",ex:"That response was vintage Chandler — sarcastic, defensive, and somehow funny."},
+  {word:"oblivious",ph:"/əˈblɪviəs/",tag:"vocab",ctx:`"You're totally oblivious to people's monkeys, or to people's feelings..."`,mean:"Completely unaware of what is happening around you; not noticing things that affect others. Ross accuses Rachel of living in her own world — which is partly true and partly his anger talking.",ex:"He walked straight past her without saying hello — completely oblivious to how upset she was."},
+  {word:"reconcile",ph:"/ˈrɛkənsaɪl/",tag:"vocab",ctx:`"I'm sure there's some friendly way to reconcile this!"`,mean:"To resolve a disagreement or find a way to make two opposing things compatible. Monica tries to defuse the standoff between Ross (pet owner), Mr. Heckles (monkey thief), and Luisa (animal control).",ex:"After months of arguments, the two departments finally found a way to reconcile their differences."},
+  {word:"potassium",ph:"/pəˈtæsiəm/",tag:"humor",ctx:`"Then what's with all the bananas?" "Potassium."`,mean:"A mineral found in high concentrations in bananas — essential for heart and muscle function. Mr. Heckles gives this as his deadpan explanation for having a box of bananas. A perfect single-word comedy beat.",ex:"Bananas are famous for their potassium content — athletes eat them to prevent muscle cramps."},
+  {word:"capuchin monkey",ph:"/ˈkæpjʊtʃɪn/",tag:"vocab",ctx:`"He's a black capuchin monkey with a white face."`,mean:"A small, highly intelligent New World monkey known for its distinctive white face and black body — the species that organ grinders traditionally used. Marcel is one.",ex:"Capuchin monkeys are one of the most cognitively complex primates — they can use tools and recognise themselves in mirrors."},
+  {word:"boarding school",ph:"/ˈbɔːdɪŋ skuːl/",tag:"vocab",ctx:`"I went to boarding school with four hundred boys."`,mean:"A school where students live on the premises during term time, away from their families. Chandler uses it to explain why his romantic options were limited in adolescence.",ex:"He was sent to boarding school at age eleven and came home only during holidays."},
+  {word:"lifestyle choice",ph:"/ˈlaɪfstaɪl tʃɔɪs/",tag:"humor",ctx:`"Any sex I had would've involved a major lifestyle choice."`,mean:"A decision about how you want to live — typically used in the context of sexuality or personal identity. Chandler's way of saying that at an all-boys boarding school, any romance would have required coming out.",ex:"One of Chandler's rare genuinely vulnerable jokes — funny on the surface, something more underneath."},
+  {word:"feather boa",ph:"/ˈfɛðər ˈbəʊə/",tag:"vocab",ctx:`"The one in the feather boa, that's Dr. Francis."`,mean:"A long scarf made from feathers, worn as a fashion accessory — associated with glamour and theatricality. Rachel uses it to identify a soap opera character to Marcel.",ex:"She arrived at the party wearing a bright pink feather boa and a sequined dress."},
+  {word:"country club",ph:"/ˈkʌntri klʌb/",tag:"vocab",ctx:`"Country club newsletter. My mother sends me the engagement notices for 'inspiration'."`,mean:"An exclusive private members' club offering social, dining, and sporting facilities — typically associated with wealthy suburban American life. Rachel's background is this world.",ex:"Her parents spent every Sunday at the country club — golf in the morning, brunch in the afternoon."},
+  {word:"Animal Control",ph:"",tag:"vocab",ctx:`"I've even called Animal Control!"`,mean:"A government agency responsible for enforcing laws about animals — including illegal pets, strays, and dangerous animals. Rachel didn't know this was bad news for Marcel.",ex:"Animal Control was called when neighbours reported a raccoon living in the apartment above them."},
+  {word:"yearbook",ph:"/ˈjɪəbʊk/",tag:"vocab",ctx:`"They are looking through Monica's high school yearbook."`,mean:"A book published annually by a school containing photos of students and staff, records of events, and messages. The closing scene uses it to reveal who everyone was in high school.",ex:"She found her old yearbook in the attic — she'd forgotten how different everyone looked at seventeen."},
+];
+
+const DD=[
+  // ── COLD OPEN ──
+  {sp:"Rachel",txt:`Okay, okay, I checked. We have: Earl Grey, English Breakfast, Cinnamon Stick, Camomile, Mint Medley, Blackberry, and.. oh, wait, there's one more... Lemon Soother. You're not the guy that asked for the tea, are you? [Guy shakes his head] Okay.`},
+  // ── SCENE 1: Central Perk ──
+  {sp:"Monica",txt:`<span class="hl">Mail call,<span class="hltip">💡 EXPRESSION — Military/camp expression for distributing mail. Monica mocks Rachel for still having things sent to her parents' country club address.</span></span> Rachel Green, <span class="hl">bunk<span class="hltip">🔥 SLANG — A bed in a dormitory or cabin, typically at summer camp. Monica uses it sarcastically.</span></span> seven.`},
+  {sp:"Rachel",txt:`Thank you. Oh, cool! <span class="hl">Free sample<span class="hltip">💡 EXPRESSION — A small amount of product given away free for promotion. The irony: Rachel is thrilled to receive a free sample of coffee while working in a coffee shop.</span></span> of coffee!`},
+  {sp:"Monica",txt:"Oh good! 'Cause where else would we get any?"},
+  {sp:"Rachel",txt:"Oh. Right. ...Oh great."},
+  {sp:"Monica",txt:"What is it?"},
+  {sp:"Rachel",txt:`<span class="hl">Country club<span class="hltip">📚 VOCAB — An exclusive private members' club associated with wealthy suburban American life. Rachel's background is this world.</span></span> newsletter. My mother sends me the <span class="hl">engagement notices<span class="hltip">💡 EXPRESSION — Formal announcements in a newsletter that two people are engaged. Rachel's mother uses them as passive-aggressive hints.</span></span> for 'inspiration'. Oh my God! Oh my God, it's Barry and Mindy!`},
+  {sp:"Monica",txt:"Barry who you almost—?"},
+  {sp:"Rachel",txt:"Barry who I almost."},
+  {sp:"Monica",txt:"And Mindy, your maid of—?"},
+  {sp:"Rachel",txt:`Mindy, my <span class="hl">maid of honour.<span class="hltip">💡 EXPRESSION — The chief bridesmaid at a wedding — the bride's closest female friend who stands beside her during the ceremony.</span></span> Oh!`},
+  {sp:"Monica",txt:"[Takes it] That's Mindy? Wow, she is pretty. Lucky. To have had a friend like you."},
+  // ── SCENE 2: Monica & Rachel's — Chinese food ──
+  {sp:"Ross",txt:"Marcel. Bring me the rice, c'mon. Bring me the rice, c'mon. Good boy. C'mere, gimme the rice. [Marcel brings the rice] Thank you, good boy. Well, I see he's finally mastered the difference between 'bring me the' and 'pee in the'. Rach?"},
+  {sp:"Rachel",txt:"What?"},
+  {sp:"Ross",txt:"Hi."},
+  {sp:"Rachel",txt:"Oh, I'm sorry. Oh, this is so stupid! I mean, I <span class=\"hl\">gave Barry up,<span class=\"hltip\">🔗 PHRASAL — To stop a relationship voluntarily; to let someone go. Rachel chose to leave Barry at the altar — now she questions that decision.</span></span> right? I should be happy for them! I am, I'm happy for them."},
+  {sp:"Ross",txt:"Really."},
+  {sp:"Rachel",txt:"No. I guess it would be different if I were with somebody."},
+  {sp:"Ross",txt:`Whoah, uh, what happened to, 'Forget relationships! <span class="hl">I'm done with men!<span class="hltip">🎭 IDIOM — A declaration of giving up on romance entirely. Ross quotes Rachel's own earlier vow back at her.</span></span>' The whole, uh, <span class="hl">penis embargo?<span class="hltip">😂 COMEDY — Ross's comic term for Rachel's vow to swear off men. An 'embargo' is a trade prohibition — applied here to Rachel's dating life.</span></span>`},
+  {sp:"Rachel",txt:`I don't know. I guess it's not about no guys, it's about the right guy. I mean, with Barry, it was safe and it was easy, but <span class="hl">there was no heat.<span class="hltip">🎭 IDIOM — No passion, no romantic spark, no chemistry. Rachel uses 'heat' as a metaphor for emotional and physical intensity.</span></span> With Paolo, that's all there was, was heat! And it was just this <span class="hl">raw animal<span class="hltip">🎭 IDIOM — Primal, instinctive, physical. Rachel describes her relationship with Paolo as purely driven by animal instinct. Ross cuts her off before she finishes.</span></span> sexual—`},
+  {sp:"Ross",txt:"Wait wait. I got it. I was there."},
+  {sp:"Rachel",txt:`Well, I mean, do you think you can ever have both? Someone who's like your best friend, but then also can <span class="hl">make your toes curl?<span class="hltip">🎭 IDIOM — Cause an intense physical reaction — attraction so strong it's felt in the body. Rachel describes the perfect relationship: friendship AND passion.</span></span>`},
+  {sp:"Ross",txt:"Yes. Yes. Yes! Yes, I really do! In fact, it's funny, very often, someone who you wouldn't think could curl your toes, might just be the one who... [Enter the others] ...Gets interrupted. Hi!"},
+  {sp:"Monica",txt:"Hi. Wonderful!"},
+  {sp:"Phoebe",txt:"So good!"},
+  {sp:"Joey",txt:`<span class="hl">Suck-fest.<span class="hltip">🔥 SLANG — A terrible, awful experience. '-fest' is a suffix meaning 'a lot of something.' Joey's entire film review in one invented word.</span></span>`},
+  {sp:"Chandler",txt:`Total <span class="hl">chick-flick.<span class="hltip">🔥 SLANG — A film primarily aimed at women, typically romantic or emotional. Chandler uses it dismissively — though he clearly enjoyed the Hugh Grant film too.</span></span>`},
+  {sp:"Phoebe",txt:"I'm sorry it wasn't one of those movies with, like, y'know, guns and bombs and buses going really fast..."},
+  {sp:"Joey",txt:"Hey, I don't need violence to enjoy a movie. Just so long as there's a little nudity."},
+  {sp:"Monica",txt:"There was nudity!"},
+  {sp:"Joey",txt:`I meant female nudity. I don't need to see Lou Grant <span class="hl">frolicking.<span class="hltip">🔥 SLANG — Playing around in a carefree, silly way. Joey uses it about male nudity to make it sound ridiculous.</span></span>`},
+  {sp:"Monica",txt:"Hugh! Hugh Grant!"},
+  {sp:"Phoebe",txt:"Hugh Grant!"},
+  {sp:"Ross",txt:"Alright, I've gotta go. C'mon, Marcel! We're gonna go take a bath. Yes we are, aren't we? Yes, we are."},
+  {sp:"Chandler",txt:"They're still just friends, right?"},
+  {sp:"Rachel",txt:"[To Marcel] And I will see you tomorrow!"},
+  {sp:"Ross",txt:"That's right, you're gonna spend tomorrow at Aunt Rachel's, aren't you."},
+  {sp:"Monica",txt:"Oh, hang on, hang on. Does Aunt Monica get a say in this?"},
+  {sp:"Ross",txt:"'Pwease, Aunt Monica, pwease?' Oh, unclench. You're not even gonna be there."},
+  // ── SCENE 3: Joe-G's Pizza ──
+  {sp:"Chandler",txt:"I can't believe we are even having this discussion."},
+  {sp:"Joey",txt:"I agree. I'm, like, in disbelief."},
+  {sp:"Chandler",txt:"I mean, don't you think if things were gonna happen with Rachel, they would've happened already?"},
+  {sp:"Ross",txt:"I'm telling you, she said she's looking for a relationship with someone exactly like me."},
+  {sp:"Joey",txt:"She really said that?"},
+  {sp:"Ross",txt:"Well, I added the 'exactly like me' part... But she said she's looking for someone, and someone is gonna be there tonight."},
+  {sp:"Joey",txt:"'Tonight' tonight?"},
+  {sp:"Ross",txt:"I figured after work I'd go pick up a bottle of wine and, uh, try to <span class=\"hl\">woo<span class=\"hltip\">🔥 SLANG — To romantically pursue someone; win their affection. An old-fashioned word — Chandler immediately mocks it, telling Ross to go back to the 1890s.</span></span> her."},
+  {sp:"Chandler",txt:"Hey, y'know what you should do? You should take her back to the 1890s, when that phrase was last used."},
+  // ── Rachel babysitting Marcel ──
+  {sp:"Rachel",txt:`Now, now the one in the <span class="hl">feather boa,<span class="hltip">📚 VOCAB — A long scarf made of feathers, worn as a fashion accessory. Rachel uses it to identify a soap opera character to Marcel.</span></span> that's Dr. Francis. Now, she used to be a man. Okay, now look, see, there's Raven. We hate her. We're glad she's dying.`},
+  {sp:"Rachel",txt:`Marcel, did you <span class="hl">poo<span class="hltip">🔥 SLANG — To defecate — a childish, informal word. Rachel talks to the monkey exactly like a parent with a toddler.</span></span> in the shoe? Marcel, bad monkey! [Notices newsletter, taps shoe contents onto it and folds it shut] Sorry, Barry. Little engagement gift. I'm sure you didn't <span class="hl">register for<span class="hltip">💡 EXPRESSION — To create a wedding gift list at a store. Rachel 'gifts' Barry the shoe's contents — noting it wasn't on the registry.</span></span> that.`},
+  {sp:"Rachel",txt:"[Leaves door open. Marcel escapes. Shot from TV — Rachel runs back in] Who died? Who died? Roll him over! Oh, c'mon, roll him over! Oh...! Well, we know it wasn't Dexter, right Marcel? Because— [Looks down. Marcel is gone] Marcel? Marc— [Notices the open door]"},
+  // ── Everyone back at Monica & Rachel's ──
+  {sp:"Joey",txt:"How could you lose him?"},
+  {sp:"Rachel",txt:"I don't know. We were watching TV, and then he pooped in Monica's shoe—"},
+  {sp:"Monica",txt:"Wait. He pooped in my shoe? Which one?"},
+  {sp:"Rachel",txt:"I don't know. The left one."},
+  {sp:"Monica",txt:"Which ones?"},
+  {sp:"Rachel",txt:"Oh. Those little clunky Amish things you think go with everything."},
+  {sp:"Phoebe",txt:"Hey."},
+  {sp:"All",txt:"Hi."},
+  {sp:"Phoebe",txt:"Whoah, ooh, why is the air in here so negative?"},
+  {sp:"Chandler",txt:"Rachel lost Marcel."},
+  {sp:"Phoebe",txt:"Oh no, how?"},
+  {sp:"Monica",txt:"He pooped in my shoe."},
+  {sp:"Phoebe",txt:"Which one? The right or left? 'Cause the left one is lucky..."},
+  {sp:"Rachel",txt:"C'mon, you guys, what're we gonna do?"},
+  {sp:"Joey",txt:"Alright. You're a monkey. You're loose in the city. Where do you go?"},
+  {sp:"Chandler",txt:`Okay, it's his first time out, so he's probably gonna wanna do some of the <span class="hl">touristy things.<span class="hltip">😂 COMEDY — The classic sights that first-time visitors do. Chandler applies standard tourist logic to a missing monkey — completely earnestly.</span></span> I'll go to Cats, you go to the Russian Tea Room.`},
+  {sp:"Rachel",txt:"Oh, my God, c'mon, you guys! He's gonna be home any minute! He's gonna kill me!"},
+  {sp:"Monica",txt:"Okay, we'll start with the building. You guys take the first and second floor, Phoebe and I'll take third and fourth."},
+  {sp:"Rachel",txt:"Well, what'm I gonna do?"},
+  {sp:"Monica",txt:"Okay, you stay here, and just wait by the phone. Spray Lysol in my shoe, and wait for Ross to kill you."},
+  // ── Mr. Heckles ──
+  {sp:"Monica",txt:"Mr. Heckles, our friend lost a monkey. Have you seen it?"},
+  {sp:"Mr. Heckles",txt:"I left a Belgian waffle out here, did you take it?"},
+  {sp:"Monica",txt:"No!"},
+  {sp:"Phoebe",txt:"Why would you leave your Belgian waffle in the hall?"},
+  {sp:"Mr. Heckles",txt:"I wasn't ready for it."},
+  {sp:"Monica",txt:"A monkey. Have you seen a monkey?"},
+  {sp:"Mr. Heckles",txt:"Saw Regis Philbin once..."},
+  {sp:"Phoebe",txt:"Okay, thank you, Mr. Heckles."},
+  {sp:"Mr. Heckles",txt:"You owe me a waffle."},
+  // ── Ross arrives / Animal Control ──
+  {sp:"Rachel",txt:`[On phone] Okay, he's a black <span class="hl">capuchin monkey<span class="hltip">📚 VOCAB — A small, highly intelligent New World monkey with a distinctive white face — the species traditionally used by organ grinders. That's Marcel.</span></span> with a white face... with Russian dressing and pickles on the side. Okay. Thanks. [Ross enters] Hey! Great! It went great. Really great. Hey, is that wine?`},
+  {sp:"Ross",txt:"Yeah. You, uh, you want some?"},
+  {sp:"Rachel",txt:"Oh, I would love some. But y'know what? Let's not drink it here. I'm feeling kinda crazy. You wanna go to Newark?"},
+  {sp:"Ross",txt:`Uh, okay, yeah, we could do that, but before we head off to the murder capital of the North-East, I was, uh, kinda wanting to <span class="hl">run something by you.<span class="hltip">🔗 PHRASAL — To mention an idea to get someone's reaction. Ross's careful way of trying to open up about his feelings for Rachel.</span></span> Y'know how we were talking about relationships? Well—`},
+  {sp:"Rachel",txt:"Oh God, Ross, I cannot do this."},
+  {sp:"Ross",txt:"Okay, quick and painful. [Starts to cork the wine]"},
+  {sp:"Rachel",txt:"Oh God... Okay. Ross, please don't hate me. Y'know Marcel?"},
+  {sp:"Ross",txt:"...Yeah?"},
+  {sp:"Rachel",txt:"Well, I kind of... I kind of lost him."},
+  {sp:"Ross",txt:"[Angry] I can't believe this. I mean, all I asked you to do was keep him in the apartment."},
+  {sp:"Rachel",txt:"I know, I know, I'm sorry—"},
+  {sp:"Ross",txt:"No, y'know what, I guess it's partially my fault. I shouldn't've asked you to start off with a monkey. I should've started you off with like a pen or a pencil."},
+  {sp:"Rachel",txt:"Ross, I'm doing everything that I can, I've got everybody looking for him— [Door buzzer] Oh! Who is it?"},
+  {sp:"Intercom",txt:"Animal Control."},
+  {sp:"Rachel",txt:`See? I've even called <span class="hl">Animal Control!<span class="hltip">📚 VOCAB — A government agency that enforces laws about animals, including illegal pets. Rachel didn't know this was terrible news for Marcel.</span></span>`},
+  {sp:"Ross",txt:"You called Animal Control?"},
+  {sp:"Rachel",txt:"Uh-huh... why... do you not like them?"},
+  {sp:"Ross",txt:`Marcel is an <span class="hl">illegal exotic<span class="hltip">💡 EXPRESSION — An animal that is non-native and prohibited by law from being kept as a pet. Ross has been quietly breaking the law the entire season.</span></span> animal. I'm not allowed to have him in the city. If they find him, they'll take him away from me.`},
+  {sp:"Rachel",txt:"O-okay, now see, you never ever ever told us that..."},
+  {sp:"Ross",txt:"That's right, I.. 'cause I didn't expect you were gonna invite them to the apartment!"},
+  {sp:"Luisa",txt:"Somebody called about a monkey?"},
+  {sp:"Rachel",txt:"Oh, y'know what? That was a complete misunderstanding!"},
+  {sp:"Ross",txt:"Yeah, we thought we had a monkey, but we didn't."},
+  {sp:"Rachel",txt:"Turned out it was a hat."},
+  {sp:"Ross",txt:"Cat!"},
+  {sp:"Rachel",txt:"Cat! What'm I saying? Cat!"},
+  {sp:"Monica",txt:"Hi. We checked the third and fourth floor, no-one's seen Marcel."},
+  {sp:"Luisa",txt:"Marcel?"},
+  {sp:"Ross",txt:"My uncle Marcel."},
+  {sp:"Phoebe",txt:"Oh, is that who the monkey's named after?"},
+  {sp:"Luisa",txt:`Oookay. Are you aware that possession of an <span class="hl">illegal exotic<span class="hltip">💡 EXPRESSION — An animal that is non-native and prohibited by law. Luisa quotes the full legal consequence: prison and permanent loss of the animal.</span></span> is punishable by up to two years in prison and <span class="hl">confiscation of the animal?<span class="hltip">💡 EXPRESSION — Official seizure of property as a legal penalty. Ross risks losing Marcel permanently.</span></span>`},
+  {sp:"Phoebe",txt:"Oh my God. You'd put that poor little creature in jail?"},
+  {sp:"Monica",txt:`Pheebs, you remember how we talked about <span class="hl">saying things quietly to yourself first?<span class="hltip">💡 EXPRESSION — Monica's gentle filter reminder: think before speaking, especially in front of authorities.</span></span>`},
+  {sp:"Phoebe",txt:"Yes, but there isn't always time!"},
+  {sp:"Monica",txt:`Look. I'm sure there's some friendly way to <span class="hl">reconcile<span class="hltip">📚 VOCAB — To resolve a disagreement and find common ground. Monica tries to defuse a three-way standoff.</span></span> this! Um, have a seat. First of all, we haven't been introduced, I'm Monica Geller.`},
+  {sp:"Luisa",txt:"Oh my God, you are! And you're Rachel Green!"},
+  {sp:"Rachel",txt:"Yeah!"},
+  {sp:"Luisa",txt:"Luisa Gianetti! Lincoln High? I sat behind you guys in home room!"},
+  {sp:"Rachel",txt:"Luisa? Oh my God! Monica! It's Luisa!"},
+  {sp:"Monica",txt:"The Luisa from home room!"},
+  {sp:"Luisa",txt:"You have no idea who I am, do you."},
+  {sp:"Monica",txt:"No, none at all."},
+  {sp:"Rachel",txt:"None."},
+  {sp:"Luisa",txt:"Well, maybe that's because you spent four years ignoring me. I mean, would it have been so hard to say 'Morning, Luisa'? Or 'Nice overalls'?"},
+  {sp:"Monica",txt:"Oh, I'm so sorry!"},
+  {sp:"Luisa",txt:"Ah, it's not so much you, you were fat, you had your own problems. [To Rachel] But you? What a bitch!"},
+  {sp:"Rachel",txt:"What?!"},
+  {sp:"Monica",txt:`<span class="hl">Be that as it may,<span class="hltip">💡 EXPRESSION — Even if what you said is true, it doesn't change what I'm asking. Monica acknowledges the grievance but pivots to her request.</span></span> d'you think you could just help us out here on that monkey thing? Just <span class="hl">for old times' sake?<span class="hltip">🎭 IDIOM — Out of nostalgia or loyalty to a shared past. Monica appeals to Luisa's sense of history — though they barely spoke in high school.</span></span> Go Bobcats?`},
+  {sp:"Luisa",txt:"I could... but I won't. If I find that monkey, he's mine. [Leaves]"},
+  {sp:"Phoebe",txt:"Dun-dun-duuuur! Sorry."},
+  // ── Search scenes ──
+  {sp:"Chandler",txt:"Marcel?"},
+  {sp:"Joey",txt:"Marcel?"},
+  {sp:"Chandler",txt:"Marcel?"},
+  {sp:"Joey",txt:"Marcel?"},
+  {sp:"Woman",txt:"Hi, can I help you?"},
+  {sp:"Chandler",txt:"Um, we're kind of having an emergency and we were looking for something..."},
+  {sp:"Joey",txt:"A monkey."},
+  {sp:"Chandler",txt:"Yes have you seen any?"},
+  {sp:"Woman",txt:"No. No, haven't seen a monkey. Do you know anything about fixing radiators?"},
+  {sp:"Joey",txt:"Um, sure! Did you try turning the knob back the other way?"},
+  {sp:"Woman",txt:"Of course."},
+  {sp:"Joey",txt:"Oh. Then, no."},
+  {sp:"Chandler",txt:`Oh nononowaitwaitwait! Uh... we may not know anything about radiators, but we do have a certain amount of expertise in the heating and cooling milieu.`},
+  {sp:"Joey",txt:"Aren't we kind of in the middle of something here?"},
+  {sp:"Chandler",txt:"Yes, but these women are very hot, and they need our help! And they're very hot."},
+  {sp:"Joey",txt:"We can't, alright? [To the women] We're sorry. You have no idea how sorry, but... We promised we'd find this monkey. He's about yea high and answers to the name Marcel, so if we could get some pictures of you, you'd really be helping us out."},
+  {sp:"Chandler",txt:"Okay, from now on, you don't get to talk to other people."},
+  {sp:"Phoebe",txt:"Marcel?"},
+  {sp:"Monica",txt:"Marcel?"},
+  {sp:"Both",txt:"Marcel?"},
+  {sp:"Phoebe",txt:"OhmyGod!"},
+  {sp:"Monica",txt:"Whaaat!"},
+  {sp:"Phoebe",txt:"Something just brushed up against my right leg!"},
+  {sp:"Monica",txt:"What is it?"},
+  {sp:"Phoebe",txt:"Oh, it's okay, it was just my left leg."},
+  {sp:"Monica",txt:"Look, Phoebe! [Marcel is in the corner]"},
+  {sp:"Phoebe",txt:"Yeah! Oh, c'mere, Marcel! Oh, Marcel, c'mere!"},
+  {sp:"Luisa",txt:`Step aside, ladies! [loads dart gun] Just a small <span class="hl">tranquiliser.<span class="hltip">📚 VOCAB — A drug used to sedate an animal, often delivered by dart. Intended for Marcel — Phoebe jumps in the way.</span></span>`},
+  {sp:"Phoebe",txt:"[jumps in front of Marcel just as Luisa fires — dart hits Phoebe in the butt] Huh. [sways] Whoah."},
+  {sp:"Monica",txt:"Oh gosh."},
+  // ── Street outside ──
+  {sp:"Ross",txt:`Marcel? Marc— oh, this is ridiculous! We've been all over the neighbourhood. He's gone, he's just gone.`},
+  {sp:"Rachel",txt:"Ross, you don't know that."},
+  {sp:"Ross",txt:"Oh come on. It's cold, it's dark, he doesn't know the Village. [Kicks sign] And now I have a broken foot. I have no monkey, and a broken foot! Thank you very much."},
+  {sp:"Rachel",txt:"Ross, I said I'm sorry like a million times. What do you want me to do? You want me to break my foot too? Okay, I'm gonna break my foot right here. [Kicks sign] Ow!! There, are you happy now?!"},
+  {sp:"Ross",txt:"Yeah, y'know, now that you kicked the sign, hey! I don't miss Marcel any more!"},
+  {sp:"Rachel",txt:`Y'know, it is not like I did this <span class="hl">on purpose.<span class="hltip">🎭 IDIOM — Intentionally; with deliberate intent. Rachel defends herself — she didn't lose Marcel deliberately.</span></span>`},
+  {sp:"Ross",txt:`Oh, no no no. This is just <span class="hl">vintage<span class="hltip">🔥 SLANG — A classic, typical example of someone's behaviour. Ross uses it — not as a compliment — meaning 'this is exactly what Rachel always does.'</span></span> Rachel. I mean, things just sort of happen around you. I mean, you're off in Rachel-land, doing your Rachel-thing, totally <span class="hl">oblivious<span class="hltip">📚 VOCAB — Completely unaware of what is happening around you; not noticing things that affect others.</span></span> to people's monkeys, or to people's feelings...`},
+  {sp:"Ross",txt:"Rachel."},
+  {sp:"Rachel",txt:"Ross!"},
+  {sp:"Both",txt:"Hey! Hey, Bananaman! [hobble after the man with bananas]"},
+  // ── Scene 4: Mr. Heckles' door ──
+  {sp:"Phoebe",txt:"Oh, this is so intense. One side of my butt is totally asleep, and the other side has no idea."},
+  {sp:"Ross",txt:"Hi, did you order some bananas?"},
+  {sp:"Mr. Heckles",txt:"What about it?"},
+  {sp:"Ross",txt:"Gimme back my monkey."},
+  {sp:"Mr. Heckles",txt:"I don't have a monkey."},
+  {sp:"Rachel",txt:"Then what's with all the bananas?"},
+  {sp:"Mr. Heckles",txt:`<span class="hl">Potassium.<span class="hltip">😂 COMEDY — A mineral found in high concentrations in bananas. Mr. Heckles gives this as his deadpan single-word explanation. A perfect comedy beat.</span></span>`},
+  {sp:"Ross",txt:"Marcel? [Enters apartment. Marcel jumps out wearing a pink dress] Marcel! What've you done to him?"},
+  {sp:"Mr. Heckles",txt:"That's my monkey. That's Patti, Patti the monkey."},
+  {sp:"Ross",txt:"Are you insane? C'mere, Marcel. [Marcel turns to Ross]"},
+  {sp:"Mr. Heckles",txt:"C'mere, Patti. [Marcel turns back]"},
+  {sp:"Luisa",txt:"Here, monkey. Here, monkey! [Marcel runs to door, into Luisa's cage] Gotcha."},
+  {sp:"Ross",txt:"Okay, gimme my monkey back."},
+  {sp:"Mr. Heckles",txt:"That's my monkey."},
+  {sp:"Luisa",txt:`You're both gonna have to <span class="hl">take this up with<span class="hltip">🔗 PHRASAL — To bring a dispute to an authority for a decision. Luisa refuses to settle it herself and passes it to a judge.</span></span> the judge.`},
+  {sp:"Mr. Heckles",txt:"That's not my monkey. Just the dress is mine, you can send that back whenever."},
+  {sp:"Ross",txt:"Alright, I want my monkey."},
+  {sp:"Luisa",txt:"No!"},
+  {sp:"Rachel",txt:"Oh, c'mon, Luisa!"},
+  {sp:"Luisa",txt:"Sorry, <span class=\"hl\">prom queen.<span class=\"hltip\">💡 EXPRESSION — The girl voted most popular at the high school prom. Luisa uses it as a dismissive title for the person who ignored her for four years.</span></span>"},
+  {sp:"Ross",txt:"[To Rachel] You had to be a bitch in high school, you couldn't've been fat."},
+  {sp:"Rachel",txt:`Alright. In high school I was the <span class="hl">prom queen<span class="hltip">💡 EXPRESSION — The most socially powerful girl in high school. Rachel lists all her titles — prom queen, homecoming queen, class president — to establish what she's risking by asking for grace.</span></span> and the <span class="hl">homecoming queen<span class="hltip">💡 EXPRESSION — The girl elected queen at the annual homecoming celebration — another American high school popularity title.</span></span> and the class president and you... were also there! But if you take this monkey, I will lose one of the most important people in my life. You can hate me if you want, but please do not punish him. C'mon, Luisa, you have a chance to <span class="hl">be the bigger person.<span class="hltip">🎭 IDIOM — To act with more generosity or maturity than the situation requires — to rise above grudges.</span></span> Take it!`},
+  {sp:"Luisa",txt:"Nope."},
+  {sp:"Rachel",txt:"Alright. Well then how about I call your supervisor, and I tell her that you shot my friend in the ass with a dart?"},
+  // ── Scene 5: Resolution ──
+  {sp:"Ross",txt:"It'll be nice to get this off finally, won't it? Yes it will. [Marcel resists] Or we can leave it on for now, that's fine."},
+  {sp:"Rachel",txt:"Y'know, with the right pair of pumps, that would be a great little outfit."},
+  {sp:"Ross",txt:"Listen, I'm sorry I was so hard on you before, it's just I—"},
+  {sp:"Rachel",txt:"Oh, Ross, c'mon. It's my fault, I almost lost your—"},
+  {sp:"Ross",txt:"Yeah, but you were the one who got him back, y'know? You were great. ...Hey, we still have that bottle of wine. You in the <span class=\"hl\">mood for<span class=\"hltip\">🎭 IDIOM — Feeling like doing or having something at a particular moment. Ross's charming way of asking if she'd like wine.</span></span> something grape?"},
+  {sp:"Rachel",txt:"That'd be good."},
+  {sp:"Ross",txt:"Alright. [Gets glasses. Turns off main light. Sits down and pours wine] Well, so long as we're here and, uh, not on the subject, I was thinking about how mad we got at each other before, and I was thinking maybe it was partially because of how we—"},
+  {sp:"Barry",txt:"Rachel."},
+  {sp:"Rachel",txt:"Barry?!"},
+  {sp:"Barry",txt:`I can't. I can't do it, I can't marry Mindy. <span class="hl">I think I'm still in love with you.<span class="hltip">❤️ ROMANTIC — A declaration that feelings never ended despite separation. Barry bursts in and says this — completely derailing Ross's own confession attempt.</span></span>`},
+  {sp:"Ross",txt:`<span class="hl">We have got to start locking that door!<span class="hltip">💡 EXPRESSION — Exasperated reaction to yet another uninvited entrance at the worst moment. A recurring joke throughout the series.</span></span>`},
+  // ── Credits: Central Perk — Yearbook ──
+  {sp:"Monica",txt:"This is me in The Sound of Music. See the von Trapp kids?"},
+  {sp:"Phoebe",txt:"Nope."},
+  {sp:"Monica",txt:"That's because I'm in front of them."},
+  {sp:"Chandler",txt:"Eh. I thought that was an alp."},
+  {sp:"Monica",txt:"Well, high school was not my favourite time."},
+  {sp:"Joey",txt:"I dunno, I loved high school. Y'know? It was just four years of parties and dating and sex."},
+  {sp:"Chandler",txt:`Yeah, well I went to <span class="hl">boarding school<span class="hltip">📚 VOCAB — A school where students live on the premises during term time. Chandler uses it to explain why his teenage romantic options were limited.</span></span> with four hundred boys. Any sex I had would've involved a major <span class="hl">lifestyle choice.<span class="hltip">😂 COMEDY — A decision about how you want to live — typically referring to sexuality. Chandler's way of saying that at an all-boys school, any romance would have required coming out.</span></span>`},
+  {sp:"Monica",txt:`Gosh, doesn't it seem like <span class="hl">a million years ago?<span class="hltip">🎭 IDIOM — A very long time in the past; distant and nostalgic. Monica says it while looking at the high school yearbook.</span></span>`},
+  {sp:"Phoebe",txt:"Oh. Oooh! Ooh! Ooh! [stands up and dances around] My butt cheek is waking up! Oooh! The tranquiliser is wearing off."},
+];
+
+const QD=[
+  {t:"mc",q:"What does 'give someone up' mean?",ex:`"I gave Barry up, right? I should be happy for them."`,opts:["To introduce someone to others","To stop a relationship voluntarily; to let someone go","To give someone a gift","To argue with someone"],ans:1,exp:"'Give someone up' = to stop a relationship voluntarily. Rachel chose to leave Barry at the altar — now she questions that decision when she sees he's engaged to Mindy."},
+  {t:"mc",q:"What does 'there was no heat' mean?",ex:`"With Barry, it was safe and it was easy, but there was no heat."`,opts:["The apartment had no heating","There was no passion or romantic spark","It was too cold outside","They argued too much"],ans:1,exp:"'No heat' = no passion, no romantic chemistry, no spark. Rachel uses 'heat' as a metaphor for physical and emotional intensity — she had safety with Barry but no fire."},
+  {t:"mc",q:"What does 'make your toes curl' mean?",ex:`"Someone who can make your toes curl."`,opts:["Cause physical pain","Cause intense pleasure or attraction — so strong it's felt physically","Make you want to dance","Give you cold feet"],ans:1,exp:"'Make your toes curl' = cause an intense physical reaction from excitement, attraction or pleasure. Rachel uses it to describe the passionate side of a perfect relationship."},
+  {t:"mc",q:"What does 'penis embargo' mean?",ex:`"What happened to 'I'm done with men!' The whole, uh, penis embargo?"`,opts:["A formal government ban","A comic term for a personal vow to swear off men entirely","A trade restriction on goods","A medical condition"],ans:1,exp:"Ross's comic term: an 'embargo' is a formal trade prohibition — applied here to Rachel's dating life. Classic Friends wordplay: turning an emotional vow into a diplomatic policy."},
+  {t:"mc",q:"What does 'run something by someone' mean?",ex:`"I was kinda wanting to run something by you."`,opts:["To chase someone","To mention an idea to someone to get their reaction or approval","To deliver a message quickly","To explain something in detail"],ans:1,exp:"'Run something by someone' = to propose or mention an idea informally to see how they react. Ross uses it as his careful way of trying to open up to Rachel."},
+  {t:"mc",q:"What does 'woo' mean?",ex:`"I figured I'd go try to woo her."`,opts:["To frighten someone","To romantically pursue someone; to try to win their affection","To impress someone professionally","To apologise to someone"],ans:1,exp:"'Woo' = to court or romantically pursue someone. It's old-fashioned — which is exactly why Chandler mocks it, telling Ross to go back to the 1890s when the word was last used."},
+  {t:"mc",q:"What is 'maid of honour'?",ex:`"And Mindy, your maid of—?"`,opts:["The bride's mother at a wedding","The chief bridesmaid who stands beside the bride during the ceremony","A woman who organises catering","A title for the most popular girl at school"],ans:1,exp:"Maid of honour = the chief bridesmaid — the bride's closest female friend or relative. The fact that Mindy is marrying the man Rachel almost married makes this especially painful."},
+  {t:"mc",q:"What is an 'illegal exotic' animal?",ex:`"Marcel is an illegal exotic animal. I'm not allowed to have him in the city."`,opts:["A very expensive pet","An animal that is non-native and prohibited by law from being kept as a pet","A very rare zoo animal","An animal from another country"],ans:1,exp:"An 'illegal exotic' = an animal that is both non-native and legally prohibited as a pet. Ross has been quietly breaking the law the entire season by keeping Marcel in a New York City apartment."},
+  {t:"mc",q:"What does 'confiscation of the animal' mean?",ex:`"Punishable by up to two years in prison and confiscation of the animal."`,opts:["The animal is set free","The official seizure of the animal as a legal penalty","The animal is returned to the wild","The animal is given to a zoo"],ans:1,exp:"Confiscation = official seizure by authorities as a penalty. Luisa quotes the full legal consequence: prison AND permanently losing Marcel."},
+  {t:"mc",q:"What does 'be that as it may' mean?",ex:`"Be that as it may, d'you think you could help us out here?"`,opts:["Because of that reason","Even if what you said is true, it doesn't change my request","Since things are fine now","Although I disagree"],ans:1,exp:"'Be that as it may' = a formal pivot: even if your point is valid, I'm moving on to what I need. Monica acknowledges Luisa's grievance but immediately redirects to asking for help."},
+  {t:"mc",q:"What does 'for old times' sake' mean?",ex:`"Could you just help us out? Just for old times' sake?"`,opts:["Because it's a tradition","Out of nostalgia or loyalty to a shared past","Because it's urgent","Since we're friends now"],ans:1,exp:"'For old times' sake' = do it out of nostalgia for a shared history. Monica appeals to the four years they spent in the same home room — though they never actually spoke."},
+  {t:"mc",q:"What does 'be the bigger person' mean?",ex:`"You have a chance to be the bigger person here! Take it!"`,opts:["To be physically taller","To have more authority","To act with more maturity and generosity than the situation requires — to rise above a grudge","To win an argument"],ans:2,exp:"'Be the bigger person' = show greater maturity or forgiveness than the other party. Rachel asks Luisa to let go of her high school resentment and act nobly."},
+  {t:"mc",q:"What does 'on purpose' mean?",ex:`"It is not like I did this on purpose."`,opts:["With great care","Intentionally; with deliberate intent","By accident","Very quickly"],ans:1,exp:"'On purpose' = deliberately and intentionally. Rachel defends herself — she didn't lose Marcel deliberately. The opposite of 'by accident' or 'by mistake.'"},
+  {t:"mc",q:"What does 'vintage' mean when used about a person?",ex:`"This is just vintage Rachel."`,opts:["Old-fashioned in a good way","A classic, typical, or characteristic example of someone's behaviour","Very elegant","From a specific era"],ans:1,exp:"'Vintage [name]' = a classic, perfect example of what that person always does. Ross uses it — not as a compliment — meaning 'this is exactly what Rachel always does.'"},
+  {t:"mc",q:"What does 'oblivious' mean?",ex:`"You're totally oblivious to people's monkeys, or to people's feelings."`,opts:["Very selfish","Completely unaware of what is happening around you","Too focused on one thing","Easily distracted"],ans:1,exp:"'Oblivious' = completely unaware of things happening around you that affect others. Ross accuses Rachel of living in her own world — which is partly true and partly his anger talking."},
+  {t:"mc",q:"What does 'take something up with' mean?",ex:`"You're both gonna have to take this up with the judge."`,opts:["To argue about something","To bring a complaint or dispute to an authority for a decision","To solve a problem alone","To ignore a problem"],ans:1,exp:"'Take something up with someone' = to bring a dispute to an authority or appropriate person. Luisa refuses to settle the Marcel argument herself and passes it to a higher authority."},
+  {t:"mc",q:"What is a 'chick-flick'?",ex:`"Total chick-flick."`,opts:["A film about chickens","A film primarily aimed at women, typically romantic or emotional","A French film","A very short film"],ans:1,exp:"A 'chick-flick' = a film primarily marketed to women — usually romantic, emotional, or relationship-focused. Chandler uses it dismissively, though he and Joey clearly watched the whole thing."},
+  {t:"mc",q:"What does 'suck-fest' mean?",ex:`"Suck-fest."`,opts:["A celebration","A terrible, awful experience",  "A festival","A very dull activity"],ans:1,exp:"'Suck-fest' = an experience that is comprehensively terrible. The suffix '-fest' means 'a lot of.' Joey reviews the entire film in one invented compound word."},
+  {t:"mc",q:"What is 'Animal Control'?",ex:`"I've even called Animal Control!"`,opts:["A pest control company","A government agency responsible for enforcing laws about animals, including illegal pets","A veterinary clinic","A pet rescue charity"],ans:1,exp:"Animal Control = a government agency that enforces animal laws — including illegal exotic pet ownership. Rachel calls them thinking she's being helpful. She is not."},
+  {t:"mc",q:"What is a 'tranquiliser' in this context?",ex:`"Just a small tranquiliser." [fires dart gun]`,opts:["A relaxing drink","A sleeping pill for humans","A drug used to sedate an animal, often delivered by dart","A type of poison"],ans:2,exp:"A tranquiliser = a drug that sedates an animal, typically delivered by a dart gun. Luisa intends it for Marcel — but Phoebe jumps in the way and takes the dart herself."},
+  {t:"fill",q:"Fill in: 'I'm not really _____ _____ _____ a big dinner — can we just order pizza?'",ex:`"You in the mood for something grape?"`,ans:"in the mood for",exp:"'In the mood for' = feeling like doing or having something at a particular moment. Ross uses it as his charming way of asking Rachel if she'd like to share wine."},
+  {t:"mc",q:"What does 'we have got to start locking that door' mean?",ex:`"We have got to start locking that door!"`,opts:["A genuine security concern","An exasperated reaction to people entering uninvited at the worst moment — a running joke","A comment about apartment safety","An instruction for the audience"],ans:1,exp:"This is one of the show's most reliable running jokes: every apartment door is essentially always unlocked, allowing anyone to enter at the worst possible moment. Ross says it right as Barry derails his confession."},
+  {t:"mc",q:"What does 'register for' mean at a wedding?",ex:`"I'm sure you didn't register for that."`,opts:["To sign up for the wedding ceremony","To create a gift list at a store so guests know what to buy","To book the wedding venue","To invite guests formally"],ans:1,exp:"'Register for' = to create a wish list at a store before a wedding. Rachel sarcastically gifts Barry the contents of Monica's shoe — noting it wasn't on his registry."},
+  {t:"mc",q:"What does 'for old times' sake' mean?",ex:`"Just for old times' sake? Go Bobcats?"`,opts:["Because it happened in the past","Out of nostalgia or loyalty to a shared history","Because it's a tradition","Since you owe me"],ans:1,exp:"'For old times' sake' = do something out of shared nostalgia. Monica's appeal to Luisa — despite the fact that they spent four years in the same home room without Monica ever saying hello."},
+  {t:"mc",q:"What is a 'prom queen'?",ex:`"Sorry, prom queen."`,opts:["The most academically successful girl at school","The girl voted most popular at the high school prom dance","The girl who organises the prom","The girl who wins a dance competition"],ans:1,exp:"Prom queen = the girl voted most popular by her classmates at the American high school prom. Luisa uses it dismissively — for her, it represents Rachel's social power and carelessness."},
+  {t:"mc",q:"What does 'I'm still in love with you' convey dramatically?",ex:`"I think I'm still in love with you."`,opts:["Barry is confused about who he wants","Barry arrives at the perfect moment to derail Ross's confession attempt","Barry is angry at Rachel","Barry wants to stay friends"],ans:1,exp:"Barry's declaration arrives the exact moment Ross is about to confess his own feelings — perfect dramatic irony. The timing is the joke and the heartbreak simultaneously."},
+  {t:"mc",q:"What does 'boarding school' mean?",ex:`"I went to boarding school with four hundred boys."`,opts:["A school on a ship","A school where students live on the premises during term time, away from their families","An after-school programme","A school for wealthy students only"],ans:1,exp:"Boarding school = a school where students live on campus during term. Chandler uses it to explain why his teenage romantic life was complicated — four hundred boys and no girls."},
+  {t:"fill",q:"Fill in: 'C'mon, Luisa, you have a chance to _____ _____ _____ _____ here. Take it!'",ex:`"You have a chance to be the bigger person here! Take it!"`,ans:"be the bigger person",exp:"'Be the bigger person' = act with more maturity and generosity than the situation requires. Rachel's most powerful speech in the episode — she admits her faults and asks for grace anyway."},
+  {t:"mc",q:"What does 'potassium' mean as a one-word answer?",ex:`"Then what's with all the bananas?" "Potassium."`,opts:["A type of monkey food","A mineral found in bananas — Mr. Heckles's deadpan explanation for the box","A code word","A type of poison"],ans:1,exp:"Potassium = the mineral abundant in bananas. Mr. Heckles delivers this single word as a complete, serious, unapologetic explanation. The comedy is entirely in the deadpan delivery."},
+  {t:"mc",q:"What does 'a million years ago' mean?",ex:`"Gosh, doesn't it seem like a million years ago?"`,opts:["Exactly one million years","A very long time in the past — used to express nostalgia or distance","Last year","A lifetime ago, literally"],ans:1,exp:"'A million years ago' = a hyperbolic way of saying something feels very distant in time. Monica says it while looking at a high school yearbook in the closing scene."},
+];
+
+const CD=[
+  {e:"🐒",t:"Marcel — The Illegal Exotic",p:"Marcel is a capuchin monkey — a small, highly intelligent New World primate known for its distinctive white face and problem-solving ability. Keeping one in New York City is illegal: they are classified as 'illegal exotics,' and possession can mean up to two years in prison and permanent confiscation of the animal. Ross has been quietly breaking the law since Season 1. The episode's main plot turns on Rachel accidentally inviting Animal Control to the apartment."},
+  {e:"💍",t:"Barry and Mindy — The Backstory",p:"Barry Farber was Rachel's fiancé before the show began. In the pilot, Rachel left him at the altar and showed up at Central Perk in her wedding dress. Now he's engaged to Mindy, who was Rachel's maid of honour — her closest bridesmaid and wedding organiser. Rachel's reaction reveals that it's not regret about Barry specifically, but about still being single while her old life moves forward without her."},
+  {e:"🏫",t:"American High School — Prom Queen and Homecoming Queen",p:"American high schools have two major popularity contests: Prom Queen (elected at the senior prom dance, usually at the end of the school year) and Homecoming Queen (elected at the homecoming football game celebration, usually in autumn). Being elected both is the peak of social status. Rachel was also class president. Together, these titles explain why Luisa — who sat behind her in home room for four years and was never acknowledged — carries a grudge."},
+  {e:"📋",t:"American Healthcare — The Wedding Registry",p:"In the US, engaged couples typically create a 'registry' — a wish list at one or more stores — so wedding guests know exactly what to buy. Stores like Williams-Sonoma, Bed Bath & Beyond, and department stores like Saks are common registry locations. Rachel's joke about 'gifting' Barry the shoe contents — 'I'm sure you didn't register for that' — plays on the formality of this tradition."},
+  {e:"🎭",t:"The Comedy of Bad Timing",p:"This episode is built on perfect bad timing: Ross is repeatedly interrupted before he can confess his feelings. First the other four return from the movie. Then Marcel escapes. Then Ross gets angry. Then Barry bursts in. Each interruption is more dramatic than the last. The final moment — Ross pouring wine, turning the lights down, beginning his sentence — and then Barry walks in and says 'I think I'm still in love with you' — is one of the series' great comic/romantic cliffhangers."},
+  {e:"🦺",t:"Animal Control — How It Works",p:"Animal Control officers in the US are empowered to seize animals kept illegally, issue fines, and refer cases for criminal prosecution. In New York City, many exotic animals — including primates, large reptiles, and big cats — are prohibited as pets. Officers like Luisa carry tranquiliser dart guns for sedating animals. The fact that Phoebe takes the dart instead of Marcel is simultaneously the episode's most absurd and most heroic moment."},
+  {e:"❤️",t:"Ross and Rachel — The Almost-Confession",p:"This episode marks one of the series' key early near-misses between Ross and Rachel. Ross's football dream about Rachel has been building for episodes. He plans the evening carefully — wine, dim lights, conversation about relationships. He gets within one sentence of saying something real. Barry's entrance destroys it completely. The audience, who can see Ross's feelings clearly, is left as frustrated as Ross. The show masterfully delays the inevitable."},
+  {e:"🏠",t:"The Unlocked Door — A Running Joke",p:"In almost every episode of Friends, characters walk into each other's apartments without knocking or being invited. The doors are essentially always open. Chandler, Joey, Ross, Monica, Rachel, and Phoebe all do it constantly. Ross's line — 'We have got to start locking that door!' — acknowledges the absurdity while being part of it. The show never explains why no one ever actually locks their door. It's simply the world of the show."},
+];
+
+// ── RENDER VOCAB ──
+const TL={slang:'🔥 Slang',phrase:'💬 Phrase',vocab:'📚 Vocab',idiom:'🎭 Idiom',humor:'😂 Comedy',phrasal:'🔗 Phrasal Verb',expression:'💡 Expression',romantic:'❤️ Romantic',business:'💼 Business'};
+function renderVocab(){
+  document.getElementById('vocabGrid').innerHTML=VD.map((v,i)=>`
+    <div class="vcard" data-tag="${v.tag}" data-idx="${i}" onclick="this.classList.toggle('open')">
+      <button class="save-btn${savedWords.has(i)?' saved':''}" data-idx="${i}" onclick="toggleSave(${i},this,event)" title="${savedWords.has(i)?'Remove from review':'Save for review'}">${savedWords.has(i)?'★':'☆'}</button>
+      <div class="vtag">${TL[v.tag]||v.tag}</div>
+      <div class="vword">${v.word}</div>
+      ${v.ph?`<div class="vphon">${v.ph}</div>`:''}
+      <div class="vctx">"${v.ctx}"</div>
+      <div class="vhint">Tap to reveal ↓</div>
+      <div class="vmean">${v.mean}<div class="ex">💡 ${v.ex}</div></div>
+    </div>`).join('');
+}
+
+// ── FILTER + SEARCH ──
+function filterV(tag,el){
+  document.querySelectorAll('#chips .chip').forEach(c=>c.classList.remove('active'));
+  el.classList.add('active');
+  applyF(tag, document.getElementById('searchInput').value.trim().toLowerCase());
+}
+function doSearch(val){
+  const q=val.trim().toLowerCase();
+  document.getElementById('searchX').classList.toggle('on',q.length>0);
+  const tag=document.querySelector('#chips .chip.active')?.dataset?.tag||'all';
+  applyF(tag,q);
+}
+function applyF(tag,q){
+  let vis=0;
+  document.querySelectorAll('.vcard').forEach(c=>{
+    const mt=tag==='all'||c.dataset.tag===tag;
+    let ms=true;
+    if(q){
+      const txt=(c.querySelector('.vword')?.textContent||'')+(c.querySelector('.vctx')?.textContent||'')+(c.querySelector('.vmean')?.textContent||'');
+      ms=txt.toLowerCase().includes(q);
+      const we=c.querySelector('.vword');
+      if(we){
+        const orig=we.dataset.orig||we.textContent;
+        we.dataset.orig=orig;
+        if(ms){const re=new RegExp(`(${q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')})`,'gi');we.innerHTML=orig.replace(re,'<mark class="search-hl">$1</mark>');}
+        else{we.textContent=orig;}
+      }
+    } else {
+      const we=c.querySelector('.vword');
+      if(we?.dataset.orig)we.textContent=we.dataset.orig;
+    }
+    const show=mt&&ms;
+    c.classList.toggle('hidden',!show);
+    if(show)vis++;
+  });
+  const sc=document.getElementById('searchCount');
+  sc.innerHTML=q?`<b>${vis}</b> result${vis!==1?'s':''} for "<b>${q}</b>"`:'';
+  const nr=document.getElementById('noRes');
+  nr.classList.toggle('on',vis===0);
+  if(vis===0)document.getElementById('noResQ').textContent=`"${q}"`;
+}
+function clearSearch(){
+  const i=document.getElementById('searchInput');
+  i.value='';
+  document.getElementById('searchX').classList.remove('on');
+  document.getElementById('searchCount').innerHTML='';
+  document.getElementById('noRes').classList.remove('on');
+  const tag=document.querySelector('#chips .chip.active')?.dataset?.tag||'all';
+  applyF(tag,'');
+  i.focus();
+}
+
+// ── RENDER DIALOGUE ──
+function renderD(){
+  document.getElementById('dlines').innerHTML=DD.map(l=>`
+    <div class="drow">
+      <div><span class="spill s-${l.sp}">${l.sp}</span></div>
+      <div class="dbubble">${l.txt}</div>
+    </div>`).join('');
+}
+
+// ── RENDER CULTURE ──
+function renderC(){
+  document.getElementById('cNotes').innerHTML=CD.map(c=>`
+    <div class="citem">
+      <div class="cicon">${c.e}</div>
+      <div><h3>${c.t}</h3><p>${c.p}</p></div>
+    </div>`).join('');
+}
+
+// ── QUIZ ──
+let QS={cur:0,score:0,ans:false,qs:[]};
+const shuffle=a=>[...a].sort(()=>Math.random()-.5);
+function startQ(){QS={cur:0,score:0,ans:false,qs:shuffle(QD)};renderQ();}
+function renderQ(){
+  const{qs,cur,score}=QS;
+  if(cur>=qs.length){renderScore();return;}
+  const q=qs[cur],pct=(cur/qs.length)*100;
+  const qHTML=q.t==='mc'
+    ?`<div class="qopts">${q.opts.map((o,i)=>`<button class="qopt" onclick="chkMC(${i})">${o}</button>`).join('')}</div>`
+    :`<input class="tinput" id="fi" type="text" placeholder="Type your answer…" onkeydown="if(event.key==='Enter')chkFill()"><div class="brow"><button class="btn-f" onclick="chkFill()">Check Answer</button></div>`;
+  document.getElementById('quizContainer').innerHTML=`
+    <div class="qprog-lbl"><span>Question <b>${cur+1}</b> of ${qs.length}</span><span>Score: <b>${score}</b></span></div>
+    <div class="liner"><div class="liner-fill" style="width:${pct}%"></div></div>
+    <div class="qcard">
+      <div class="qbadge">${q.t==='fill'?'✏️ Fill in the blank':'🔘 Multiple choice'}</div>
+      <div class="qtext">${q.q}</div>
+      <div class="qexcerpt">${q.ex}</div>
+      ${qHTML}
+      <div class="qfb" id="qfb"></div>
+      <div id="nxt"></div>
+    </div>`;
+}
+function chkMC(sel){
+  if(QS.ans)return;QS.ans=true;
+  const q=QS.qs[QS.cur];
+  document.querySelectorAll('.qopt').forEach(b=>b.disabled=true);
+  document.querySelectorAll('.qopt')[q.ans].classList.add('correct');
+  if(sel===q.ans){QS.score++;document.querySelectorAll('.qopt')[sel].classList.add('correct');}
+  else{document.querySelectorAll('.qopt')[sel].classList.add('wrong');}
+  showFB(sel===q.ans,q.exp);
+}
+function chkFill(){
+  if(QS.ans)return;QS.ans=true;
+  const q=QS.qs[QS.cur],inp=document.getElementById('fi');
+  const ua=inp.value.trim().toLowerCase(),ca=q.ans.toLowerCase();
+  const ok=ua===ca||(ca.includes(ua)&&ua.length>4);
+  if(ok)QS.score++;
+  inp.className=`tinput ${ok?'correct':'wrong'}`;inp.disabled=true;
+  showFB(ok,ok?q.exp:`The answer is "${q.ans}". ${q.exp}`);
+}
+function showFB(ok,msg){
+  const fb=document.getElementById('qfb');
+  fb.className=`qfb on ${ok?'ok':'no'}`;
+  fb.textContent=(ok?'✅ Correct! ':'❌ Not quite. ')+msg;
+  const isLast=QS.cur>=QS.qs.length-1;
+  document.getElementById('nxt').innerHTML=`<div class="brow"><button class="btn-f" onclick="nextQ()">${isLast?'🏆 See Results':'Next →'}</button></div>`;
+}
+function nextQ(){QS.cur++;QS.ans=false;renderQ();}
+function renderScore(){
+  const{score:s,qs}=QS,total=qs.length,pct=Math.round(s/total*100);
+  const msgs=["Keep going! Every attempt builds your skills. 💪","Good start! Try reviewing the vocab cards.","Getting there! A few more reviews will help.","Nice work! Your English is improving.","Really solid! You're picking up the language fast.","Great job! The Friends method is working.","Impressive! You've mastered this episode.","Excellent work! Near-perfect.","Outstanding!","Almost perfect — just one slip!","PERFECT! 🎉 You know this episode inside out.","PERFECT! Phoebe would be proud.","FLAWLESS! Even the ANUS can't shake you!"];
+  document.getElementById('quizContainer').innerHTML=`
+    <div class="score-card">
+      <div class="score-ring">
+        <div class="score-big">${s}<span class="score-denom">/${total}</span></div>
+        <div class="score-pct">${pct}%</div>
+      </div>
+      <div class="score-msg">${msgs[Math.min(s,msgs.length-1)]}</div>
+      <div class="brow" style="justify-content:center">
+        <button class="btn-f" onclick="startQ()">Try Again</button>
+        <button class="btn-o" onclick="showSec('vocab')">Review Vocab</button>
+      </div>
+    </div>`;
+}
+
+// ── TABS ──
+function showSec(id){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.nav-btn[onclick]').forEach(b=>b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  const map={vocab:0,dialogue:1,quiz:2,culture:3,review:4};
+  const btns=document.querySelectorAll('.nav-btn[onclick]');
+  if(map[id]!==undefined&&btns[map[id]])btns[map[id]].classList.add('active');
+  if(id==='quiz'&&QS.cur===0&&QS.score===0)startQ();
+  if(id==='review')renderReview();
+}
+
+// ── INIT ──
+renderVocab();renderD();renderC();
+</script>
+</body>
+</html>
